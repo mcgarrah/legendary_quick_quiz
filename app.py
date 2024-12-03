@@ -6,6 +6,7 @@ import random
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz.db'
 db = SQLAlchemy(app)
+app.app_context().push()
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -89,11 +90,19 @@ def quiz(category_id):
 def check_answers():
     user_answers = request.json
     questions = Question.query.all()
+    results = []
     score = 0
     for i, question in enumerate(questions):
-        if question.answer == user_answers[i]:
+        correct = question.answer == user_answers[i]
+        if correct:
             score += 1
-    return jsonify({'score': score, 'total': len(questions)})
+        results.append({
+            'question': question.question,
+            'correct': correct,
+            'answer_details': question.answer_details,
+            'user_answer': user_answers[i]
+        })
+    return jsonify({'score': score, 'total': len(questions), 'results': results})
 
 @app.route('/edit')
 def edit():

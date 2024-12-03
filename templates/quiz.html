@@ -23,9 +23,6 @@
                         {{ option }}
                     </label><br>
                 {% endfor %}
-                {% if question.answer_details %}
-                    <p><em>{{ question.answer_details }}</em></p>
-                {% endif %}
             </div>
         {% endfor %}
         <button type="button" onclick="submitQuiz()">Submit</button>
@@ -63,7 +60,16 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('result').innerText = `You scored ${data.score} out of ${data.total}`;
+                let resultHTML = `You scored ${data.score} out of ${data.total}<br><br>`;
+                data.results.forEach(result => {
+                    resultHTML += `<div>
+                        <p><strong>Question:</strong> ${result.question}</p>
+                        <p><strong>Your Answer:</strong> ${result.user_answer}</p>
+                        <p><strong>Correct:</strong> ${result.correct ? 'Yes' : 'No'}</p>
+                        <p><strong>Details:</strong> ${result.answer_details}</p>
+                    </div><br>`;
+                });
+                document.getElementById('result').innerHTML = resultHTML;
             });
         }
     </script>
