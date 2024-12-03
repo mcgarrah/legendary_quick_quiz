@@ -4,69 +4,113 @@ Certification Timed Multiple Choice Quiz WebApp
 
 This application is a fully-fledged, dynamic quiz platform built using Flask, a lightweight web framework for Python. Here's a breakdown of its key features and functionalities:
 
-## Features:
+## Setup
+
+Create a VEnv environment on Debian/Ubuntu
+
+First navigate to the top directory of the repository with the command line.
+
+``` console
+sudo apt install python3-venv
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install -r requirements.txt
+```
+
+If using VSCode, then add this `launch.json` file to a sub-directory called `.vscode` at the root of the project to setup debugging. You will need the Python Plugin installed for it to work.
+
+``` json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Flask",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "app.py",
+                "FLASK_DEBUG": "1",
+                "FLASK_ENV": "development"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "autoStartBrowser": false
+        }
+    ]
+}
+```
+
+## Features
 
 1. Multiple Quiz Categories:
 
-* The application supports multiple quiz categories, allowing users to select from different topics such as General, Science, and History.
+   * The application supports multiple quiz categories, allowing users to select from different topics such as General, Science, and History.
 
-* Users can navigate to a specific category and take quizzes within that category.
+   * Users can navigate to a specific category and take quizzes within that category.
 
 1. Configurable Settings:
 
-* Admins can configure the number of questions per quiz session and the quiz timer duration.
+   * Admins can configure the number of questions per quiz session and the quiz timer duration.
 
-* Settings are stored in an SQLite database and can be updated through a settings page.
+   * Settings are stored in an SQLite database and can be updated through a settings page.
 
-1. Dynamic Content Rendering:
+2. Dynamic Content Rendering:
 
-* The application uses HTML templates to render dynamic content. It leverages Jinja2 templating to insert data from the backend into the HTML pages.
+   * The application uses HTML templates to render dynamic content. It leverages Jinja2 templating to insert data from the backend into the HTML pages.
 
-* Templates include placeholders for questions, options, and other content that changes based on the user interaction.
+   * Templates include placeholders for questions, options, and other content that changes based on the user interaction.
 
-1. Quiz Timer:
+3. Quiz Timer:
 
-* Each quiz session includes a timer, which counts down from a configurable duration (e.g., 5 minutes).
+   * Each quiz session includes a timer, which counts down from a configurable duration (e.g., 5 minutes).
 
-* The timer ensures that quizzes are completed within a set time limit.
+   * The timer ensures that quizzes are completed within a set time limit.
 
-1. Score Calculation:
+4. Score Calculation:
 
-* The application calculates the user's score based on their answers and displays the result at the end of the quiz.
+   * The application calculates the user's score based on their answers and displays the result at the end of the quiz.
 
-1. Question Management:
+5. Question Management:
 
-* Admins can add new questions to the quiz through a form on the edit page.
+   * Admins can add new questions to the quiz through a form on the edit page.
 
-* Each question includes the question text, multiple options, the correct answer, and additional details about the answer.
+   * Each question includes the question text, multiple options, the correct answer, and additional details about the answer.
 
-1. Data Storage:
+6. Data Storage:
 
-* Questions, categories, and settings are stored in an SQLite database, making it easy to manage and retrieve data.
+   * Questions, categories, and settings are stored in an SQLite database, making it easy to manage and retrieve data.
 
-1. Import Initial Questions:
+7. Import Initial Questions:
 
-* The application can import initial questions from a JSON file, making it easy to bulk upload questions for different categories.
+   * The application can import initial questions from a JSON file, making it easy to bulk upload questions for different categories.
 
 ## Technical Components:
 
 1. Flask:
 
-* Used to create the web application and manage routes.
+   * Used to create the web application and manage routes.
 
-* Handles HTTP requests and responses.
+   * Handles HTTP requests and responses.
 
-1. SQLAlchemy:
+2. SQLAlchemy:
 
-* An ORM (Object-Relational Mapping) library used for database interactions.
+   * An ORM (Object-Relational Mapping) library used for database interactions.
 
-* Models define the structure of the database tables.
+   * Models define the structure of the database tables.
 
-1. Jinja2 Templates:
+3. Jinja2 Templates:
 
-* Used to render dynamic HTML content.
+   * Used to render dynamic HTML content.
 
-* Supports control structures like loops and conditionals for flexible content rendering.
+   * Supports control structures like loops and conditionals for flexible content rendering.
 
 ## Files and their Roles
 
