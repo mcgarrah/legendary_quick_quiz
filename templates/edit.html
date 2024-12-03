@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Questions</title>
+</head>
+<body>
+    <h1>Edit Questions</h1>
+    <form action="/add_question" method="POST">
+        <div>
+            <label for="question">Question:</label>
+            <input type="text" id="question" name="question" required>
+        </div>
+        <div>
+            <label for="options">Options (comma-separated):</label>
+            <input type="text" id="options" name="options" required>
+        </div>
+        <div>
+            <label for="answer">Answer:</label>
+            <input type="text" id="answer" name="answer" required>
+        </div>
+        <div>
+            <label for="answer_details">Answer Details:</label>
+            <textarea id="answer_details" name="answer_details" rows="3"></textarea>
+        </div>
+        <div>
+            <label for="category_id">Category:</label>
+            <select id="category_id" name="category_id">
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Add Question</button>
+    </form>
+
+    <h2>Existing Questions</h2>
+    <ul>
+        {% for question in questions %}
+            <li>{{ question.question }} ({{ question.answer }})
+                <ul>
+                    {% for option in json.loads(question.options) %}
+                        <li>{{ option }}</li>
+                    {% endfor %}
+                </ul>
+                {% if question.answer_details %}
+                    <p><em>{{ question.answer_details }}</em></p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

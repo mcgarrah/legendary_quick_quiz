@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Quiz Category</title>
+</head>
+<body>
+    <h1>Select Quiz Category</h1>
+    <ul>
+        {% for category in categories %}
+            <li><a href="/quiz/{{ category.id }}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="/import_questions">Import Questions</a>
+</body>
+</html>

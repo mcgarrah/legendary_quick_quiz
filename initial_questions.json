@@ -1,0 +1,30 @@
+[
+    {
+        "category": "General",
+        "questions": [
+            {
+                "question": "What is the capital of France?",
+                "options": ["Berlin", "Paris", "Rome", "Madrid"],
+                "answer": "Paris",
+                "answer_details": "Paris is the capital and most populous city of France."
+            },
+            {
+                "question": "Which planet is known as the Red Planet?",
+                "options": ["Earth", "Venus", "Mars", "Jupiter"],
+                "answer": "Mars",
+                "answer_details": "Mars is known as the Red Planet because of its reddish appearance."
+            }
+        ]
+    },
+    {
+        "category": "Science",
+        "questions": [
+            {
+                "question": "What is the chemical symbol for water?",
+                "options": ["O2", "H2O", "CO2", "NaCl"],
+                "answer": "H2O",
+                "answer_details": "H2O is the chemical formula for water, consisting of two hydrogen atoms and one oxygen atom."
+            }
+        ]
+    }
+]
