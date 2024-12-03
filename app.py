@@ -84,8 +84,10 @@ def quiz(category_id):
 
     # Randomly select the specified number of questions
     selected_questions = random.sample(questions, min(num_questions, len(questions)))
-    return render_template('quiz.html', questions=selected_questions, timer_duration=timer_duration)
+    return render_template('quiz.html', questions=selected_questions, timer_duration=timer_duration, json=json)
 
+
+# TODO: Fix the check answers to take in the questions from quiz screen
 @app.route('/check_answers', methods=['POST'])
 def check_answers():
     user_answers = request.json
@@ -108,7 +110,7 @@ def check_answers():
 def edit():
     questions = Question.query.all()
     categories = Category.query.all()
-    return render_template('edit.html', questions=questions, categories=categories)
+    return render_template('edit.html', questions=questions, categories=categories, json=json)
 
 @app.route('/add_question', methods=['POST'])
 def add_question():
