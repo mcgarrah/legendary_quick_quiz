@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, send_file
 from flask_sqlalchemy import SQLAlchemy
 import json
 import random
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz.db'
@@ -145,6 +146,29 @@ def add_question():
     db.session.add(new_question)
     db.session.commit()
     return redirect(url_for('edit'))
+
+@app.route('/delete_question/<int:question_id>', methods=['POST'])
+def delete_question(question_id):
+    question = Question.query.get_or_404(question_id)
+    db.session.delete(question)
+    db.session.commit()
+    return redirect(url_for('edit'))
+
+@app.route('/dump_questions')
+def dump_questions():
+    questions = Question.query.all()
+    questions_list = []
+    for question in questions:
+        questions_list.append({
+            'question': question.question,
+            'options': json.loads(question.options),
+            'answer': question.answer,
+            'answer_details': question.answer_details,
+            'category_id': question.category_id
+        })
+    with open('dumped_questions.json', 'w') as f:
+        json.dump(questions_list, f, indent=4)
+    return send_file('dumped_questions.json', as_attachment=True)
 
 @app.route('/settings')
 def settings():
