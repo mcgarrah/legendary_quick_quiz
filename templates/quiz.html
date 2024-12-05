@@ -32,6 +32,7 @@
         const questions = {{ questions|tojson | safe }};
         const questionContainer = document.getElementById('question-container');
         const userAnswers = {};  // Object to store user answers
+        let timerInterval;
 
         function updateTimer() {
             const minutes = Math.floor(timeLeft / 60);
@@ -44,7 +45,9 @@
             timeLeft -= 1;
         }
 
-        const timerInterval = setInterval(updateTimer, 1000);
+        function startTimer() {
+            timerInterval = setInterval(updateTimer, 1000);
+        }
 
         function loadQuestion(index) {
             const question = questions[index];
@@ -95,8 +98,8 @@
 
         function submitQuiz() {
             saveAnswer();
+            clearInterval(timerInterval);  // Stop the timer
             const questionIds = JSON.parse(document.getElementById('question_ids').value);
-            // TODO: have answer include question id
             const answers = questionIds.map((_, index) => userAnswers[index] || "");
             fetch('/check_answers', {
                 method: 'POST',
@@ -123,9 +126,10 @@
             });
         }
 
-        // Initialize the first question
+        // Initialize the first question and start the timer
         loadQuestion(currentQuestionIndex);
         updateNavigationButtons();
+        startTimer();
     </script>
 </body>
 </html>
