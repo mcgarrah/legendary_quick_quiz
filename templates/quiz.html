@@ -28,6 +28,7 @@
     <script>
         let timeLeft = {{ timer_duration }};
         const timerElement = document.getElementById('time');
+        const totalTime = timeLeft;
         let currentQuestionIndex = 0;
         const questions = {{ questions|tojson | safe }};
         const questionContainer = document.getElementById('question-container');
@@ -101,6 +102,9 @@
             clearInterval(timerInterval);  // Stop the timer
             const questionIds = JSON.parse(document.getElementById('question_ids').value);
             const answers = questionIds.map((_, index) => userAnswers[index] || "");
+            const timeUsed = totalTime - timeLeft;
+            const minutesUsed = Math.floor(timeUsed / 60);
+            const secondsUsed = timeUsed % 60;
             fetch('/check_answers', {
                 method: 'POST',
                 headers: {
@@ -113,7 +117,8 @@
             })
             .then(response => response.json())
             .then(data => {
-                let resultHTML = `You scored ${data.score} out of ${data.total} (${((data.score / data.total) * 100).toFixed(2)}%)<br><br>`;
+                let resultHTML = `You scored ${data.score} out of ${data.total} (${((data.score / data.total) * 100).toFixed(2)}%)<br>`;
+                resultHTML += `Time used: ${minutesUsed} minutes and ${secondsUsed} seconds out of ${Math.floor(totalTime / 60)} minutes.<br><br>`;
                 data.results.forEach(result => {
                     resultHTML += `<div>
                         <p><strong>Question:</strong> ${result.question}</p>
