@@ -4,6 +4,16 @@ Certification Timed Multiple Choice Quiz WebApp
 
 This application is a fully-fledged, dynamic quiz platform built using Flask, a lightweight web framework for Python. Here's a breakdown of its key features and functionalities:
 
+https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg
+
+## Known Broken Things
+
+1. Check Answers is broken
+2. WebUI is ugly as hell
+3. Dynamically add "options" for questions
+4. Images or diagrams for questions missing
+5. Import and Export JSON is not good
+
 ## Setup
 
 Create a VEnv environment on Debian/Ubuntu
