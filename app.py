@@ -134,9 +134,10 @@ def edit():
 
 @app.route('/add_question', methods=['POST'])
 def add_question():
+    options = request.form.getlist('options')
     new_question = Question(
         question=request.form['question'],
-        options=json.dumps(request.form.getlist('options')),
+        options=json.dumps(options),  # Store options as a JSON string
         answer=request.form['answer'],
         answer_details=request.form['answer_details'],
         category_id=request.form['category_id']
