@@ -18,6 +18,11 @@
                 "question": "What is 1 + 1?",
                 "options": ["1", "2", "3", "4"],
                 "answer": "2"
+            },
+            {
+                "question": "Which programming language is known as the 'language of the web'?",
+                "options": ["Python", "Java", "C++", "JavaScript"],
+                "answer": "JavaScript"
             }
         ]
     },
