@@ -93,17 +93,30 @@ def quiz(category_id):
     n = min(num_questions, len(questions))
     selected_questions = tmp_questions[:n]
 
-    return render_template('quiz.html', questions=selected_questions, timer_duration=timer_duration, json=json)
+    # Convert to JSON serializable format
+    serialized_questions = [
+        {
+            'id': question.id,
+            'question': question.question,
+            'options': json.loads(question.options),
+            'answer_details': question.answer_details
+        } for question in selected_questions
+    ]
+
+    return render_template('quiz.html', questions=serialized_questions, timer_duration=timer_duration)
 
 # TODO: Fix the check answers to take in the questions from quiz screen
 @app.route('/check_answers', methods=['POST'])
 def check_answers():
     data = request.json
+    #user_answers = data['answers']
     user_answers = data['answers'][1:]
     #user_answers = json.loads(user_answers[0])
     question_ids = data['question_ids']
     # Ensure question_ids are integers
     question_ids = [int(qid) for qid in question_ids]
+    # TODO: question_ids are in original quiz order while questions are in numeric order
+    # FIX: Mismatch between quiz order for answers and questions being in numeric order are a problem
     questions = Question.query.filter(Question.id.in_(question_ids)).all()
     results = []
     score = 0

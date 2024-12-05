@@ -15,23 +15,23 @@
     <div id="timer">Time Remaining: <span id="time">{{ '%02d:%02d' % (timer_duration // 60, timer_duration % 60) }}</span></div>
     <form id="quizForm">
         <input type="hidden" id="question_ids" name="question_ids" value="{{ questions|map(attribute='id')|list|tojson }}">
-        {% for question in questions %}
-            <div>
-                <p>{{ question.question }}</p>
-                {% for option in json.loads(question.options) %}
-                    <label>
-                        <input type="radio" name="question{{ loop.index0 }}" value="{{ option }}">
-                        {{ option }}
-                    </label><br>
-                {% endfor %}
-            </div>
-        {% endfor %}
+        <div id="question-container">
+            <!-- Questions will be dynamically loaded here -->
+        </div>
+        <div>
+            <button type="button" id="prevButton" onclick="prevQuestion()" disabled>Previous</button>
+            <button type="button" id="nextButton" onclick="nextQuestion()">Next</button>
+        </div>
         <button type="button" onclick="submitQuiz()">Submit</button>
     </form>
     <div id="result"></div>
     <script>
         let timeLeft = {{ timer_duration }};
         const timerElement = document.getElementById('time');
+        let currentQuestionIndex = 0;
+        const questions = {{ questions|tojson | safe }};
+        const questionContainer = document.getElementById('question-container');
+        const userAnswers = {};  // Object to store user answers
 
         function updateTimer() {
             const minutes = Math.floor(timeLeft / 60);
@@ -46,15 +46,58 @@
 
         const timerInterval = setInterval(updateTimer, 1000);
 
-        function submitQuiz() {
-            const formData = new FormData(document.getElementById('quizForm'));
-            const answers = [];
-            const questionIds = JSON.parse(document.getElementById('question_ids').value);
-            for (let entry of formData.entries()) {
-                if (entry[0].startsWith('question')) {
-                    answers.push(entry[1]);
-                }
+        function loadQuestion(index) {
+            const question = questions[index];
+            let questionHTML = `<div>
+                <p>${question.question}</p>`;
+            question.options.forEach((option, i) => {
+                const checked = userAnswers[index] === option ? 'checked' : '';
+                questionHTML += `<label>
+                    <input type="radio" name="question${index}" value="${option}" ${checked}>
+                    ${option}
+                </label><br>`;
+            });
+            if (question.answer_details) {
+                questionHTML += `<p><em>${question.answer_details}</em></p>`;
             }
+            questionHTML += `</div>`;
+            questionContainer.innerHTML = questionHTML;
+        }
+
+        function saveAnswer() {
+            const formData = new FormData(document.getElementById('quizForm'));
+            const selectedOption = formData.get(`question${currentQuestionIndex}`);
+            userAnswers[currentQuestionIndex] = selectedOption;
+        }
+
+        function prevQuestion() {
+            saveAnswer();
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion(currentQuestionIndex);
+                updateNavigationButtons();
+            }
+        }
+
+        function nextQuestion() {
+            saveAnswer();
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+                updateNavigationButtons();
+            }
+        }
+
+        function updateNavigationButtons() {
+            document.getElementById('prevButton').disabled = currentQuestionIndex === 0;
+            document.getElementById('nextButton').disabled = currentQuestionIndex === questions.length - 1;
+        }
+
+        function submitQuiz() {
+            saveAnswer();
+            const questionIds = JSON.parse(document.getElementById('question_ids').value);
+            // TODO: have answer include question id
+            const answers = questionIds.map((_, index) => userAnswers[index] || "");
             fetch('/check_answers', {
                 method: 'POST',
                 headers: {
@@ -79,6 +122,10 @@
                 document.getElementById('result').innerHTML = resultHTML;
             });
         }
+
+        // Initialize the first question
+        loadQuestion(currentQuestionIndex);
+        updateNavigationButtons();
     </script>
 </body>
 </html>
