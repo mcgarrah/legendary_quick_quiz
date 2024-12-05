@@ -13,6 +13,11 @@
                 "options": ["Earth", "Venus", "Mars", "Jupiter"],
                 "answer": "Mars",
                 "answer_details": "Mars is known as the Red Planet because of its reddish appearance."
+            },
+            {
+                "question": "What is 1 + 1?",
+                "options": ["1", "2", "3", "4"],
+                "answer": "2"
             }
         ]
     },
