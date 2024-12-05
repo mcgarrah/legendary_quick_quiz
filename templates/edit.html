@@ -2,6 +2,25 @@
 <html>
 <head>
     <title>Edit Questions</title>
+    <script>
+        function addOption() {
+            const optionsContainer = document.getElementById('options-container');
+            const optionCount = optionsContainer.children.length;
+            const newOption = document.createElement('div');
+            newOption.innerHTML = `
+                <label for="option${optionCount}">Option ${optionCount + 1}:</label>
+                <input type="text" id="option${optionCount}" name="options" required>
+            `;
+            optionsContainer.appendChild(newOption);
+        }
+
+        function removeOption() {
+            const optionsContainer = document.getElementById('options-container');
+            if (optionsContainer.children.length > 1) {
+                optionsContainer.removeChild(optionsContainer.lastChild);
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Edit Questions</h1>
@@ -10,21 +29,27 @@
             <label for="question">Question:</label>
             <input type="text" id="question" name="question" required>
         </div>
-        <div>
-            <label for="option1">Option 1:</label>
-            <input type="text" id="option1" name="options" required>
+        <div id="options-container">
+            <div>
+                <label for="option0">Option 1:</label>
+                <input type="text" id="option0" name="options" required>
+            </div>
+            <div>
+                <label for="option1">Option 2:</label>
+                <input type="text" id="option1" name="options" required>
+            </div>
+            <div>
+                <label for="option2">Option 3:</label>
+                <input type="text" id="option2" name="options" required>
+            </div>
+            <div>
+                <label for="option3">Option 4:</label>
+                <input type="text" id="option3" name="options" required>
+            </div>
         </div>
         <div>
-            <label for="option2">Option 2:</label>
-            <input type="text" id="option2" name="options" required>
-        </div>
-        <div>
-            <label for="option3">Option 3:</label>
-            <input type="text" id="option3" name="options" required>
-        </div>
-        <div>
-            <label for="option4">Option 4:</label>
-            <input type="text" id="option4" name="options" required>
+            <button type="button" onclick="addOption()">Add Option</button>
+            <button type="button" onclick="removeOption()">Remove Option</button>
         </div>
         <div>
             <label for="answer">Answer:</label>
