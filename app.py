@@ -105,22 +105,22 @@ def quiz(category_id):
 
     return render_template('quiz.html', questions=serialized_questions, timer_duration=timer_duration)
 
-# TODO: Fix the check answers to take in the questions from quiz screen
 @app.route('/check_answers', methods=['POST'])
 def check_answers():
     data = request.json
-    #user_answers = data['answers']
-    user_answers = data['answers'][1:]
-    #user_answers = json.loads(user_answers[0])
+    user_answers = data['answers']
     question_ids = data['question_ids']
+    
     # Ensure question_ids are integers
     question_ids = [int(qid) for qid in question_ids]
-    # TODO: question_ids are in original quiz order while questions are in numeric order
-    # FIX: Mismatch between quiz order for answers and questions being in numeric order are a problem
-    questions = Question.query.filter(Question.id.in_(question_ids)).all()
+    
+    # Retrieve questions and sort them based on the original question order
+    questions = {question.id: question for question in Question.query.filter(Question.id.in_(question_ids)).all()}
+    sorted_questions = [questions[qid] for qid in question_ids]
+
     results = []
     score = 0
-    for i, question in enumerate(questions):
+    for i, question in enumerate(sorted_questions):
         if i < len(user_answers):  # Ensure user_answers has enough elements
             correct = question.answer == user_answers[i]
             if correct:
@@ -138,7 +138,7 @@ def check_answers():
                 'answer_details': question.answer_details,
                 'user_answer': None
             })
-    return jsonify({'score': score, 'total': len(questions), 'results': results})
+    return jsonify({'score': score, 'total': len(sorted_questions), 'results': results})
 
 @app.route('/edit')
 def edit():
