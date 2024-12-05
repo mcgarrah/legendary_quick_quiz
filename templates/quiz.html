@@ -113,7 +113,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                let resultHTML = `You scored ${data.score} out of ${data.total}<br><br>`;
+                let resultHTML = `You scored ${data.score} out of ${data.total} (${((data.score / data.total) * 100).toFixed(2)}%)<br><br>`;
                 data.results.forEach(result => {
                     resultHTML += `<div>
                         <p><strong>Question:</strong> ${result.question}</p>
