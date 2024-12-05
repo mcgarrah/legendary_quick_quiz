@@ -80,30 +80,50 @@ def quiz(category_id):
     timer_setting = Setting.query.filter_by(name='timer_duration').first()
     num_questions_setting = Setting.query.filter_by(name='num_questions').first()
     timer_duration = int(timer_setting.value) if timer_setting else 300  # Default to 5 minutes
-    num_questions = int(num_questions_setting.value) if num_questions_setting else 5  # Default to 5 questions
+    num_questions = int(num_questions_setting.value) if num_questions_setting else 2  # Default to 2 questions
 
-    # Randomly select the specified number of questions
-    selected_questions = random.sample(questions, min(num_questions, len(questions)))
+    # Randomly select the specified number of questions (but has duplicates)
+    #selected_questions = random.sample(questions, min(num_questions, len(questions)))
+
+    # Shuffle randomly the questions list and keep the lessor of total question count or number of questions requested
+    # TODO: extra step with tmp variable to be removed
+    tmp_questions = questions
+    random.shuffle(tmp_questions)
+    n = min(num_questions, len(questions))
+    selected_questions = tmp_questions[:n]
+
     return render_template('quiz.html', questions=selected_questions, timer_duration=timer_duration, json=json)
-
 
 # TODO: Fix the check answers to take in the questions from quiz screen
 @app.route('/check_answers', methods=['POST'])
 def check_answers():
-    user_answers = request.json
-    questions = Question.query.all()
+    data = request.json
+    user_answers = data['answers'][1:]
+    #user_answers = json.loads(user_answers[0])
+    question_ids = data['question_ids']
+    # Ensure question_ids are integers
+    question_ids = [int(qid) for qid in question_ids]
+    questions = Question.query.filter(Question.id.in_(question_ids)).all()
     results = []
     score = 0
     for i, question in enumerate(questions):
-        correct = question.answer == user_answers[i]
-        if correct:
-            score += 1
-        results.append({
-            'question': question.question,
-            'correct': correct,
-            'answer_details': question.answer_details,
-            'user_answer': user_answers[i]
-        })
+        if i < len(user_answers):  # Ensure user_answers has enough elements
+            correct = question.answer == user_answers[i]
+            if correct:
+                score += 1
+            results.append({
+                'question': question.question,
+                'correct': correct,
+                'answer_details': question.answer_details,
+                'user_answer': user_answers[i]
+            })
+        else:
+            results.append({
+                'question': question.question,
+                'correct': False,
+                'answer_details': question.answer_details,
+                'user_answer': None
+            })
     return jsonify({'score': score, 'total': len(questions), 'results': results})
 
 @app.route('/edit')

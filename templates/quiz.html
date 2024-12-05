@@ -14,6 +14,7 @@
     <a href="/settings">Settings</a>
     <div id="timer">Time Remaining: <span id="time">{{ '%02d:%02d' % (timer_duration // 60, timer_duration % 60) }}</span></div>
     <form id="quizForm">
+        <input type="hidden" id="question_ids" name="question_ids" value="{{ questions|map(attribute='id')|list|tojson }}">
         {% for question in questions %}
             <div>
                 <p>{{ question.question }}</p>
@@ -48,15 +49,21 @@
         function submitQuiz() {
             const formData = new FormData(document.getElementById('quizForm'));
             const answers = [];
+            const questionIds = JSON.parse(document.getElementById('question_ids').value);
             for (let entry of formData.entries()) {
-                answers.push(entry[1]);
+                if (entry[0].startsWith('question')) {
+                    answers.push(entry[1]);
+                }
             }
             fetch('/check_answers', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(answers)
+                body: JSON.stringify({
+                    question_ids: questionIds,
+                    answers: answers
+                })
             })
             .then(response => response.json())
             .then(data => {
