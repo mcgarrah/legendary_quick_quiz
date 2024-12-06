@@ -2,25 +2,6 @@
 <html>
 <head>
     <title>Edit Questions</title>
-    <script>
-        function addOption() {
-            const optionsContainer = document.getElementById('options-container');
-            const optionCount = optionsContainer.children.length;
-            const newOption = document.createElement('div');
-            newOption.innerHTML = `
-                <label for="option${optionCount}">Option ${optionCount + 1}:</label>
-                <input type="text" id="option${optionCount}" name="options" required>
-            `;
-            optionsContainer.appendChild(newOption);
-        }
-
-        function removeOption() {
-            const optionsContainer = document.getElementById('options-container');
-            if (optionsContainer.children.length > 1) {
-                optionsContainer.removeChild(optionsContainer.lastChild);
-            }
-        }
-    </script>
 </head>
 <body>
     <h1>Edit Questions</h1>
@@ -69,6 +50,8 @@
         </div>
         <button type="submit">Add Question</button>
     </form>
+
+    <a href="/edit_categories">Manage Categories</a>
 
     <h2>Existing Questions</h2>
     <ul>

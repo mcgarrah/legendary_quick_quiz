@@ -214,5 +214,18 @@ def update_settings():
     db.session.commit()
     return redirect(url_for('settings'))
 
+@app.route('/add_category', methods=['POST'])
+def add_category():
+    new_category_name = request.form['category_name']
+    new_category = Category(name=new_category_name)
+    db.session.add(new_category)
+    db.session.commit()
+    return redirect(url_for('edit_categories'))
+
+@app.route('/edit_categories')
+def edit_categories():
+    categories = Category.query.all()
+    return render_template('edit_categories.html', categories=categories)
+
 if __name__ == '__main__':
     app.run(debug=True)
