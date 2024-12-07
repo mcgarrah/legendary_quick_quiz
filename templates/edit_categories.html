@@ -18,6 +18,9 @@
         {% for category in categories %}
             <li>
                 {{ category.name }}
+                <form action="/delete_category/{{ category.id }}" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
             </li>
         {% endfor %}
     </ul>

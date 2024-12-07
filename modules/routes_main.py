@@ -36,3 +36,20 @@ def edit():
     questions = Question.query.all()
     categories = Category.query.all()
     return render_template('edit.html', questions=questions, categories=categories, json=json)
+
+def edit_categories():
+    categories = Category.query.all()
+    return render_template('edit_categories.html', categories=categories)
+
+def add_category():
+    new_category_name = request.form['category_name']
+    new_category = Category(name=new_category_name)
+    db.session.add(new_category)
+    db.session.commit()
+    return redirect(url_for('edit_categories'))
+
+def delete_category(category_id):
+    category = Category.query.get_or_404(category_id)
+    db.session.delete(category)
+    db.session.commit()
+    return redirect(url_for('edit_categories'))
