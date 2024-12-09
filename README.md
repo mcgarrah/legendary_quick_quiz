@@ -8,11 +8,18 @@ https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg
 
 ## Known Broken Things
 
-1. Check Answers is broken
-2. WebUI is ugly as hell
-3. Dynamically add "options" for questions
-4. Images or diagrams for questions missing
-5. Import and Export JSON is not good
+1. ~~Check Answers is broken~~
+2. Workflow for the WebUI and completely garbage
+3. WebUI is ugly as hell - need something to pretty it up
+   1. Bootstrap
+      1. Bootstrap 3 (with Less)
+      2. Bootstrap 4 (with SASS)
+   2. Tailwind CSS
+   3. Material UI
+   4. Raw CSS
+4. ~~Dynamically add "options" for questions~~
+5. Images or diagrams for questions missing
+6. Import and Export JSON is not good
 
 ## Setup
 
