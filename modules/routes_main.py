@@ -44,6 +44,11 @@ def export_questions():
         json.dump(questions_list, f, indent=4)
     return send_file('exported_questions.json', as_attachment=True)
 
+def clear_questions():
+    db.session.query(Question).delete()
+    db.session.commit()
+    return redirect(url_for('settings'))
+
 def home():
     categories = Category.query.all()
     return render_template('select_category.html', categories=categories)

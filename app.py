@@ -1,6 +1,6 @@
 from flask import Flask
 from modules.models import db
-from modules.routes_main import import_questions, export_questions, add_question, delete_question, home, edit, edit_categories, add_category, delete_category
+from modules.routes_main import import_questions, export_questions, clear_questions, add_question, delete_question, home, edit, edit_categories, add_category, delete_category
 from modules.routes_quiz import quiz, check_answers
 from modules.routes_settings import settings, update_settings
 
@@ -17,6 +17,7 @@ app.add_url_rule('/', view_func=home)
 
 app.add_url_rule('/import_questions', view_func=import_questions)
 app.add_url_rule('/export_questions', view_func=export_questions)
+app.add_url_rule('/clear_questions', methods=['POST'], view_func=clear_questions)
 
 app.add_url_rule('/quiz/<int:category_id>', view_func=quiz)
 app.add_url_rule('/check_answers', methods=['POST'], view_func=check_answers)
