@@ -12,14 +12,17 @@ https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg
 2. Workflow for the WebUI and completely garbage
 3. WebUI is ugly as hell - need something to pretty it up
    1. Bootstrap
-      1. Bootstrap 3 (with Less)
+      1. ~~Bootstrap 3 (with Less)~~
       2. Bootstrap 4 (with SASS)
+      3. ~~Bootstrap 5 (too new)~~
    2. Tailwind CSS
    3. Material UI
    4. Raw CSS
 4. ~~Dynamically add "options" for questions~~
 5. Images or diagrams for questions missing
 6. Import and Export JSON is not good
+7. Add Google Login
+   1. [Create a Flask Application With Google Login](https://realpython.com/flask-google-login/)
 
 ## Setup
 

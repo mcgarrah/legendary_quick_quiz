@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, send_file
 from .models import db, Category, Question
 import json
 import random
@@ -28,6 +28,22 @@ def import_questions():
     import_initial_questions()
     return redirect(url_for('edit'))
 
+def export_questions():
+    questions = Question.query.all()
+    questions_list = []
+    # TODO: Fix the category_id as the actual category_name
+    for question in questions:
+        questions_list.append({
+            'question': question.question,
+            'options': json.loads(question.options),
+            'answer': question.answer,
+            'answer_details': question.answer_details,
+            'category_id': question.category_id
+        })
+    with open('exported_questions.json', 'w') as f:
+        json.dump(questions_list, f, indent=4)
+    return send_file('exported_questions.json', as_attachment=True)
+
 def home():
     categories = Category.query.all()
     return render_template('select_category.html', categories=categories)
@@ -36,6 +52,27 @@ def edit():
     questions = Question.query.all()
     categories = Category.query.all()
     return render_template('edit.html', questions=questions, categories=categories, json=json)
+
+#@app.route('/add_question', methods=['POST'])
+def add_question():
+    options = request.form.getlist('options')
+    new_question = Question(
+        question=request.form['question'],
+        options=json.dumps(options),  # Store options as a JSON string
+        answer=request.form['answer'],
+        answer_details=request.form['answer_details'],
+        category_id=request.form['category_id']
+    )
+    db.session.add(new_question)
+    db.session.commit()
+    return redirect(url_for('edit'))
+
+#@app.route('/delete_question/<int:question_id>', methods=['POST'])
+def delete_question(question_id):
+    question = Question.query.get_or_404(question_id)
+    db.session.delete(question)
+    db.session.commit()
+    return redirect(url_for('edit'))
 
 def edit_categories():
     categories = Category.query.all()
