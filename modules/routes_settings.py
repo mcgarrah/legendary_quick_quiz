@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from modules.models import db, Setting
+from .models import db, Setting
 
 def settings():
     timer_setting = Setting.query.filter_by(name='timer_duration').first()

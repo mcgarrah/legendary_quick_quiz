@@ -98,8 +98,10 @@ def add_category():
     return redirect(url_for('edit_categories'))
 
 def delete_category(category_id):
-    # TODO: Delete the questions associated with category removed
     category = Category.query.get_or_404(category_id)
+    # Delete all questions associated with the category
+    Question.query.filter_by(category_id=category_id).delete()
+    # Delete the category
     db.session.delete(category)
     db.session.commit()
     return redirect(url_for('edit_categories'))
