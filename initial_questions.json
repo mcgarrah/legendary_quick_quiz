@@ -67,12 +67,14 @@
             {
                 "question": "What is the largest organ in the human body?",
                 "options": ["Heart", "Liver", "Skin", "Lungs"],
-                "answer": "Skin"
+                "answer": "Skin",
+                "answer_details": "The skin covers the entire external surface of the body, making it the largest organ by area."
             },
             {
                 "question": "What is the chemical symbol for gold?",
                 "options": ["Ag", "Au", "Fe", "Hg"],
-                "answer": "Au"
+                "answer": "Au",
+                "answer_details": "Gold's chemical symbol AU is derived from the Latin word aurum, meaning gold."
             }
         ]
     }
