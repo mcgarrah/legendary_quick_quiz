@@ -1,0 +1,115 @@
+{% extends "default.html" %}
+
+{% block title %}Edit Questions{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/settings">Settings</a>
+    </nav>
+    <h1 class="mt-4">Edit Questions</h1>
+    <form action="/add_question" method="POST">
+        <div class="form-group">
+            <label for="question">Question:</label>
+            <input type="text" id="question" name="question" required class="form-control">
+        </div>
+        <div id="options-container" class="form-group">
+            <div class="form-group">
+                <label for="option0">Option 1:</label>
+                <input type="text" id="option0" name="options" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="option1">Option 2:</label>
+                <input type="text" id="option1" name="options" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="option2">Option 3:</label>
+                <input type="text" id="option2" name="options" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="option3">Option 4:</label>
+                <input type="text" id="option3" name="options" required class="form-control">
+            </div>
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <button type="button" class="btn btn-secondary" id="addOptionButton">Add Option</button>
+            <button type="button" class="btn btn-secondary" id="removeOptionButton">Remove Option</button>
+        </div>
+        <div class="form-group mt-3">
+            <label for="answer">Answer:</label>
+            <input type="text" id="answer" name="answer" required class="form-control">
+        </div>
+        <div class="form-group mt-3">
+            <label for="answer_details">Answer Details:</label>
+            <textarea id="answer_details" name="answer_details" rows="3" class="form-control"></textarea>
+        </div>
+        <div class="form-group mt-3">
+            <label for="category_id">Category:</label>
+            <select id="category_id" name="category_id" class="form-control">
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Add Question</button>
+    </form>
+
+    <a href="/edit_categories" class="btn btn-info mt-3">Manage Categories</a>
+
+    <h2 class="mt-4">Existing Questions</h2>
+    <ul class="list-group">
+        {% for question in questions %}
+            <li class="list-group-item">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        {{ question.question }} ({{ question.answer }})
+                        <ul>
+                            {% for option in json.loads(question.options) %}
+                                <li>{{ option }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% if question.answer_details %}
+                            <p><em>{{ question.answer_details }}</em></p>
+                        {% endif %}
+                    </div>
+                    <form action="/delete_question/{{ question.id }}" method="POST">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let optionCount = 4;  // Initial number of options
+
+        document.getElementById('addOptionButton').addEventListener('click', addOption);
+        document.getElementById('removeOptionButton').addEventListener('click', removeOption);
+
+        function addOption() {
+            const optionsContainer = document.getElementById('options-container');
+            const newOption = document.createElement('div');
+            newOption.className = 'form-group';
+            newOption.innerHTML = `
+                <label for="option${optionCount}">Option ${optionCount + 1}:</label>
+                <input type="text" id="option${optionCount}" name="options" required class="form-control">
+            `;
+            optionsContainer.appendChild(newOption);
+            optionCount++;
+        }
+
+        function removeOption() {
+            if (optionCount > 1) {
+                const optionsContainer = document.getElementById('options-container');
+                optionsContainer.removeChild(optionsContainer.lastChild);
+                optionCount--;
+            }
+        }
+    });
+</script>
+{% endblock %}

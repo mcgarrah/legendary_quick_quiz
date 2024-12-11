@@ -21,10 +21,17 @@
 - [x] ~~Fix the quiz.html in submitQuiz() around line 135 to only print answer_details if it exists~~
 - [ ] Images or diagrams for questions missing
 - [x] Merge the import questions functions together
-- [ ] JSON Import and Export needs an option for local file names and upload
+- [x] JSON Import and Export needs an option for local file names and upload
 - [ ] Add options for sqlite file backup
 - [ ] JSON Schema for quiz files
   - [ ] Read [Understanding JSON Schema](https://json-schema.org/understanding-json-schema)
   - [ ] Read [python-jsonschema](https://python-jsonschema.readthedocs.io/en/latest/) library
 - [ ] gunicorn or other hosting requirements
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
+- [ ] PyTest for unittests and webapp automated testing
+  - [ ] Simple test of each route with even `curl` would be useful
+  - [ ] Simple tests of routes with parameters
+- [x] Rename edit.html and edit() to edit_questions() and edit_question.html
+- [x] Add back the missing category functions and routes
+- [x] Add back the question buttons to Add/Remove options - lost JS in conversion to BS5 templates
+- [x] Fix the JSON import to use flask requests and form upload via POST

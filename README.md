@@ -154,7 +154,7 @@ Functions: Includes functions for importing initial questions from a JSON file a
 
 * /check_answers: Handles answer submission and calculates the score.
 
-* /edit: Displays the page for editing questions.
+* /edit_questions: Displays the page for editing questions.
 
 * /add_question: Adds a new question to the database.
 
@@ -175,9 +175,9 @@ In the context of a Flask application, template files are used to define the str
 
 The `quiz.html` file includes the structure for the quiz page, including the timer, questions, options, and the form submission logic. The JavaScript function updateTimer() manages the countdown timer, and submitQuiz() handles the form submission and score calculation.
 
-### edit.html
+### edit_questions.html
 
-This `edit.html` file provides a form to add new questions, including fields for the question text, options, correct answer, answer details, and category. It also lists existing questions along with their details and options.
+This `edit_questions.html` file provides a form to add new questions, including fields for the question text, options, correct answer, answer details, and category. It also lists existing questions along with their details and options.
 
 ### settings.html
 
