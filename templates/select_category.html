@@ -1,18 +1,42 @@
 {% extends "default.html" %}
 
-{% block title %}Select Quiz Category{% endblock %}
+{% block title %}Select Category{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h1>Select Quiz Category</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/edit_questions">Edit Questions</a>
+    </nav>
+    <h1 class="mt-4">Available Categories</h2>
     <ul class="list-group">
         {% for category in categories %}
-            <li class="list-group-item">
-                <a href="/quiz/{{ category.id }}">{{ category.name }}</a>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ category.name }}
+                <span class="badge badge-primary badge-pill">{{ category.questions_count }}</span>
             </li>
         {% endfor %}
     </ul>
-    <a href="/settings" class="btn btn-info mt-3">Settings</a>
-    <a href="/edit_questions" class="btn btn-primary mt-3">Edit Questions</a>
+
+    <h2 class="mt-4">Select Category</h1>
+    <form id="categoryForm" class="mt-4">
+        <div class="form-group">
+            <label for="category_id">Select a category:</label>
+            <select id="category_id" name="category_id" class="form-control" required>
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary mt-3" onclick="startQuiz()">Start Quiz</button>
+    </form>
+
 </div>
+
+<script>
+    function startQuiz() {
+        const categoryId = document.getElementById('category_id').value;
+        window.location.href = `/quiz/${categoryId}`;
+    }
+</script>
 {% endblock %}
