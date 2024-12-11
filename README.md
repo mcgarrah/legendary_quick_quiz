@@ -10,14 +10,18 @@ https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg
 
 1. WebUI is plain looking - use Bootstrap 4 (with SASS)
    1. ~~Initial implementation~~
-   2. Clean up and use base.html for all pages
-2. Fix the quiz.html in submitQuiz() around line 135 to only print answer_details if it exists
+   2. ~~Clean up and use base.html for all pages~~
+   3. Took a look into [bootstrap-flask](https://bootstrap-flask.readthedocs.io/en/stable/) library and found **Bootstrap-Flask** is actively maintained and uses BS4 while **Flask-Bootstrap** is older and not BS4. The Flask Bootstrap libraries are not significantly better than doing BS4 directly as I have done from a quick read.
+2. ~~Fix the quiz.html in submitQuiz() around line 135 to only print answer_details if it exists~~
 3. Images or diagrams for questions missing
-4. Import and Export JSON needs an option for local file names and upload
+4. JSON Import and Export needs an option for local file names and upload
 5. Add Google Login for sessions
    1. [Create a Flask Application With Google Login](https://realpython.com/flask-google-login/)
 6. Add an option to track progress which needs sessions
 7. Add options for sqlite file backup
+8. JSON Schema for quiz files
+   1. [Understanding JSON Schema](https://json-schema.org/understanding-json-schema)
+   2. [python-jsonschema](https://python-jsonschema.readthedocs.io/en/latest/) library
 
 ## Setup
 
