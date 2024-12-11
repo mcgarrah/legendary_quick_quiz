@@ -4,29 +4,12 @@ Certification Timed Multiple Choice Quiz WebApp
 
 This application is a fully-fledged, dynamic quiz platform built using Flask, a lightweight web framework for Python. Here's a breakdown of its key features and functionalities:
 
-https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg
+[McGarrah Copilot Session](https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg)
 
 ## Known Broken Things
 
-1. WebUI is plain looking - use Bootstrap 4 (with SASS)
-   1. ~~Initial implementation~~
-   2. ~~Clean up and use base.html for all pages~~
-   3. Took a look into [bootstrap-flask](https://bootstrap-flask.readthedocs.io/en/stable/) library and found **Bootstrap-Flask** is actively maintained and uses BS4 while **Flask-Bootstrap** is older and not BS4. The Flask Bootstrap libraries are not significantly better than doing BS4 directly as I have done from a quick read.
-2. Add a BS4 navbar for the webui
-3. Clean up the forms display to be correctly spaced
-4. Look into bootstrap schemes for different colors
-5. ~~Fix the quiz.html in submitQuiz() around line 135 to only print answer_details if it exists~~
-6. Images or diagrams for questions missing
-7. Merge the import functions together
-8. JSON Import and Export needs an option for local file names and upload
-9. Add Google Login for sessions
-   1. [Create a Flask Application With Google Login](https://realpython.com/flask-google-login/)
-10. Add an option to track progress which needs sessions
-11. Add options for sqlite file backup
-12. JSON Schema for quiz files
-    1. Read [Understanding JSON Schema](https://json-schema.org/understanding-json-schema)
-    2. Read [python-jsonschema](https://python-jsonschema.readthedocs.io/en/latest/) library
-13. gunicorn or other hosting requirements
+1. Bootstrap4 has some spacing issues in edit.html and other places
+2. JSON Schema checking is not implemented
 
 ## Setup
 
@@ -91,39 +74,39 @@ To specify that the packages in your `requirements.txt` file should be installed
 
    * Users can navigate to a specific category and take quizzes within that category.
 
-1. Configurable Settings:
+2. Configurable Settings:
 
    * Admins can configure the number of questions per quiz session and the quiz timer duration.
 
    * Settings are stored in an SQLite database and can be updated through a settings page.
 
-2. Dynamic Content Rendering:
+3. Dynamic Content Rendering:
 
    * The application uses HTML templates to render dynamic content. It leverages Jinja2 templating to insert data from the backend into the HTML pages.
 
    * Templates include placeholders for questions, options, and other content that changes based on the user interaction.
 
-3. Quiz Timer:
+4. Quiz Timer:
 
    * Each quiz session includes a timer, which counts down from a configurable duration (e.g., 5 minutes).
 
    * The timer ensures that quizzes are completed within a set time limit.
 
-4. Score Calculation:
+5. Score Calculation:
 
    * The application calculates the user's score based on their answers and displays the result at the end of the quiz.
 
-5. Question Management:
+6. Question Management:
 
    * Admins can add new questions to the quiz through a form on the edit page.
 
    * Each question includes the question text, multiple options, the correct answer, and additional details about the answer.
 
-6. Data Storage:
+7. Data Storage:
 
    * Questions, categories, and settings are stored in an SQLite database, making it easy to manage and retrieve data.
 
-7. Import Initial Questions:
+8. Import Initial Questions:
 
    * The application can import initial questions from a JSON file, making it easy to bulk upload questions for different categories.
 
@@ -132,24 +115,22 @@ To specify that the packages in your `requirements.txt` file should be installed
 1. Flask:
 
    * Used to create the web application and manage routes.
-
    * Handles HTTP requests and responses.
 
 2. SQLAlchemy:
 
    * An ORM (Object-Relational Mapping) library used for database interactions.
-
    * Models define the structure of the database tables.
 
 3. Jinja2 Templates:
 
    * Used to render dynamic HTML content.
-
    * Supports control structures like loops and conditionals for flexible content rendering.
 
-4. Bootstrap (TODO)
+4. Bootstrap4
 
-   * CSS to make presentation better
+   * CSS to make presentation better and consistent
+   * Took a look into [bootstrap-flask](https://bootstrap-flask.readthedocs.io/en/stable/) library and found **Bootstrap-Flask** is actively maintained and uses BS4 while **Flask-Bootstrap** is older and not BS4. The Flask Bootstrap libraries are not significantly better than doing BS4 directly as I have done from a quick read.
 
 ## Files and their Roles
 
