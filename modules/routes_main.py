@@ -67,7 +67,6 @@ def edit():
     categories = Category.query.all()
     return render_template('edit.html', questions=questions, categories=categories, json=json)
 
-#@app.route('/add_question', methods=['POST'])
 def add_question():
     options = request.form.getlist('options')
     new_question = Question(
@@ -81,7 +80,6 @@ def add_question():
     db.session.commit()
     return redirect(url_for('edit'))
 
-#@app.route('/delete_question/<int:question_id>', methods=['POST'])
 def delete_question(question_id):
     question = Question.query.get_or_404(question_id)
     db.session.delete(question)
@@ -100,6 +98,7 @@ def add_category():
     return redirect(url_for('edit_categories'))
 
 def delete_category(category_id):
+    # TODO: Delete the questions associated with category removed
     category = Category.query.get_or_404(category_id)
     db.session.delete(category)
     db.session.commit()
