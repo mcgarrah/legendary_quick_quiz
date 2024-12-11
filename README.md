@@ -72,6 +72,17 @@ If using VSCode, then add this `launch.json` file to a sub-directory called `.vs
 }
 ```
 
+Later when checking if libraries need updating...
+
+``` console
+cat requirements.txt
+pip3 freeze
+pip3 install Flask
+pip3 install Flask-SQLAlchemy
+```
+
+To specify that the packages in your `requirements.txt` file should be installed at a certain version or newer, you can use version specifiers like `>=` followed by the version number. This ensures that when someone installs the packages, they get at least the specified version or any newer version. You can manually edit the `requirements.txt` file after generating it with `pip freeze`. Unfortunately, `pip freeze` does not provide an option to add the `>=` specifier directly.
+
 ## Features
 
 1. Multiple Quiz Categories:
