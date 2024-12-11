@@ -61,9 +61,6 @@
                     ${option}
                 </label><br>`;
             });
-            if (question.answer_details) {
-                questionHTML += `<p><em>${question.answer_details}</em></p>`;
-            }
             questionHTML += `</div>`;
             questionContainer.innerHTML = questionHTML;
         }
@@ -118,7 +115,7 @@
             .then(response => response.json())
             .then(data => {
                 let resultHTML = `You scored ${data.score} out of ${data.total} (${((data.score / data.total) * 100).toFixed(2)}%)<br>`;
-                resultHTML += `Time used: ${minutesUsed} minutes and ${secondsUsed} seconds out of ${Math.floor(totalTime / 60)} minutes.<br><br>`;
+                resultHTML += `Time used: ${minutesUsed} minutes and ${secondsUsed} seconds out of ${Math.floor(totalTime / 60)} minutes and ${Math.floor(totalTime % 60)} seconds.<br><br>`;
                 data.results.forEach(result => {
                     resultHTML += `<div>
                         <p><strong>Question:</strong> ${result.question}</p>
