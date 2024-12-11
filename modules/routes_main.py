@@ -29,19 +29,28 @@ def import_questions():
     return redirect(url_for('edit'))
 
 def export_questions():
-    questions = Question.query.all()
-    questions_list = []
-    # TODO: Fix the category_id as the actual category_name
-    for question in questions:
-        questions_list.append({
-            'question': question.question,
-            'options': json.loads(question.options),
-            'answer': question.answer,
-            'answer_details': question.answer_details,
-            'category_id': question.category_id
+    categories = Category.query.all()
+    export_data = []
+
+    for category in categories:
+        questions = Question.query.filter_by(category_id=category.id).all()
+        questions_list = []
+        for question in questions:
+            questions_list.append({
+                'question': question.question,
+                'options': json.loads(question.options),
+                'answer': question.answer,
+                'answer_details': question.answer_details
+            })
+        
+        export_data.append({
+            'category': category.name,
+            'questions': questions_list
         })
+
     with open('exported_questions.json', 'w') as f:
-        json.dump(questions_list, f, indent=4)
+        json.dump(export_data, f, indent=4)
+
     return send_file('exported_questions.json', as_attachment=True)
 
 def clear_questions():

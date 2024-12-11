@@ -9,7 +9,7 @@ https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg
 ## Known Broken Things
 
 1. ~~Check Answers is broken~~
-2. Workflow for the WebUI and completely garbage
+2. Workflow for the WebUI ~~and completely garbage~~ is better but can improve
 3. WebUI is ugly as hell - need something to pretty it up
    1. Bootstrap
       1. ~~Bootstrap 3 (with Less)~~
@@ -17,11 +17,12 @@ https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg
       3. ~~Bootstrap 5 (too new)~~
    2. Tailwind CSS
    3. Material UI
-   4. Raw CSS
+   4. Raw CSS (holy shit no...)
 4. ~~Dynamically add "options" for questions~~
 5. Images or diagrams for questions missing
-6. Import and Export JSON is not good
-7. Add Google Login
+6. ~~Import and Export JSON is not good - is better now~~
+7. ~~Import and Export JSON is inconsistent - fix catagory ID vs Name in export~~
+8. Add Google Login
    1. [Create a Flask Application With Google Login](https://realpython.com/flask-google-login/)
 
 ## Setup
@@ -112,7 +113,7 @@ If using VSCode, then add this `launch.json` file to a sub-directory called `.vs
 
    * The application can import initial questions from a JSON file, making it easy to bulk upload questions for different categories.
 
-## Technical Components:
+## Technical Components
 
 1. Flask:
 
@@ -132,7 +133,13 @@ If using VSCode, then add this `launch.json` file to a sub-directory called `.vs
 
    * Supports control structures like loops and conditionals for flexible content rendering.
 
+4. Bootstrap (TODO)
+
+   * CSS to make presentation better
+
 ## Files and their Roles
+
+This is very out of date now with the break up in to modules and separated files for sections of code.
 
 ### app.py
 
