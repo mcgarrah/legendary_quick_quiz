@@ -8,23 +8,13 @@ https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg
 
 ## Known Broken Things
 
-1. ~~Check Answers is broken~~
-2. ~~Workflow for the WebUI - and completely garbage - is better but can improve~~
-3. WebUI is ugly as hell - need something to pretty it up
-   1. Bootstrap
-      1. ~~Bootstrap 3 (with Less)~~
-      2. Bootstrap 4 (with SASS)
-      3. ~~Bootstrap 5 (too new)~~
-   2. Tailwind CSS
-   3. Material UI
-   4. Raw CSS (holy shit no...)
-4. ~~Dynamically add "options" for questions~~
-5. Images or diagrams for questions missing
-6. ~~Import and Export JSON is not good - is better now~~
-7. ~~Import and Export JSON is inconsistent - fix catagory ID vs Name in export~~
-8. Import and Export JSON needs an option for local file names and upload
-9. Add Google Login
+1. WebUI is plain looking - use Bootstrap 4 (with SASS)
+2. Images or diagrams for questions missing
+3. Import and Export JSON needs an option for local file names and upload
+4. Add Google Login for sessions
    1. [Create a Flask Application With Google Login](https://realpython.com/flask-google-login/)
+5. Add an option to track progress which needs sessions
+6. Add options for sqlite file backup
 
 ## Setup
 
