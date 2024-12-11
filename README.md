@@ -9,7 +9,7 @@ https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg
 ## Known Broken Things
 
 1. ~~Check Answers is broken~~
-2. Workflow for the WebUI ~~and completely garbage~~ is better but can improve
+2. ~~Workflow for the WebUI - and completely garbage - is better but can improve~~
 3. WebUI is ugly as hell - need something to pretty it up
    1. Bootstrap
       1. ~~Bootstrap 3 (with Less)~~
@@ -22,7 +22,8 @@ https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg
 5. Images or diagrams for questions missing
 6. ~~Import and Export JSON is not good - is better now~~
 7. ~~Import and Export JSON is inconsistent - fix catagory ID vs Name in export~~
-8. Add Google Login
+8. Import and Export JSON needs an option for local file names and upload
+9. Add Google Login
    1. [Create a Flask Application With Google Login](https://realpython.com/flask-google-login/)
 
 ## Setup
