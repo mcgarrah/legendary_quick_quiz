@@ -9,12 +9,15 @@ https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg
 ## Known Broken Things
 
 1. WebUI is plain looking - use Bootstrap 4 (with SASS)
-2. Images or diagrams for questions missing
-3. Import and Export JSON needs an option for local file names and upload
-4. Add Google Login for sessions
+   1. ~~Initial implementation~~
+   2. Clean up and use base.html for all pages
+2. Fix the quiz.html in submitQuiz() around line 135 to only print answer_details if it exists
+3. Images or diagrams for questions missing
+4. Import and Export JSON needs an option for local file names and upload
+5. Add Google Login for sessions
    1. [Create a Flask Application With Google Login](https://realpython.com/flask-google-login/)
-5. Add an option to track progress which needs sessions
-6. Add options for sqlite file backup
+6. Add an option to track progress which needs sessions
+7. Add options for sqlite file backup
 
 ## Setup
 

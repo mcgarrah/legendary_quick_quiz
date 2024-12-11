@@ -2,6 +2,10 @@
 <html>
 <head>
     <title>Quiz</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         #timer {
             font-size: 24px;
@@ -10,21 +14,25 @@
     </style>
 </head>
 <body>
-    <a href="/">Home</a>
-    <a href="/settings">Settings</a>
-    <div id="timer">Time Remaining: <span id="time">{{ '%02d:%02d' % (timer_duration // 60, timer_duration % 60) }}</span></div>
-    <form id="quizForm">
-        <input type="hidden" id="question_ids" name="question_ids" value="{{ questions|map(attribute='id')|list|tojson }}">
-        <div id="question-container">
-            <!-- Questions will be dynamically loaded here -->
-        </div>
-        <div>
-            <button type="button" id="prevButton" onclick="prevQuestion()" disabled>Previous</button>
-            <button type="button" id="nextButton" onclick="nextQuestion()">Next</button>
-        </div>
-        <button type="button" onclick="submitQuiz()">Submit</button>
-    </form>
-    <div id="result"></div>
+    <div class="container mt-4">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="/settings">Settings</a>
+        </nav>
+        <div id="timer" class="my-4">Time Remaining: <span id="time">{{ '%02d:%02d' % (timer_duration // 60, timer_duration % 60) }}</span></div>
+        <form id="quizForm">
+            <input type="hidden" id="question_ids" name="question_ids" value="{{ questions|map(attribute='id')|list|tojson }}">
+            <div id="question-container">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+            <div class="my-4">
+                <button type="button" id="prevButton" class="btn btn-secondary" onclick="prevQuestion()" disabled>Previous</button>
+                <button type="button" id="nextButton" class="btn btn-secondary" onclick="nextQuestion()">Next</button>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="submitQuiz()">Submit</button>
+        </form>
+        <div id="result" class="mt-4"></div>
+    </div>
     <script>
         let timeLeft = {{ timer_duration }};
         const timerElement = document.getElementById('time');
@@ -52,14 +60,16 @@
 
         function loadQuestion(index) {
             const question = questions[index];
-            let questionHTML = `<div>
+            let questionHTML = `<div class="mb-3">
                 <p>${question.question}</p>`;
             question.options.forEach((option, i) => {
                 const checked = userAnswers[index] === option ? 'checked' : '';
-                questionHTML += `<label>
-                    <input type="radio" name="question${index}" value="${option}" ${checked}>
-                    ${option}
-                </label><br>`;
+                questionHTML += `<div class="form-check">
+                    <input class="form-check-input" type="radio" name="question${index}" value="${option}" ${checked}>
+                    <label class="form-check-label">
+                        ${option}
+                    </label>
+                </div>`;
             });
             questionHTML += `</div>`;
             questionContainer.innerHTML = questionHTML;
@@ -117,12 +127,14 @@
                 let resultHTML = `You scored ${data.score} out of ${data.total} (${((data.score / data.total) * 100).toFixed(2)}%)<br>`;
                 resultHTML += `Time used: ${minutesUsed} minutes and ${secondsUsed} seconds out of ${Math.floor(totalTime / 60)} minutes and ${Math.floor(totalTime % 60)} seconds.<br><br>`;
                 data.results.forEach(result => {
-                    resultHTML += `<div>
-                        <p><strong>Question:</strong> ${result.question}</p>
-                        <p><strong>Your Answer:</strong> ${result.user_answer}</p>
-                        <p><strong>Correct:</strong> ${result.correct ? 'Yes' : 'No'}</p>
-                        <p><strong>Details:</strong> ${result.answer_details}</p>
-                    </div><br>`;
+                    resultHTML += `<div class="card mb-3">
+                        <div class="card-body">
+                            <p><strong>Question:</strong> ${result.question}</p>
+                            <p><strong>Your Answer:</strong> ${result.user_answer}</p>
+                            <p><strong>Correct:</strong> ${result.correct ? 'Yes' : 'No'}</p>
+                            <p><strong>Details:</strong> ${result.answer_details}</p>
+                        </div>
+                    </div>`;
                 });
                 document.getElementById('result').innerHTML = resultHTML;
             });

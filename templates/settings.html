@@ -1,32 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Settings</title>
-</head>
-<body>
-    <a href="/">Home</a>
-    <h1>Settings</h1>
-    <form action="/update_settings" method="POST">
-        <div>
-            <label for="timer_duration">Timer Duration (seconds):</label>
-            <input type="number" id="timer_duration" name="timer_duration" value="{{ timer_duration }}" required>
-        </div>
-        <div>
-            <label for="num_questions">Number of Questions per Quiz:</label>
-            <input type="number" id="num_questions" name="num_questions" value="{{ num_questions }}" required>
-        </div>
-        <button type="submit">Update</button>
-    </form>
+{% extends "base.html" %}
 
-    <h2>Question Management</h2>
-    <form action="/import_questions" method="GET">
-        <button type="submit">Import Questions</button>
-    </form>
-    <form action="/export_questions" method="GET">
-        <button type="submit">Export Questions</button>
-    </form>
-    <form action="/clear_questions" method="POST">
-        <button type="submit">Clear Questions</button>
-    </form>
-</body>
-</html>
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<a href="/" class="btn btn-primary">Home</a>
+<h1>Settings</h1>
+<form action="/update_settings" method="POST">
+    <div class="form-group">
+        <label for="timer_duration">Timer Duration (seconds):</label>
+        <input type="number" id="timer_duration" name="timer_duration" value="{{ timer_duration }}" required class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="num_questions">Number of Questions per Quiz:</label>
+        <input type="number" id="num_questions" name="num_questions" value="{{ num_questions }}" required class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
+
+<h2>Question Management</h2>
+<form action="/import_questions" method="GET">
+    <button type="submit" class="btn btn-info">Import Questions</button>
+</form>
+<form action="/export_questions" method="GET">
+    <button type="submit" class="btn btn-warning">Export Questions</button>
+</form>
+<form action="/clear_questions" method="POST">
+    <button type="submit" class="btn btn-danger">Clear Questions</button>
+</form>
+{% endblock %}

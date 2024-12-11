@@ -1,96 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Questions</title>
-    <script>
-        function addOption() {
-            const optionsContainer = document.getElementById('options-container');
-            const optionCount = optionsContainer.children.length;
-            const newOption = document.createElement('div');
-            newOption.innerHTML = `
-                <label for="option${optionCount}">Option ${optionCount + 1}:</label>
-                <input type="text" id="option${optionCount}" name="options" required>
-            `;
-            optionsContainer.appendChild(newOption);
-        }
-        function removeOption() {
-            const optionsContainer = document.getElementById('options-container');
-            if (optionsContainer.children.length > 1) {
-                optionsContainer.removeChild(optionsContainer.lastChild);
-            }
-        }
-    </script>
-</head>
-<body>
-    <a href="/">Home</a>
-    <a href="/settings">Settings</a>
-    <h1>Edit Questions</h1>
-    <form action="/add_question" method="POST">
-        <div>
-            <label for="question">Question:</label>
-            <input type="text" id="question" name="question" required>
+{% extends "base.html" %}
+
+{% block title %}Edit Questions{% endblock %}
+
+{% block content %}
+<h1 class="mt-4">Edit Questions</h1>
+<a href="/" class="btn btn-primary mb-3">Home</a>
+<form action="/add_question" method="POST">
+    <div class="form-group">
+        <label for="question">Question:</label>
+        <input type="text" id="question" name="question" required class="form-control">
+    </div>
+    <div id="options-container" class="form-group">
+        <div class="form-group">
+            <label for="option0">Option 1:</label>
+            <input type="text" id="option0" name="options" required class="form-control">
         </div>
-        <div id="options-container">
-            <div>
-                <label for="option0">Option 1:</label>
-                <input type="text" id="option0" name="options" required>
-            </div>
-            <div>
-                <label for="option1">Option 2:</label>
-                <input type="text" id="option1" name="options" required>
-            </div>
-            <div>
-                <label for="option2">Option 3:</label>
-                <input type="text" id="option2" name="options" required>
-            </div>
-            <div>
-                <label for="option3">Option 4:</label>
-                <input type="text" id="option3" name="options" required>
-            </div>
+        <div class="form-group">
+            <label for="option1">Option 2:</label>
+            <input type="text" id="option1" name="options" required class="form-control">
         </div>
-        <div>
-            <button type="button" onclick="addOption()">Add Option</button>
-            <button type="button" onclick="removeOption()">Remove Option</button>
+        <div class="form-group">
+            <label for="option2">Option 3:</label>
+            <input type="text" id="option2" name="options" required class="form-control">
         </div>
-        <div>
-            <label for="answer">Answer:</label>
-            <input type="text" id="answer" name="answer" required>
+        <div class="form-group">
+            <label for="option3">Option 4:</label>
+            <input type="text" id="option3" name="options" required class="form-control">
         </div>
-        <div>
-            <label for="answer_details">Answer Details:</label>
-            <textarea id="answer_details" name="answer_details" rows="3"></textarea>
-        </div>
-        <div>
-            <label for="category_id">Category:</label>
-            <select id="category_id" name="category_id">
-                {% for category in categories %}
-                    <option value="{{ category.id }}">{{ category.name }}</option>
+    </div>
+    <div>
+        <button type="button" class="btn btn-secondary" onclick="addOption()">Add Option</button>
+        <button type="button" class="btn btn-secondary" onclick="removeOption()">Remove Option</button>
+    </div>
+    <div class="form-group">
+        <label for="answer">Answer:</label>
+        <input type="text" id="answer" name="answer" required class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="answer_details">Answer Details:</label>
+        <textarea id="answer_details" name="answer_details" rows="3" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="category_id">Category:</label>
+        <select id="category_id" name="category_id" class="form-control">
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Add Question</button>
+</form>
+
+<a href="/edit_categories" class="btn btn-info mt-3">Manage Categories</a>
+
+<h2 class="mt-4">Existing Questions</h2>
+<ul class="list-group">
+    {% for question in questions %}
+        <li class="list-group-item">
+            {{ question.question }} ({{ question.answer }})
+            <ul>
+                {% for option in json.loads(question.options) %}
+                    <li>{{ option }}</li>
                 {% endfor %}
-            </select>
-        </div>
-        <button type="submit">Add Question</button>
-    </form>
-
-    <a href="/edit_categories">Manage Categories</a>
-
-    <h2>Existing Questions</h2>
-    <ul>
-        {% for question in questions %}
-            <li>
-                {{ question.question }} ({{ question.answer }})
-                <ul>
-                    {% for option in json.loads(question.options) %}
-                        <li>{{ option }}</li>
-                    {% endfor %}
-                </ul>
-                {% if question.answer_details %}
-                    <p><em>{{ question.answer_details }}</em></p>
-                {% endif %}
-                <form action="/delete_question/{{ question.id }}" method="POST" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+            </ul>
+            {% if question.answer_details %}
+                <p><em>{{ question.answer_details }}</em></p>
+            {% endif %}
+            <form action="/delete_question/{{ question.id }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
