@@ -1,149 +1,139 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Quiz</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-        #timer {
-            font-size: 24px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <div class="container mt-4">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">Home</a>
-            <a class="navbar-brand" href="/settings">Settings</a>
-        </nav>
-        <div id="timer" class="my-4">Time Remaining: <span id="time">{{ '%02d:%02d' % (timer_duration // 60, timer_duration % 60) }}</span></div>
-        <form id="quizForm">
-            <input type="hidden" id="question_ids" name="question_ids" value="{{ questions|map(attribute='id')|list|tojson }}">
-            <div id="question-container">
-                <!-- Questions will be dynamically loaded here -->
-            </div>
-            <div class="my-4">
-                <button type="button" id="prevButton" class="btn btn-secondary" onclick="prevQuestion()" disabled>Previous</button>
-                <button type="button" id="nextButton" class="btn btn-secondary" onclick="nextQuestion()">Next</button>
-            </div>
-            <button type="button" class="btn btn-primary" onclick="submitQuiz()">Submit</button>
-        </form>
-        <div id="result" class="mt-4"></div>
-    </div>
-    <script>
-        let timeLeft = {{ timer_duration }};
-        const timerElement = document.getElementById('time');
-        const totalTime = timeLeft;
-        let currentQuestionIndex = 0;
-        const questions = {{ questions|tojson | safe }};
-        const questionContainer = document.getElementById('question-container');
-        const userAnswers = {};  // Object to store user answers
-        let timerInterval;
+{% extends "base.html" %}
 
-        function updateTimer() {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            timerElement.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                submitQuiz();
-            }
-            timeLeft -= 1;
-        }
+{% block title %}Quiz{% endblock %}
 
-        function startTimer() {
-            timerInterval = setInterval(updateTimer, 1000);
-        }
+{% block content %}
+<div class="container mt-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/settings">Settings</a>
+    </nav>
+    <div id="timer" class="my-4 display-4 font-weight-bold">Time Remaining: <span id="time">{{ '%02d:%02d' % (timer_duration // 60, timer_duration % 60) }}</span></div>
+    <form id="quizForm">
+        <input type="hidden" id="question_ids" name="question_ids" value="{{ questions|map(attribute='id')|list|tojson }}">
+        <div id="question-container">
+            <!-- Questions will be dynamically loaded here -->
+        </div>
+        <div class="my-4">
+            <button type="button" id="prevButton" class="btn btn-secondary" onclick="prevQuestion()" disabled>Previous</button>
+            <button type="button" id="nextButton" class="btn btn-secondary" onclick="nextQuestion()">Next</button>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="submitQuiz()">Submit</button>
+    </form>
+    <div id="result" class="mt-4"></div>
+</div>
+<script>
+    let timeLeft = {{ timer_duration }};
+    const timerElement = document.getElementById('time');
+    const totalTime = timeLeft;
+    let currentQuestionIndex = 0;
+    const questions = {{ questions|tojson | safe }};
+    const questionContainer = document.getElementById('question-container');
+    const userAnswers = {};  // Object to store user answers
+    let timerInterval;
 
-        function loadQuestion(index) {
-            const question = questions[index];
-            let questionHTML = `<div class="mb-3">
-                <p>${question.question}</p>`;
-            question.options.forEach((option, i) => {
-                const checked = userAnswers[index] === option ? 'checked' : '';
-                questionHTML += `<div class="form-check">
-                    <input class="form-check-input" type="radio" name="question${index}" value="${option}" ${checked}>
-                    <label class="form-check-label">
-                        ${option}
-                    </label>
+    function updateTimer() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerElement.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            submitQuiz();
+        }
+        timeLeft -= 1;
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function loadQuestion(index) {
+        const question = questions[index];
+        let questionHTML = `<div class="mb-3">
+            <p>${question.question}</p>`;
+        question.options.forEach((option, i) => {
+            const checked = userAnswers[index] === option ? 'checked' : '';
+            questionHTML += `<div class="form-check">
+                <input class="form-check-input" type="radio" name="question${index}" value="${option}" ${checked}>
+                <label class="form-check-label">
+                    ${option}
+                </label>
+            </div>`;
+        });
+        questionHTML += `</div>`;
+        questionContainer.innerHTML = questionHTML;
+    }
+
+    function saveAnswer() {
+        const formData = new FormData(document.getElementById('quizForm'));
+        const selectedOption = formData.get(`question${currentQuestionIndex}`);
+        userAnswers[currentQuestionIndex] = selectedOption;
+    }
+
+    function prevQuestion() {
+        saveAnswer();
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            loadQuestion(currentQuestionIndex);
+            updateNavigationButtons();
+        }
+    }
+
+    function nextQuestion() {
+        saveAnswer();
+        if (currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            loadQuestion(currentQuestionIndex);
+            updateNavigationButtons();
+        }
+    }
+
+    function updateNavigationButtons() {
+        document.getElementById('prevButton').disabled = currentQuestionIndex === 0;
+        document.getElementById('nextButton').disabled = currentQuestionIndex === questions.length - 1;
+    }
+
+    function submitQuiz() {
+        saveAnswer();
+        clearInterval(timerInterval);  // Stop the timer
+        const questionIds = JSON.parse(document.getElementById('question_ids').value);
+        const answers = questionIds.map((_, index) => userAnswers[index] || "");
+        const timeUsed = totalTime - timeLeft;
+        const minutesUsed = Math.floor(timeUsed / 60);
+        const secondsUsed = timeUsed % 60;
+        fetch('/check_answers', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                question_ids: questionIds,
+                answers: answers
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            let resultHTML = `You scored ${data.score} out of ${data.total} (${((data.score / data.total) * 100).toFixed(2)}%)<br>`;
+            resultHTML += `Time used: ${minutesUsed} minutes and ${secondsUsed} seconds out of ${Math.floor(totalTime / 60)} minutes and ${Math.floor(totalTime % 60)} seconds.<br><br>`;
+            data.results.forEach(result => {
+                resultHTML += `<div class="card mb-3">
+                    <div class="card-body">
+                        <p><strong>Question:</strong> ${result.question}</p>
+                        <p><strong>Your Answer:</strong> ${result.user_answer}</p>
+                        <p><strong>Correct:</strong> ${result.correct ? 'Yes' : 'No'}</p>`;
+                if (result.answer_details) {
+                    resultHTML += `<p><strong>Details:</strong> ${result.answer_details}</p>`;
+                }
+                resultHTML += `</div>
                 </div>`;
             });
-            questionHTML += `</div>`;
-            questionContainer.innerHTML = questionHTML;
-        }
+            document.getElementById('result').innerHTML = resultHTML;
+        });
+    }
 
-        function saveAnswer() {
-            const formData = new FormData(document.getElementById('quizForm'));
-            const selectedOption = formData.get(`question${currentQuestionIndex}`);
-            userAnswers[currentQuestionIndex] = selectedOption;
-        }
-
-        function prevQuestion() {
-            saveAnswer();
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                loadQuestion(currentQuestionIndex);
-                updateNavigationButtons();
-            }
-        }
-
-        function nextQuestion() {
-            saveAnswer();
-            if (currentQuestionIndex < questions.length - 1) {
-                currentQuestionIndex++;
-                loadQuestion(currentQuestionIndex);
-                updateNavigationButtons();
-            }
-        }
-
-        function updateNavigationButtons() {
-            document.getElementById('prevButton').disabled = currentQuestionIndex === 0;
-            document.getElementById('nextButton').disabled = currentQuestionIndex === questions.length - 1;
-        }
-
-        function submitQuiz() {
-            saveAnswer();
-            clearInterval(timerInterval);  // Stop the timer
-            const questionIds = JSON.parse(document.getElementById('question_ids').value);
-            const answers = questionIds.map((_, index) => userAnswers[index] || "");
-            const timeUsed = totalTime - timeLeft;
-            const minutesUsed = Math.floor(timeUsed / 60);
-            const secondsUsed = timeUsed % 60;
-            fetch('/check_answers', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    question_ids: questionIds,
-                    answers: answers
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                let resultHTML = `You scored ${data.score} out of ${data.total} (${((data.score / data.total) * 100).toFixed(2)}%)<br>`;
-                resultHTML += `Time used: ${minutesUsed} minutes and ${secondsUsed} seconds out of ${Math.floor(totalTime / 60)} minutes and ${Math.floor(totalTime % 60)} seconds.<br><br>`;
-                data.results.forEach(result => {
-                    resultHTML += `<div class="card mb-3">
-                        <div class="card-body">
-                            <p><strong>Question:</strong> ${result.question}</p>
-                            <p><strong>Your Answer:</strong> ${result.user_answer}</p>
-                            <p><strong>Correct:</strong> ${result.correct ? 'Yes' : 'No'}</p>
-                            <p><strong>Details:</strong> ${result.answer_details}</p>
-                        </div>
-                    </div>`;
-                });
-                document.getElementById('result').innerHTML = resultHTML;
-            });
-        }
-
-        // Initialize the first question and start the timer
-        loadQuestion(currentQuestionIndex);
-        updateNavigationButtons();
-        startTimer();
-    </script>
-</body>
-</html>
+    // Initialize the first question and start the timer
+    loadQuestion(currentQuestionIndex);
+    updateNavigationButtons();
+    startTimer();
+</script>
+{% endblock %}

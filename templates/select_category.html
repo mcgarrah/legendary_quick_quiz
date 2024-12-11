@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Select Quiz Category</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <div class="container mt-4">
-        <h1>Select Quiz Category</h1>
-        <ul class="list-group">
-            {% for category in categories %}
-                <li class="list-group-item">
-                    <a href="/quiz/{{ category.id }}">{{ category.name }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-        <a href="/settings" class="btn btn-info mt-3">Settings</a>
-        <a href="/edit" class="btn btn-primary mt-3">Edit Questions</a>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Select Quiz Category{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Select Quiz Category</h1>
+    <ul class="list-group">
+        {% for category in categories %}
+            <li class="list-group-item">
+                <a href="/quiz/{{ category.id }}">{{ category.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/settings" class="btn btn-info mt-3">Settings</a>
+    <a href="/edit" class="btn btn-primary mt-3">Edit Questions</a>
+</div>
+{% endblock %}
