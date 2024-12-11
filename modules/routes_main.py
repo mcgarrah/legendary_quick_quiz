@@ -1,32 +1,42 @@
+"""Main routing functions for application"""
+
+# allow for star imports with explicit list of functions exported
+__all__ = [ 'import_questions', 'export_questions', 'clear_questions',
+            'add_question', 'delete_question',
+            'home', 'edit',
+            'edit_categories', 'add_category', 'delete_category' ]
+
+# TODO: Break up the functions in this file into separate files
+#   Questions import/export/clear
+#   Question CRUD Add/Del/Modify (edit should become edit_question)
+#   Category edit/add/delete and display in home() that should be renamed
+
 from flask import render_template, request, redirect, url_for, send_file
 from .models import db, Category, Question
 import json
-import random
-
-def import_initial_questions():
-    with open('initial_questions.json') as f:
-        data = json.load(f)
-        for category_data in data:
-            category_name = category_data['category']
-            category = Category.query.filter_by(name=category_name).first()
-            if not category:
-                category = Category(name=category_name)
-                db.session.add(category)
-                db.session.commit()
-            for question_data in category_data['questions']:
-                new_question = Question(
-                    question=question_data['question'],
-                    options=json.dumps(question_data['options']),
-                    answer=question_data['answer'],
-                    answer_details=question_data.get('answer_details', ''),
-                    category_id=category.id
-                )
-                db.session.add(new_question)
-        db.session.commit()
 
 def import_questions():
-    import_initial_questions()
-    return redirect(url_for('edit'))
+    file = request.files['initial_questions.json']
+    data = json.load(file)
+
+    for category_data in data:
+        category_name = category_data['category']
+        category = Category.query.filter_by(name=category_name).first()
+        if not category:
+            category = Category(name=category_name)
+            db.session.add(category)
+            db.session.commit()
+        for question_data in category_data['questions']:
+            new_question = Question(
+                question=question_data['question'],
+                options=json.dumps(question_data['options']),
+                answer=question_data['answer'],
+                answer_details=question_data.get('answer_details', ''),
+                category_id=category.id
+            )
+            db.session.add(new_question)
+    db.session.commit()
+    return redirect(url_for('settings'))
 
 def export_questions():
     categories = Category.query.all()
@@ -42,7 +52,7 @@ def export_questions():
                 'answer': question.answer,
                 'answer_details': question.answer_details
             })
-        
+
         export_data.append({
             'category': category.name,
             'questions': questions_list

@@ -1,6 +1,8 @@
-from flask import Flask
+"""Main Flask App entry point"""
+
+from flask import Flask # Flask
 from modules.models import db
-from modules.routes_main import import_questions, export_questions, clear_questions, add_question, delete_question, home, edit, edit_categories, add_category, delete_category
+from modules.routes_main import *   # explicit exported __all__ functions in routes_main module
 from modules.routes_quiz import quiz, check_answers
 from modules.routes_settings import settings, update_settings
 
