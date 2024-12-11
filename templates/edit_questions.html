@@ -63,6 +63,7 @@
             <li class="list-group-item">
                 <div class="d-flex justify-content-between">
                     <div>
+                        <p><strong>Category:</strong> {{ question.category.name }}</p>
                         {{ question.question }} ({{ question.answer }})
                         <ul>
                             {% for option in json.loads(question.options) %}

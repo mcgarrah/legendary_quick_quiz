@@ -15,11 +15,6 @@
                 "answer_details": "Mars is known as the Red Planet because of its reddish appearance."
             },
             {
-                "question": "What is 1 + 1?",
-                "options": ["1", "2", "3", "4"],
-                "answer": "2"
-            },
-            {
                 "question": "Which programming language is known as the 'language of the web'?",
                 "options": ["Python", "Java", "C++", "JavaScript"],
                 "answer": "JavaScript",
@@ -52,6 +47,31 @@
                 "question": "Who wrote the Harry Potter series?",
                 "options": ["J.R.R. Tolkien", "Stephen King", "J.K. Rowling", "Dan Brown"],
                 "answer": "J.K. Rowling"
+            },
+            {
+                "question": "What is the capital of Australia?",
+                "options": ["Sydney", "Melbourne", "Canberra", "Perth"],
+                "answer": "Canberra"
+            },
+            {
+                "question": "Which country is known as the Land of the Rising Sun?",
+                "options": ["China", "India", "Japan", "South Korea"],
+                "answer": "Japan"
+            },
+            {
+                "question": "What is the largest ocean in the world?",
+                "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+                "answer": "Pacific Ocean"
+            },
+            {
+                "question": "Who was the first president of the United States?",
+                "options": ["Thomas Jefferson", "George Washington", "Abraham Lincoln", "John Adams"],
+                "answer": "George Washington"
+            },
+            {
+                "question": "What is the largest desert in the world?",
+                "options": ["Sahara Desert", "Gobi Desert", "Arabian Desert", "Antarctic Desert"],
+                "answer": "Antarctic Desert"
             }
         ]
     },
@@ -60,9 +80,9 @@
         "questions": [
             {
                 "question": "What is the chemical symbol for water?",
-                "options": ["O2", "H2O", "CO2", "NaCl"],
-                "answer": "H2O",
-                "answer_details": "H2O is the chemical formula for water, consisting of two hydrogen atoms and one oxygen atom."
+                "options": ["O<sub>2</sub>", "H<sub>2</sub>O", "CO<sub>2</sub>", "NaCl"],
+                "answer": "H<sub>2</sub>O",
+                "answer_details": "H<sub>2</sub>O is the chemical formula for water, consisting of two hydrogen atoms and one oxygen atom."
             },
             {
                 "question": "What is the largest organ in the human body?",
@@ -75,6 +95,118 @@
                 "options": ["Ag", "Au", "Fe", "Hg"],
                 "answer": "Au",
                 "answer_details": "Gold's chemical symbol AU is derived from the Latin word aurum, meaning gold."
+            },
+            {
+                "question": "What is the fundamental unit of matter?",
+                "options": ["Atom", "Molecule", "Proton", "Neutron"],
+                "answer": "Atom"
+            },
+            {
+                "question": "What is the theory that explains the origin and evolution of the universe?",
+                "options": ["Theory of Relativity", "Quantum Mechanics", "Big Bang Theory", "String Theory"],
+                "answer": "Big Bang Theory"
+            },
+            {
+                "question": "What is the process by which plants convert sunlight into energy?",
+                "options": ["Respiration", "Photosynthesis", "Chemosynthesis", "Fermentation"],
+                "answer": "Photosynthesis"
+            },
+            {
+                "question": "What is the most abundant element in the universe?",
+                "options": ["Oxygen", "Carbon", "Hydrogen", "Nitrogen"],
+                "answer": "Hydrogen"
+            },
+            {
+                "question": "What is the name of the force that holds atoms together?",
+                "options": ["Gravitational Force", "Electromagnetic Force", "Strong Nuclear Force", "Weak Nuclear Force"],
+                "answer": "Strong Nuclear Force"
+            },
+            {
+                "question": "What is the speed of light in a vacuum?",
+                "options": ["299,792,458 m/s", "300,000 km/s", "186,282 miles/s", "All of the above"],
+                "answer": "All of the above",
+                "no_shuffle": 1
+            },
+            {
+                "question": "What is the process of DNA replication called?",
+                "options": ["Transcription", "Translation", "Mitosis", "DNA Replication"],
+                "answer": "DNA Replication"
+            },
+            {
+                "question": "What is the smallest unit of a chemical element?",
+                "options": ["Atom", "Molecule", "Ion", "Isotope"],
+                "answer": "Atom"
+            },
+            {
+                "question": "What is the study of the Earth's physical features?",
+                "options": ["Geology", "Geography", "Meteorology", "Oceanography"],
+                "answer": "Geology"
+            }           
+        ]
+    },
+    {
+        "category": "Math",
+        "questions": [
+            {
+                "question": "What is 1 + 1?",
+                "options": ["1", "2", "3", "4"],
+                "answer": "2",
+                "no_shuffle": 1
+            },
+            {
+                "question": "What is 2 + 2?",
+                "options": ["1", "2", "3", "4"],
+                "answer": "4",
+                "no_shuffle": 1
+            },
+            {
+                "question": "What is 2 + 2 + 2?",
+                "options": ["1", "2", "4", "6", "8", "10"],
+                "answer": "6",
+                "no_shuffle": 1
+            },
+            {
+                "question": "What is 10 - 2?",
+                "options": ["1", "2", "4", "6", "8", "10"],
+                "answer": "8",
+                "no_shuffle": 1
+            },
+            {
+                "question": "What is 1 - 1?",
+                "options": ["0", "1", "2", "3", "4"],
+                "answer": "0",
+                "no_shuffle": 1
+            },
+            {
+                "question": "What is 4 - 1?",
+                "options": ["0", "1", "2", "3", "4"],
+                "answer": "3",
+                "no_shuffle": 1
+            },
+            {
+                "question": "What is 1 * 1?",
+                "options": ["1", "2", "3", "4"],
+                "answer": "1",
+                "no_shuffle": 1
+            },
+            {
+                "question": "What is 10 / 2?",
+                "options": ["2", "4", "5", "6", "10"],
+                "answer": "5",
+                "no_shuffle": 1
+            },
+            {
+                "question": "What is 8 / 4?",
+                "options": ["1", "2", "3", "4", "5"],
+                "answer": "2",
+                "no_shuffle": 1
+            },
+            {
+                "question": "What is 10 % 4?",
+                "options": ["1", "2", "3", "4", "5", "6"],
+                "answer": "2",
+                "no_shuffle": 1,
+                "answer_details": "The Modulus is the remainder of the division of one number by another. The answer is 2 because when you divide 10 by 4, you get 2 with a remainder of 2."
             }
         ]
     }
