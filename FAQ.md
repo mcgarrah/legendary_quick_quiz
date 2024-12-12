@@ -16,3 +16,5 @@ In the **Settings** page, there is a section with buttons to Import, Export and 
 ## Can I use HTML in the Question fields?
 
 Not at this time. There is no provision for passing HTML or other presentation attributes thru for display.
+
+Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>

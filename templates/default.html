@@ -7,9 +7,23 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/src/core.min.js"></script>
+
+    <!-- TODO: Fix this next section. This script block is likely in the wrong place... but I hacked it in for the edit_questions.html javascript -->
     {% block scripts %}{% endblock %}
 </head>
 <body>
+
+    <!-- TODO: Make a header with navbar template file here -->
+
     {% block content %}{% endblock %}
+
+    <!-- TODO: Break out as footer template file -->
+    <footer class="text-center">
+        {% block footer %}
+            <small>Copyright &copy; 2024–<script>document.write(new Date().getFullYear())</script> <a href="https://github.com/mcgarrah">Michael McGarrah</a>
+            </small>
+        {% endblock %}
+    </footer>
+
 </body>
 </html>

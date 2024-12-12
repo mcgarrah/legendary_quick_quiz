@@ -1,5 +1,7 @@
 """
 Main routes for the Legendary Quick Quiz application.
+
+Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 """
 
 # allow for star imports with explicit list of functions exported

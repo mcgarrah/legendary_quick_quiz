@@ -10,6 +10,7 @@
 - [ ] Add Dependabot to the Github repository
   - [x] Add the Python (PIP) based review of libraries
   - [ ] Add something for the Bootstrap5 and other CDN components
+  - [ ] [Renovate Bot GitHub Action](https://github.com/marketplace/actions/renovate-bot-github-action) [Github Code](https://github.com/renovatebot/github-action)
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [ ] Add Markdown support for the Questions fields
   - [ ] [How To Use Python-Markdown with Flask and SQLite](https://www.digitalocean.com/community/tutorials/how-to-use-python-markdown-with-flask-and-sqlite)
@@ -45,4 +46,13 @@
   - [ ] Turn README.md, TODO.md and FAQ.md into Flask route webpages for application documentation
   - [ ] [Rendering markdown from Flask](https://dev.to/mrprofessor/rendering-markdown-from-flask-1l41)
 
+High level features to add
+
+- User authentication
+- Persistent score tracking
+- More detailed quiz results
+- Admin interface for quiz creation
+
 [McGarrah Copilot Session](https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg)
+
+Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>

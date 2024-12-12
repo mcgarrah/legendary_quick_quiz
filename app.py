@@ -1,4 +1,7 @@
-"""Main Flask App entry point for the Legendary Quick Quiz application."""
+"""Main Flask App entry point for the Legendary Quick Quiz application.
+
+Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
+"""
 
 from flask import Flask  # Flask framework
 from flask_migrate import Migrate # Flask Database Migration

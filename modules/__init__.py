@@ -1,3 +1,7 @@
+"""
+Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
+"""
+
 # modules/__init__.py
 from flask import Blueprint
 main = Blueprint('main', __name__)

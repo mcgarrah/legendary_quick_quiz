@@ -238,3 +238,5 @@ This `settings.html` file provides a form to update the timer duration for the q
 ### select_category.html
 
 The select_category.html file is designed to allow users to select the category of the quiz they want to take. This is particularly useful when your quiz application has multiple categories, such as General, Science, History, etc.
+
+Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>

@@ -1,3 +1,6 @@
+"""
+Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
+"""
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()

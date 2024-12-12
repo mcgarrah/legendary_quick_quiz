@@ -1,3 +1,6 @@
+"""
+Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
+"""
 from flask import render_template, request, jsonify
 from modules.models import db, Question, Setting
 import json
