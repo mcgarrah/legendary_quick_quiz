@@ -28,3 +28,5 @@
 - [ ] PyTest for unittests and webapp automated testing
   - [ ] Simple test of each route with even `curl` would be useful
   - [ ] Simple tests of routes with parameters
+
+[McGarrah Copilot Session](https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg)

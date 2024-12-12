@@ -2,18 +2,19 @@
 
 Certification Timed Multiple Choice Quiz WebApp
 
-This application is a fully-fledged, dynamic quiz platform built using Flask, a lightweight web framework for Python. Here's a breakdown of its key features and functionalities:
-
-[McGarrah Copilot Session](https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg)
+This application is a fully-fledged, dynamic quiz platform built using Flask, a lightweight web framework for Python. Here's a breakdown of its key features and functionalities.
 
 ## Known Broken Things
 
-1. Bootstrap4 has some spacing issues in edit.html and other places
-2. JSON Schema checking is not implemented
+1. ~~Bootstrap4 has some spacing issues in edit.html and other places~~
+2. Bootstrap navbars in template are missing
+3. JSON Schema checking is not implemented for import/export
+4. Pylint is not passing everywhere but lots better than earlier
+5. Pytest is completely missing
 
 ## Setup
 
-Create a VEnv environment on Debian/Ubuntu
+Create a VEnv environment on Debian/Ubuntu. I'm using WSLv2 on a Windows 10 Pro 64-bit laptop for my development and testing.
 
 First navigate to the top directory of the repository with the command line.
 
@@ -65,6 +66,10 @@ pip3 install Flask-SQLAlchemy
 ```
 
 To specify that the packages in your `requirements.txt` file should be installed at a certain version or newer, you can use version specifiers like `>=` followed by the version number. This ensures that when someone installs the packages, they get at least the specified version or any newer version. You can manually edit the `requirements.txt` file after generating it with `pip freeze`. Unfortunately, `pip freeze` does not provide an option to add the `>=` specifier directly.
+
+## Hosting at Ploomber
+
+Download the ZIP file from Github repository.  Rename the top level directory from `legendary-quick-quiz-main` to `legendary_quick_quiz`, delete the `.flaskenv` file from root, and the `.vscode` directory. I'm not sure if all that is required, but those are the steps that worked after updating the modules paths in v0.1.1.
 
 ## Features
 
