@@ -4,10 +4,10 @@ from flask import Flask  # Flask framework
 from flask_migrate import Migrate # Flask Database Migration
 
 # Import models and routes
-from .modules.models import db  # Database instance from models
-from .modules.routes_main import *  # Main route handlers (explicitly defined in __all__)
-from .modules.routes_quiz import quiz, check_answers  # Quiz-specific route handlers
-from .modules.routes_settings import settings, update_settings  # Settings-specific route handlers
+from modules.models import db  # Database instance from models
+from modules.routes_main import *  # Main route handlers (explicitly defined in __all__)
+from modules.routes_quiz import quiz, check_answers  # Quiz-specific route handlers
+from modules.routes_settings import settings, update_settings  # Settings-specific route handlers
 
 # Initialize the Flask application
 app = Flask(__name__)

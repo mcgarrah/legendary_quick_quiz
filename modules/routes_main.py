@@ -15,7 +15,7 @@ __all__ = [ 'import_questions', 'export_questions', 'clear_questions',
 
 import json
 from flask import render_template, request, redirect, url_for, send_file
-from .models import db, Category, Question
+from modules.models import db, Category, Question
 
 def import_questions():
     """

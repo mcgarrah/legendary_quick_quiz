@@ -1,5 +1,5 @@
 from flask import render_template, request, jsonify
-from .models import db, Question, Setting
+from modules.models import db, Question, Setting
 import json
 import random
 
