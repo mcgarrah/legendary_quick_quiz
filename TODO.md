@@ -2,6 +2,13 @@
 # Things to do
 
 - [ ] Look into Github Copilot for $10 a month or $100 a year
+- [ ] Automate the deployment of webapp to Ploomber with Github Actions
+  - [ ] [Ploomber-Cloud.yaml](https://github.com/ploomber/cloud-template/blob/main/.github/workflows/ploomber-cloud.yaml)
+  - [ ] [Ploomber Github Deployments](https://docs.cloud.ploomber.io/en/latest/user-guide/github.html)
+- [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
+- [ ] PyTest for unittests and webapp automated testing
+  - [ ] Simple test of each route with even `curl` would be useful
+  - [ ] Simple tests of routes with parameters
 - [ ] Clean up Python Code
   - [x] Add Pylint Plugin to VSCode
   - [ ] Add Pylint to Github Actions in repository
@@ -19,14 +26,9 @@
   - [ ] Look into bootstrap schemes for different colors
   - [ ] Dig into how to cache the JS/CSS files in root static directory
 - [ ] Images or diagrams for questions missing
-- [ ] Add options for sqlite file backup
+- [ ] Add an option for a sqlite file backup to download and restore
 - [ ] JSON Schema for quiz files
   - [ ] Read [Understanding JSON Schema](https://json-schema.org/understanding-json-schema)
   - [ ] Read [python-jsonschema](https://python-jsonschema.readthedocs.io/en/latest/) library
-- [ ] gunicorn or other hosting requirements
-- [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
-- [ ] PyTest for unittests and webapp automated testing
-  - [ ] Simple test of each route with even `curl` would be useful
-  - [ ] Simple tests of routes with parameters
 
 [McGarrah Copilot Session](https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg)
