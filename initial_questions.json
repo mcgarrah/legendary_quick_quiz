@@ -125,7 +125,7 @@
                 "question": "What is the speed of light in a vacuum?",
                 "options": ["299,792,458 m/s", "300,000 km/s", "186,282 miles/s", "All of the above"],
                 "answer": "All of the above",
-                "no_shuffle": 1
+                "no_shuffle": true
             },
             {
                 "question": "What is the process of DNA replication called?",
@@ -151,61 +151,61 @@
                 "question": "What is 1 + 1?",
                 "options": ["1", "2", "3", "4"],
                 "answer": "2",
-                "no_shuffle": 1
+                "no_shuffle": true
             },
             {
                 "question": "What is 2 + 2?",
                 "options": ["1", "2", "3", "4"],
                 "answer": "4",
-                "no_shuffle": 1
+                "no_shuffle": true
             },
             {
                 "question": "What is 2 + 2 + 2?",
                 "options": ["1", "2", "4", "6", "8", "10"],
                 "answer": "6",
-                "no_shuffle": 1
+                "no_shuffle": true
             },
             {
                 "question": "What is 10 - 2?",
                 "options": ["1", "2", "4", "6", "8", "10"],
                 "answer": "8",
-                "no_shuffle": 1
+                "no_shuffle": true
             },
             {
                 "question": "What is 1 - 1?",
                 "options": ["0", "1", "2", "3", "4"],
                 "answer": "0",
-                "no_shuffle": 1
+                "no_shuffle": true
             },
             {
                 "question": "What is 4 - 1?",
                 "options": ["0", "1", "2", "3", "4"],
                 "answer": "3",
-                "no_shuffle": 1
+                "no_shuffle": true
             },
             {
                 "question": "What is 1 * 1?",
                 "options": ["1", "2", "3", "4"],
                 "answer": "1",
-                "no_shuffle": 1
+                "no_shuffle": true
             },
             {
                 "question": "What is 10 / 2?",
                 "options": ["2", "4", "5", "6", "10"],
                 "answer": "5",
-                "no_shuffle": 1
+                "no_shuffle": true
             },
             {
                 "question": "What is 8 / 4?",
                 "options": ["1", "2", "3", "4", "5"],
                 "answer": "2",
-                "no_shuffle": 1
+                "no_shuffle": true
             },
             {
                 "question": "What is 10 % 4?",
                 "options": ["1", "2", "3", "4", "5", "6"],
                 "answer": "2",
-                "no_shuffle": 1,
+                "no_shuffle": true,
                 "answer_details": "The Modulus is the remainder of the division of one number by another. The answer is 2 because when you divide 10 by 4, you get 2 with a remainder of 2."
             }
         ]

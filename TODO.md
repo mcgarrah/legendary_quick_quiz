@@ -1,7 +1,6 @@
 
 # Things to do
 
-- [x] ~~Release Github repository as public~~
 - [ ] Look into Github Copilot for $10 a month or $100 a year
 - [ ] Clean up Python Code
   - [x] Add Pylint Plugin to VSCode
@@ -13,15 +12,13 @@
   - [ ] Extend login sessions to include Google Login for sessions
     - [ ] [Create a Flask Application With Google Login](https://realpython.com/flask-google-login/)
   - [ ] Add an option to track users progress in quiz results which needs login sessions
-- [ ] Bootstrap4 cleanup
-  - [x] Update bootstrap cdn library locations and versions to current
-  - [ ] Add a BS4 navbar for the webui
-  - [ ] Clean up the forms display to be correctly spaced - edit.html BAD / quiz.html GOOD
+- [ ] Bootstrap cleanup
+  - [x] Update bootstrap cdn library locations and versions to current (BS5)
+  - [ ] Add a BS5 navbar to templates for consistent user-interface
+  - [x] Renamed base.html to default.html to try to dodge MS Antivirus issues
   - [ ] Look into bootstrap schemes for different colors
-- [x] ~~Fix the quiz.html in submitQuiz() around line 135 to only print answer_details if it exists~~
+  - [ ] Dig into how to cache the JS/CSS files in root static directory
 - [ ] Images or diagrams for questions missing
-- [x] Merge the import questions functions together
-- [x] JSON Import and Export needs an option for local file names and upload
 - [ ] Add options for sqlite file backup
 - [ ] JSON Schema for quiz files
   - [ ] Read [Understanding JSON Schema](https://json-schema.org/understanding-json-schema)
@@ -31,7 +28,3 @@
 - [ ] PyTest for unittests and webapp automated testing
   - [ ] Simple test of each route with even `curl` would be useful
   - [ ] Simple tests of routes with parameters
-- [x] Rename edit.html and edit() to edit_questions() and edit_question.html
-- [x] Add back the missing category functions and routes
-- [x] Add back the question buttons to Add/Remove options - lost JS in conversion to BS5 templates
-- [x] Fix the JSON import to use flask requests and form upload via POST
