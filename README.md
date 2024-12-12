@@ -56,6 +56,8 @@ If using VSCode, then add this `launch.json` file to a sub-directory called `.vs
 }
 ```
 
+### Python Libraries
+
 Later when checking if libraries need updating...
 
 ``` console
@@ -67,9 +69,25 @@ pip3 install Flask-SQLAlchemy
 
 To specify that the packages in your `requirements.txt` file should be installed at a certain version or newer, you can use version specifiers like `>=` followed by the version number. This ensures that when someone installs the packages, they get at least the specified version or any newer version. You can manually edit the `requirements.txt` file after generating it with `pip freeze`. Unfortunately, `pip freeze` does not provide an option to add the `>=` specifier directly.
 
+Added Dependabot to Github Project... to solve this to some extent. So the `requirements.txt` file tracks on newer versions of libraries and reports them back.
+
 ## Hosting at Ploomber
 
+[Ploomber](https://ploomber.io/) was the first place I found that had free hosting of a Flask App in a Google Search. I last remembered [Heroku](https://www.heroku.com/pricing) as the place to go but SalesForce looks like they gutted the free tier.
+
+### Quick manual process
+
 Download the ZIP file from Github repository.  Rename the top level directory from `legendary-quick-quiz-main` to `legendary_quick_quiz`, delete the `.flaskenv` file from root, and the `.vscode` directory. I'm not sure if all that is required, but those are the steps that worked after updating the modules paths in v0.1.1.
+
+*Note*: The directory rename might not be necessary now as I fixed the repository name to use underscores and not dashes.
+
+*Note*: The `.flaskenv` might not be necessary to remove either.
+
+*Note*: Almost positive that removing the `.vscode` directory is unnecessary.
+
+### Github Actions Integration
+
+There is a complete section in the docs on how to do the Github repository automatic deployment that I need to read and do. There is also a "Github Deploy" on the three dots for the application deployment with nice documentation.
 
 ## Features
 
