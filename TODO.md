@@ -2,6 +2,7 @@
 # Things to do
 
 - [ ] Look into Github Copilot for $10 a month or $100 a year
+- [ ] Add a feature to automatically load the `initial_questions.json` on first startup or deployment
 - [ ] Automate the deployment of webapp to Ploomber with Github Actions
   - [ ] [Ploomber-Cloud.yaml](https://github.com/ploomber/cloud-template/blob/main/.github/workflows/ploomber-cloud.yaml)
   - [ ] [Ploomber Github Deployments](https://docs.cloud.ploomber.io/en/latest/user-guide/github.html)
@@ -39,5 +40,9 @@
 - [ ] JSON Schema for quiz files
   - [ ] Read [Understanding JSON Schema](https://json-schema.org/understanding-json-schema)
   - [ ] Read [python-jsonschema](https://python-jsonschema.readthedocs.io/en/latest/) library
+- [ ] Documentation
+  - [ ] Add CHANGES.md and maybe ROADMAP.md file
+  - [ ] Turn README.md, TODO.md and FAQ.md into Flask route webpages for application documentation
+  - [ ] [Rendering markdown from Flask](https://dev.to/mrprofessor/rendering-markdown-from-flask-1l41)
 
 [McGarrah Copilot Session](https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg)
