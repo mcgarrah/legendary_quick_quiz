@@ -52,6 +52,10 @@
                 {% endfor %}
             </select>
         </div>
+        <div class="form-check mt-3">
+            <input type="checkbox" class="form-check-input" id="no_shuffle" name="no_shuffle">
+            <label class="form-check-label" for="no_shuffle">Do Not Shuffle Options</label>
+        </div>
         <button type="submit" class="btn btn-success mt-3">Add Question</button>
     </form>
 
@@ -63,7 +67,12 @@
             <li class="list-group-item">
                 <div class="d-flex justify-content-between">
                     <div>
-                        <p><strong>Category:</strong> {{ question.category.name }}</p>
+                        <p>
+                            <strong>Category:</strong> {{ question.category.name }}
+                            {% if question.no_shuffle %}
+                                (no_shuffle: {{ question.no_shuffle }})
+                            {% endif %}
+                        </p>
                         {{ question.question }} ({{ question.answer }})
                         <ul>
                             {% for option in json.loads(question.options) %}

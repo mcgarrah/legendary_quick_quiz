@@ -42,6 +42,7 @@ def import_questions():
                 options=json.dumps(question['options']),
                 answer=question['answer'],
                 answer_details=question.get('answer_details', ''),
+                no_shuffle=question.get('no_shuffle', False),
                 category_id=category_obj.id
             )
             db.session.add(question_obj)
@@ -61,7 +62,8 @@ def export_questions():
                 'question': question.question,
                 'options': json.loads(question.options),
                 'answer': question.answer,
-                'answer_details': question.answer_details
+                'answer_details': question.answer_details,
+                'no_shuffle': question.no_shuffle
             })
 
         export_data.append({
@@ -114,6 +116,7 @@ def add_question():
         options=json.dumps(options),  # Store options as a JSON string
         answer=request.form['answer'],
         answer_details=request.form['answer_details'],
+        no_shuffle=request.form.get('no_shuffle') == 'on',  # check if checkbox is checked
         category_id=request.form['category_id']
     )
     db.session.add(new_question)

@@ -17,7 +17,9 @@ def quiz(category_id):
     for question in selected_questions:
         try:
             options = json.loads(question.options)
-            random.shuffle(options)     # Shuffle the options
+            # Only shuffle the options if "no_shuffle" is False
+            if not question.no_shuffle:
+                random.shuffle(options)     # Shuffle the options
         except json.JSONDecodeError:
             options = []  # Provide a default empty list if JSON decoding fails
 

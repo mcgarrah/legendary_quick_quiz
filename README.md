@@ -134,6 +134,35 @@ To specify that the packages in your `requirements.txt` file should be installed
 
 ## Files and their Roles
 
+``` text
+legendary-quick-quiz/
+│
+├── app.py
+├── manage.py
+├── modules/
+│   ├── __init__.py
+│   ├── models.py
+│   ├── routes_main.py
+│   ├── routes_quiz.py
+│   ├── routes_settings.py
+├── migrations/
+│   ├── versions/
+│   ├── __init__.py
+│   ├── alembic.ini
+├── templates/
+│   ├── default.html
+│   ├── edit_questions.html
+│   ├── edit_categories.html
+│   ├── settings.html
+│   ├── quiz.html
+├── static/
+│   ├── css/
+│   ├── js/
+│   ├── images/
+├── initial_questions.json
+├── quiz.db
+```
+
 This is very out of date now with the break up in to modules and separated files for sections of code.
 
 ### app.py
