@@ -25,6 +25,8 @@ source .venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
+*Note*: If you run into issues with a `zsh` console session and trying to activate a virtualenv, just delete and recreate your venv environment.
+
 If using VSCode, then add this `launch.json` file to a sub-directory called `.vscode` at the root of the project to setup debugging. You will need the Python Plugin installed for it to work.
 
 ``` json

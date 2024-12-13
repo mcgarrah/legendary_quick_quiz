@@ -45,6 +45,23 @@
   - [ ] Add CHANGES.md and maybe ROADMAP.md file
   - [ ] Turn README.md, TODO.md and FAQ.md into Flask route webpages for application documentation
   - [ ] [Rendering markdown from Flask](https://dev.to/mrprofessor/rendering-markdown-from-flask-1l41)
+- [ ] Alternate Hosting
+  - [ ] Pythonanywhere.com (reload every 3 months?!?)
+    - [ ] Includes MySQL on free tier? Does it include options for CICD from Github repository?
+    - [ ] Check out PythonAnywhere, they have a free tier allowing you to host a website with Flask/MySQL. (2 years ago)
+    - [ ] Definitely has a free MySQL database for persistence
+    - [ ] Definitely has a free webapp deployment for Python
+    - [ ] Github Action for PAW via API and Token - https://github.com/umuttopalak/pythonanywhere-deploy-action
+    - [ ] [Reload pythonanywhere webapp](https://github.com/marketplace/actions/reload-pythonanywhere-webapp)
+    - [ ] https://medium.com/@aadibajpai/deploying-to-pythonanywhere-via-github-6f967956e664 Webhook based deployment
+  - [ ] Render https://render.com/ (free tier applications go to sleep after 15 minutes of inactivity)
+  - [ ] Ploomber is what I'm using right now
+    - [ ] Has a Github Actions CICD option
+    - [ ] Runs for 8 hours before stopping for inactivity - maybe ping self app to keep alive?
+    - [ ] Two web apps limit on the free tier
+    - [ ] No MySQL that I've found
+  - [ ] ~~Fly.io used to have a free tier (now $5 a month + expense over $5)~~
+  - [ ] MORE TO COME
 
 High level features to add
 
