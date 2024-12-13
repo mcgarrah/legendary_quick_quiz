@@ -3,14 +3,17 @@
 Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 """
 
-from flask import Flask  # Flask framework
-from flask_migrate import Migrate # Flask Database Migration
+from flask import Flask
+from flask_migrate import Migrate
 
-# Import models and routes
-from modules.models import db  # Database instance from models
-from modules.routes_main import *  # Main route handlers (explicitly defined in __all__)
-from modules.routes_quiz import quiz, check_answers  # Quiz-specific route handlers
-from modules.routes_settings import settings, update_settings  # Settings-specific route handlers
+# Import models and routes using absolute imports
+from modules.models import db
+from modules.routes_main import ( import_questions, export_questions, clear_questions,
+                                    add_question, delete_question,
+                                    home, edit_questions,
+                                    edit_categories, add_category, delete_category )
+from modules.routes_quiz import quiz, check_answers
+from modules.routes_settings import settings, update_settings
 
 # Initialize the Flask application
 app = Flask(__name__)

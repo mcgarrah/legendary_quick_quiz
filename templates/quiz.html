@@ -4,10 +4,6 @@
 
 {% block content %}
 <div class="container mt-4">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Home</a>
-        <a class="navbar-brand" href="/settings">Settings</a>
-    </nav>
     <div id="timer" class="my-4 display-4 font-weight-bold">Time Remaining: <span id="time">{{ '%02d:%02d' % (timer_duration // 60, timer_duration % 60) }}</span></div>
     <form id="quizForm">
         <input type="hidden" id="question_ids" name="question_ids" value="{{ questions|map(attribute='id')|list|tojson }}">
@@ -22,6 +18,9 @@
     </form>
     <div id="result" class="mt-4"></div>
 </div>
+{% endblock %}
+
+{% block scripts %}
 <script>
     let timeLeft = {{ timer_duration }};
     const timerElement = document.getElementById('time');

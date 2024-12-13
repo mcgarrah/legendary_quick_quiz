@@ -4,12 +4,6 @@ Main routes for the Legendary Quick Quiz application.
 Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 """
 
-# allow for star imports with explicit list of functions exported
-__all__ = [ 'import_questions', 'export_questions', 'clear_questions',
-            'add_question', 'delete_question',
-            'home', 'edit_questions',
-            'edit_categories', 'add_category', 'delete_category' ]
-
 # TODO: Break up the functions in this file into separate files
 #   Questions import/export/clear
 #   Question CRUD Add/Del/Modify (edit should become edit_question)
@@ -21,8 +15,8 @@ from modules.models import db, Category, Question
 
 def import_questions():
     """
-    Import questions from a JSON file that either uploaded or the default file in root of webapp 
-    and add them to the database.
+    Import questions from a JSON file that either uploaded or the default
+    file in root of webapp and adds questions and categories to the database.
     """
     file = request.files.get('file')
     if not file:
@@ -52,7 +46,9 @@ def import_questions():
     return redirect(url_for('settings'))
 
 def export_questions():
-    """Export the categories and questions from database to a JSON file"""
+    """
+    Export the categories and questions from database to a JSON file.
+    """
     categories = Category.query.all()
     export_data = []
 
@@ -99,7 +95,9 @@ def clear_questions():
     return redirect(url_for('settings'))
 
 def home():
-    """Home page to pick the quiz category"""
+    """
+    Renders the home page for selecting quiz categories.
+    """
     categories = Category.query.all()
     return render_template('select_category.html', categories=categories)
 
@@ -109,9 +107,13 @@ def edit_questions():
     """
     categories = Category.query.all()
     questions = Question.query.all()
-    return render_template('edit_questions.html', categories=categories, questions=questions, json=json)
+    return render_template('edit_questions.html', categories=categories, 
+                           questions=questions, json=json)
 
 def add_question():
+    """
+    Adds a new question to the database with options, answer, details, and category.
+    """
     options = request.form.getlist('options')
     new_question = Question(
         question=request.form['question'],
@@ -126,16 +128,25 @@ def add_question():
     return redirect(url_for('edit_questions'))
 
 def delete_question(question_id):
+    """
+    Deletes a question from the database by its ID.
+    """
     question = Question.query.get_or_404(question_id)
     db.session.delete(question)
     db.session.commit()
     return redirect(url_for('edit_questions'))
 
 def edit_categories():
+    """
+    Renders the page for editing categories.
+    """
     categories = Category.query.all()
     return render_template('edit_categories.html', categories=categories)
 
 def add_category():
+    """
+    Adds a new category to the database.
+    """
     new_category_name = request.form['category_name']
     new_category = Category(name=new_category_name)
     db.session.add(new_category)
@@ -143,6 +154,9 @@ def add_category():
     return redirect(url_for('edit_categories'))
 
 def delete_category(category_id):
+    """
+    Deletes a category and its associated questions by ID.
+    """
     category = Category.query.get_or_404(category_id)
     # Delete all questions associated with the category
     Question.query.filter_by(category_id=category_id).delete()

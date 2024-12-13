@@ -5,6 +5,11 @@ from flask import render_template, request, redirect, url_for
 from modules.models import db, Setting
 
 def settings():
+    """
+    Retrieves the current settings for `timer_duration` and `num_questions`.
+    Uses default values if settings are not found.
+    Renders the `settings.html` template with these values.
+    """
     timer_setting = Setting.query.filter_by(name='timer_duration').first()
     num_questions_setting = Setting.query.filter_by(name='num_questions').first()
     timer_duration = int(timer_setting.value) if timer_setting else 300
@@ -12,6 +17,12 @@ def settings():
     return render_template('settings.html', timer_duration=timer_duration, num_questions=num_questions)
 
 def update_settings():
+    """
+    Updates the settings for timer_duration and num_questions based on the form submission.
+    Checks if the settings exist; if not, creates new settings.
+    Commits the changes to the database.
+    Redirects to the settings page.
+    """
     timer_duration = request.form['timer_duration']
     num_questions = request.form['num_questions']
 
