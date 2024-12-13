@@ -5,12 +5,8 @@
 - [x] Add a copyright notice to code and webpages
 - [ ] Add a feature to automatically load the `initial_questions.json` on first startup or deployment
 - [ ] Add a version to the footer of the webpages like copyright notice
-- [x] Automate the deployment of webapp to Ploomber with Github Actions
-  - [x] [Ploomber-Cloud.yaml](https://github.com/ploomber/cloud-template/blob/main/.github/workflows/ploomber-cloud.yaml)
-  - [x] [Ploomber Github Deployments](https://docs.cloud.ploomber.io/en/latest/user-guide/github.html)
-  - [x] "Github Deploy" on the three dots options has details on deployment
-- [ ] Add Dependabot to the Github repository
-  - [x] Add the Python (PIP) based review of libraries
+- [ ] Add a dependency checker to the Github repository
+  - [x] Add Dependabot for the Python (PIP) based review of libraries
   - [ ] Add something for the Bootstrap5 and other CDN components
   - [ ] [Renovate Bot GitHub Action](https://github.com/marketplace/actions/renovate-bot-github-action) [Github Code](https://github.com/renovatebot/github-action)
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
