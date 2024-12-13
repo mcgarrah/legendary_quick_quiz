@@ -2,11 +2,13 @@
 # Things to do
 
 - [ ] Look into Github Copilot for $10 a month or $100 a year
+- [x] Add a copyright notice to code and webpages
 - [ ] Add a feature to automatically load the `initial_questions.json` on first startup or deployment
-- [ ] Automate the deployment of webapp to Ploomber with Github Actions
-  - [ ] [Ploomber-Cloud.yaml](https://github.com/ploomber/cloud-template/blob/main/.github/workflows/ploomber-cloud.yaml)
-  - [ ] [Ploomber Github Deployments](https://docs.cloud.ploomber.io/en/latest/user-guide/github.html)
-  - [ ] "Github Deploy" on the three dots options has details on deployment
+- [ ] Add a version to the footer of the webpages like copyright notice
+- [x] Automate the deployment of webapp to Ploomber with Github Actions
+  - [x] [Ploomber-Cloud.yaml](https://github.com/ploomber/cloud-template/blob/main/.github/workflows/ploomber-cloud.yaml)
+  - [x] [Ploomber Github Deployments](https://docs.cloud.ploomber.io/en/latest/user-guide/github.html)
+  - [x] "Github Deploy" on the three dots options has details on deployment
 - [ ] Add Dependabot to the Github repository
   - [x] Add the Python (PIP) based review of libraries
   - [ ] Add something for the Bootstrap5 and other CDN components
@@ -54,13 +56,30 @@
     - [ ] Github Action for PAW via API and Token - https://github.com/umuttopalak/pythonanywhere-deploy-action
     - [ ] [Reload pythonanywhere webapp](https://github.com/marketplace/actions/reload-pythonanywhere-webapp)
     - [ ] https://medium.com/@aadibajpai/deploying-to-pythonanywhere-via-github-6f967956e664 Webhook based deployment
+    - [ ] Beware, the free storage limit is 500MB
   - [ ] Render https://render.com/ (free tier applications go to sleep after 15 minutes of inactivity)
+    - [ ] PostgreSQL included in free tier
+    - [ ] 100GB bandwidth
+    - [ ] Managed Redis included
+    - [ ] Git CICD deployments
+    - [ ] Cronjobs as a feature
   - [ ] Ploomber is what I'm using right now
     - [ ] Has a Github Actions CICD option
     - [ ] Runs for 8 hours before stopping for inactivity - maybe ping self app to keep alive?
     - [ ] Two web apps limit on the free tier
     - [ ] No MySQL that I've found
   - [ ] ~~Fly.io used to have a free tier (now $5 a month + expense over $5)~~
+  - [ ] [SeeNode](https://www.seenode.com/) is new
+    - [ ] Has MySQL as an option
+    - [ ] Uses Kubernetes as the backend platform
+    - [ ] Limits of Free: Yes, you can create only 3 services of any kind with the free package option.
+    - [ ] Flask support on front page
+    - [ ] Github support for deployments
+  - [ ] [Vercel Hobby](https://vercel.com/docs/accounts/plans/hobby)
+    - [ ] Credit per month with cut off...
+    - [ ] Free tier has custom domains
+    - [ ] No native SQL database but does have third party options
+    - [ ] 
   - [ ] MORE TO COME
 
 High level features to add

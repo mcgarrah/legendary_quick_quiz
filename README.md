@@ -6,11 +6,14 @@ This application is a fully-fledged, dynamic quiz platform built using Flask, a 
 
 ## Known Broken Things
 
-1. ~~Bootstrap4 has some spacing issues in edit.html and other places~~
+1. Hosted version available to checkout but sometimes need starting up
 2. Bootstrap navbars in template are missing
 3. JSON Schema checking is not implemented for import/export
 4. Pylint is not passing everywhere but lots better than earlier
 5. Pytest is completely missing
+6. Initial questions are not loaded on deployment and first startup
+7. HTML markup in some questions show up badly... working on options
+8. 
 
 ## Setup
 
@@ -89,7 +92,11 @@ Download the ZIP file from Github repository.  Rename the top level directory fr
 
 ### Github Actions Integration
 
-There is a complete section in the docs on how to do the Github repository automatic deployment that I need to read and do. There is also a "Github Deploy" on the three dots for the application deployment with nice documentation.
+There is a complete section in the docs on how to do the [Github repository automatic deployment](https://docs.cloud.ploomber.io/en/latest/user-guide/github.html#github-deployment) that I read and done. The three dots next to the Application has a "Github Deploy"option on it that includes your exact commands with secrets already in the right place.
+
+This is working in the current deployed enviornment without the manual changes necessary for it to deploy.
+
+You can see the [Legendary Quick Quiz](https://shiny-haze-6453.ploomberapp.io/) at this link. Press start if nobody used it in the last eight (8) hours.
 
 ## Features
 
