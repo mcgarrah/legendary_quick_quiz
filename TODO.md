@@ -16,8 +16,10 @@
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [ ] Add Markdown support for the Questions fields
   - [ ] [How To Use Python-Markdown with Flask and SQLite](https://www.digitalocean.com/community/tutorials/how-to-use-python-markdown-with-flask-and-sqlite)
+  - [ ] [Flask-Markdown](https://pythonhosted.org/Flask-Markdown/) adds support for Markdown to your Flask application.
 - [ ] Images or diagrams for questions missing
   - [ ] Markdown would improve this. A separate field that is optional.
+  - [ ] I have not thought this thru... how to save the image binary?!?
 - [ ] PyTest for unittests and webapp automated testing
   - [ ] Simple test of each route with even `curl` would be useful
   - [ ] Simple tests of routes with parameters
