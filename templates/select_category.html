@@ -4,12 +4,7 @@
 
 {% block content %}
 <div class="container mt-4">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Home</a>
-        <a class="navbar-brand" href="/edit_questions">Edit Questions</a>
-        <a class="navbar-brand" href="/settings">Settings</a>
-    </nav>
-    <h1 class="mt-4">Available Categories</h2>
+    <h1 class="mt-4">Available Categories</h1>
     <ul class="list-group">
         {% for category in categories %}
             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -19,7 +14,7 @@
         {% endfor %}
     </ul>
 
-    <h2 class="mt-4">Select Category</h1>
+    <h2 class="mt-4">Select Category</h2>
     <form id="categoryForm" class="mt-4">
         <div class="form-group">
             <label for="category_id">Select a category:</label>
@@ -31,9 +26,11 @@
         </div>
         <button type="button" class="btn btn-primary mt-3" onclick="startQuiz()">Start Quiz</button>
     </form>
-
 </div>
 
+{% endblock %}
+
+{% block scripts %}
 <script>
     function startQuiz() {
         const categoryId = document.getElementById('category_id').value;

@@ -1,12 +1,19 @@
 """
 Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 """
-from flask import render_template, request, jsonify
-from modules.models import db, Question, Setting
 import json
 import random
+from flask import render_template, request, jsonify
+from modules.models import Question, Setting
 
 def quiz(category_id):
+    """
+    Retrieves questions based on the category ID.
+    Reads timer and number of questions settings.
+    Randomly shuffles the questions.
+    Conditionally shuffles the question options based on the no_shuffle attribute.
+    Serializes the questions and renders the quiz template.
+    """
     questions = Question.query.filter_by(category_id=category_id).all()
     timer_setting = Setting.query.filter_by(name='timer_duration').first()
     num_questions_setting = Setting.query.filter_by(name='num_questions').first()
@@ -36,6 +43,11 @@ def quiz(category_id):
     return render_template('quiz.html', questions=serialized_questions, timer_duration=timer_duration)
 
 def check_answers():
+    """
+    Processes the user's answers.
+    Compares them with the correct answers.
+    Calculates the score and returns the results in JSON format.
+    """
     data = request.json
     user_answers = data['answers']
     question_ids = data['question_ids']
