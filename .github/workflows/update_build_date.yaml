@@ -20,7 +20,7 @@ jobs:
       
     - name: Update build date
       run: |
-        current_date=$(date +'%Y-%m-%d')
+        current_date=$(date +'%Y-%m-%d-%H-%M-%S')
         sed -i "s/__build_date__ = .*/__build_date__ = '$current_date'/g" __init__.py
 
     - name: Commit and push build date update
