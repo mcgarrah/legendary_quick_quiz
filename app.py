@@ -49,7 +49,7 @@ app.add_url_rule('/check_answers', methods=['POST'], view_func=check_answers)
 # Editing and adding questions
 app.add_url_rule('/edit_questions', view_func=edit_questions)
 app.add_url_rule('/add_question', methods=['POST'], view_func=add_question)
-app.add_url_rule('/delete_question', methods=['POST'], view_func=delete_question)
+app.add_url_rule('/delete_question/<int:question_id>', methods=['POST'], view_func=delete_question)
 
 # Settings routes
 app.add_url_rule('/settings', view_func=settings)

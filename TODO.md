@@ -2,12 +2,8 @@
 # Things to do
 
 - [ ] Look into Github Copilot for $10 a month or $100 a year
-- [x] Add a copyright notice to code and webpages
-- [x] Add the Correct answer to the Quiz completed page after Submit and check_answers() but only if incorrect answer given
-- [x] Add something in Quiz webpage to allow clicking anywhere on the options button or text to make active
-- [x] Add feature to hide the question in the Quiz page or create a separate quiz completed page
+- [x] Fix bug in delete_question route missing question_id parameter
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
-- [x] Add a feature to automatically load the `initial_questions.json` on first startup or deployment
 - [ ] Add an app or git-tag version and/or app-date to the footer.html
 - [ ] Add a dependency checker to the Github repository
   - [x] Add Dependabot for the Python (PIP) based review of libraries
