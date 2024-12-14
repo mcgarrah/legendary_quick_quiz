@@ -53,14 +53,21 @@
         question.options.forEach((option, i) => {
             const checked = userAnswers[index] === option ? 'checked' : '';
             questionHTML += `<div class="form-check">
-                <input class="form-check-input" type="radio" name="question${index}" value="${option}" ${checked}>
-                <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="question${index}" value="${option}" ${checked} id="option${index}_${i}">
+                <label class="form-check-label option-label" for="option${index}_${i}">
                     ${option}
                 </label>
             </div>`;
         });
         questionHTML += `</div>`;
         questionContainer.innerHTML = questionHTML;
+
+        // Add event listeners to make the entire option area clickable
+        document.querySelectorAll('.option-label').forEach(label => {
+            label.addEventListener('click', function() {
+                this.previousElementSibling.checked = true;
+            });
+        });
     }
 
     function saveAnswer() {

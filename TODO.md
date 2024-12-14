@@ -4,7 +4,7 @@
 - [ ] Look into Github Copilot for $10 a month or $100 a year
 - [x] Add a copyright notice to code and webpages
 - [x] Add the Correct answer to the Quiz completed page after Submit and check_answers() but only if incorrect answer given
-- [ ] Add something in Quiz webpage to allow clicking anywhere on the options button or text to make active
+- [x] Add something in Quiz webpage to allow clicking anywhere on the options button or text to make active
 - [ ] Add feature to hide the question in the Quiz page or create a separate quiz completed page
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [ ] Add a feature to automatically load the `initial_questions.json` on first startup or deployment
