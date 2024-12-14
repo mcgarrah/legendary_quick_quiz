@@ -120,6 +120,9 @@
                         <p><strong>Question:</strong> ${result.question}</p>
                         <p><strong>Your Answer:</strong> ${result.user_answer}</p>
                         <p><strong>Correct:</strong> ${result.correct ? 'Yes' : 'No'}</p>`;
+                if (!result.correct) {
+                    resultHTML += `<p><strong>Answer:</strong> ${result.answer}</p>`;
+                }
                 if (result.answer_details) {
                     resultHTML += `<p><strong>Details:</strong> ${result.answer_details}</p>`;
                 }
