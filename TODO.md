@@ -7,7 +7,7 @@
 - [x] Add something in Quiz webpage to allow clicking anywhere on the options button or text to make active
 - [ ] Add feature to hide the question in the Quiz page or create a separate quiz completed page
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
-- [ ] Add a feature to automatically load the `initial_questions.json` on first startup or deployment
+- [x] Add a feature to automatically load the `initial_questions.json` on first startup or deployment
 - [ ] Add an app or git-tag version and/or app-date to the footer.html
 - [ ] Add a dependency checker to the Github repository
   - [x] Add Dependabot for the Python (PIP) based review of libraries

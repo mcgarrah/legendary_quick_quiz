@@ -13,17 +13,21 @@ import json
 from flask import render_template, request, redirect, url_for, send_file
 from modules.models import db, Category, Question
 
-def import_questions():
+def import_questions(file_path=None):
     """
-    Import questions from a JSON file that either uploaded or the default
-    file in root of webapp and adds questions and categories to the database.
+    Import questions from a JSON file that is either uploaded or specified by file path, 
+    and add them to the database.
     """
-    file = request.files.get('file')
-    if not file:
-        with open('initial_questions.json') as f:
+    if file_path:
+        with open(file_path) as f:
             data = json.load(f)
     else:
-        data = json.load(file)
+        file = request.files.get('file')
+        if not file:
+            with open('initial_questions.json') as f:
+                data = json.load(f)
+        else:
+            data = json.load(file)
 
     for category in data:
         category_obj = Category.query.filter_by(name=category['category']).first()
@@ -43,7 +47,7 @@ def import_questions():
             )
             db.session.add(question_obj)
     db.session.commit()
-    return redirect(url_for('settings'))
+    return redirect(url_for('settings')) if not file_path else None
 
 def export_questions():
     """

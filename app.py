@@ -7,7 +7,7 @@ from flask import Flask
 from flask_migrate import Migrate
 
 # Import models and routes using absolute imports
-from modules.models import db
+from modules.models import db, Category, Question
 from modules.routes_main import ( import_questions, export_questions, clear_questions,
                                     add_question, delete_question,
                                     home, edit_questions,
@@ -28,6 +28,10 @@ app.app_context().push()
 
 # Create the database tables if they do not exist
 db.create_all()
+
+# Check if both the Question and Category tables are empty and load initial questions if so 
+if not Question.query.first() and not Category.query.first():
+    import_questions('initial_questions.json')
 
 # Define the application routes
 # Home page route
