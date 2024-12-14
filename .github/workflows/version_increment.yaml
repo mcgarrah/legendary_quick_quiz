@@ -1,0 +1,31 @@
+name: Increment Version Patch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  increment_version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+      
+    - name: Increment version patch number
+      id: increment_version
+      run: |
+        sed -i 's/\(__version_info__ = \)\(\(\([0-9]\+\), \([0-9]\+\), \)\([0-9]\+\)\)/echo "\1\2$(($(echo \6) + 1))"/ge' __init__.py
+
+    - name: Commit and push version increment
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add __init__.py
+        git commit -m "Increment version patch number"
+        git push
