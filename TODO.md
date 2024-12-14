@@ -3,6 +3,7 @@
 
 - [ ] Look into Github Copilot for $10 a month or $100 a year
 - [x] Fix bug in delete_question route missing question_id parameter
+- [x] Prevent HTML injection for question and answers, options and details content
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [ ] Add an app or git-tag version and/or app-date to the footer.html
 - [ ] Add a dependency checker to the Github repository

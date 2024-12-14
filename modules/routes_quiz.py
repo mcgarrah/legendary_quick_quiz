@@ -3,6 +3,7 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 """
 import json
 import random
+from markupsafe import escape
 from flask import render_template, request, jsonify
 from modules.models import Question, Setting
 
@@ -26,7 +27,7 @@ def quiz(category_id):
     serialized_questions = []
     for question in selected_questions:
         try:
-            options = json.loads(question.options)
+            options = [escape(option) for option in json.loads(question.options)]
             # Only shuffle the options if "no_shuffle" is False
             if not question.no_shuffle:
                 random.shuffle(options)
@@ -35,10 +36,10 @@ def quiz(category_id):
 
         serialized_questions.append({
             'id': question.id,
-            'question': question.question,
+            'question': escape(question.question),  # Escape the question text
             'options': options,
-            'answer': question.answer,  # Include the correct answer
-            'answer_details': question.answer_details
+            'answer': escape(question.answer),  # Escape the correct answer
+            'answer_details': escape(question.answer_details) if question.answer_details else None  # Escape the answer details
         })
 
     return render_template('quiz.html', questions=serialized_questions, timer_duration=timer_duration)
@@ -50,7 +51,7 @@ def check_answers():
     Calculates the score and returns the results in JSON format.
     """
     data = request.json
-    user_answers = data['answers']
+    user_answers = [escape(answer) for answer in data['answers']]  # Escape user answers
     question_ids = data['question_ids']
     question_ids = [int(qid) for qid in question_ids]
     questions = {question.id: question for question in Question.query.filter(Question.id.in_(question_ids)).all()}
@@ -63,11 +64,11 @@ def check_answers():
         if correct:
             score += 1
         results.append({
-            'question': question.question,
+            'question': escape(question.question),  # Escape the question text
             'correct': correct,
-            'answer': question.answer,  # Include the correct answer in the results
-            'answer_details': question.answer_details,
-            'user_answer': user_answers[i]
+            'answer': escape(question.answer),  # Escape the correct answer
+            'answer_details': escape(question.answer_details) if question.answer_details else None,  # Escape the answer details
+            'user_answer': user_answers[i]  # User answers are already escaped
         })
 
     return jsonify({'score': score, 'total': len(sorted_questions), 'results': results})
