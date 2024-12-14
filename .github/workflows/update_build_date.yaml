@@ -1,0 +1,34 @@
+name: Update Build Date
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+jobs:
+  update_build_date:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+      
+    - name: Update build date
+      run: |
+        current_date=$(date +'%Y-%m-%d')
+        sed -i "s/__build_date__ = .*/__build_date__ = '$current_date'/g" __init__.py
+
+    - name: Commit and push build date update
+      env:
+        TOKEN: ${{ secrets.ACTIONS_PAT }}
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add __init__.py
+        git commit -m "Update build date to $current_date"
+        git push https://x-access-token:${{ secrets.ACTIONS_PAT }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}

@@ -5,6 +5,7 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 
 from flask import Flask
 from flask_migrate import Migrate
+from . import __version__, __build_date__
 
 # Import models and routes using absolute imports
 from modules.models import db, Category, Question
@@ -17,6 +18,13 @@ from modules.routes_settings import settings, update_settings
 
 # Initialize the Flask application
 app = Flask(__name__)
+
+@app.context_processor
+def inject_version():
+    """
+    Make __version__ available in all templates
+    """
+    return dict(version=__version__, build_date=__build_date__)
 
 # Configure the database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz.db'
@@ -49,7 +57,7 @@ app.add_url_rule('/check_answers', methods=['POST'], view_func=check_answers)
 # Editing and adding questions
 app.add_url_rule('/edit_questions', view_func=edit_questions)
 app.add_url_rule('/add_question', methods=['POST'], view_func=add_question)
-app.add_url_rule('/delete_question', methods=['POST'], view_func=delete_question)
+app.add_url_rule('/delete_question/<int:question_id>', methods=['POST'], view_func=delete_question)
 
 # Settings routes
 app.add_url_rule('/settings', view_func=settings)
