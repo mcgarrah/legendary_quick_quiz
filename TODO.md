@@ -3,13 +3,16 @@
 
 - [ ] Look into Github Copilot for $10 a month or $100 a year
 - [x] Add a copyright notice to code and webpages
+- [x] Add the Correct answer to the Quiz completed page after Submit and check_answers() but only if incorrect answer given
+- [ ] Add something in Quiz webpage to allow clicking anywhere on the options button or text to make active
+- [ ] Add feature to hide the question in the Quiz page or create a separate quiz completed page
+- [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [ ] Add a feature to automatically load the `initial_questions.json` on first startup or deployment
-- [ ] Add a version to the footer of the webpages like copyright notice
+- [ ] Add an app or git-tag version and/or app-date to the footer.html
 - [ ] Add a dependency checker to the Github repository
   - [x] Add Dependabot for the Python (PIP) based review of libraries
   - [ ] Add something for the Bootstrap5 and other CDN components
   - [ ] [Renovate Bot GitHub Action](https://github.com/marketplace/actions/renovate-bot-github-action) [Github Code](https://github.com/renovatebot/github-action)
-- [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [ ] Add Markdown support for the Questions fields
   - [ ] [How To Use Python-Markdown with Flask and SQLite](https://www.digitalocean.com/community/tutorials/how-to-use-python-markdown-with-flask-and-sqlite)
   - [ ] [Flask-Markdown](https://pythonhosted.org/Flask-Markdown/) adds support for Markdown to your Flask application.
@@ -31,7 +34,7 @@
   - [ ] Add an option to track users progress in quiz results which needs login sessions
 - [ ] Bootstrap cleanup
   - [x] Update bootstrap cdn library locations and versions to current (BS5)
-  - [ ] Add a BS5 navbar to templates for consistent user-interface
+  - [x] Add a BS5 navbar to templates for consistent user-interface
   - [x] Renamed `base.html` to `default.html` to try to dodge MS Antivirus issues
   - [ ] Look at undoing the above `base.html` to `default.html` change
   - [ ] Look into bootstrap schemes for different colors

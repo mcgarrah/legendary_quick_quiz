@@ -29,7 +29,7 @@ def quiz(category_id):
             options = json.loads(question.options)
             # Only shuffle the options if "no_shuffle" is False
             if not question.no_shuffle:
-                random.shuffle(options)     # Shuffle the options
+                random.shuffle(options)
         except json.JSONDecodeError:
             options = []  # Provide a default empty list if JSON decoding fails
 
@@ -37,6 +37,7 @@ def quiz(category_id):
             'id': question.id,
             'question': question.question,
             'options': options,
+            'answer': question.answer,  # Include the correct answer
             'answer_details': question.answer_details
         })
 
@@ -64,6 +65,7 @@ def check_answers():
         results.append({
             'question': question.question,
             'correct': correct,
+            'answer': question.answer,  # Include the correct answer in the results
             'answer_details': question.answer_details,
             'user_answer': user_answers[i]
         })
