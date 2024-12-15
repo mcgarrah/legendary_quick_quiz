@@ -25,10 +25,10 @@ jobs:
 
     - name: Commit and push build date update
       env:
-        TOKEN: ${{ secrets.ACTIONS_PAT }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add __init__.py
         git commit -m "Update build date to $current_date"
-        git push https://x-access-token:${{ secrets.ACTIONS_PAT }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
