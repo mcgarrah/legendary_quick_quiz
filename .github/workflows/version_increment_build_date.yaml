@@ -32,8 +32,8 @@ jobs:
       id: increment_version
       run: |
         # Extract the current version
-        current_version=$(awk -F'[(), ]+' '/^__version_info__/ {print $3 "." $4 "." $5}' quiz/__init__.py)
-        #grep "^__version_info__" quiz/__init__.py
+        current_version=$(awk -F'[(), ]+' '/^__version_info__/ {print $3 "." $4 "." $5}' __init__.py)
+        #grep "^__version_info__" __init__.py
         #echo $current_version
 
         # Ensure current_version is correctly extracted
@@ -54,16 +54,16 @@ jobs:
         new_version_info=$(echo $new_version | awk -F. '{printf("\x27%d\x27, \x27%d\x27, \x27%d\x27", $1, $2, $3)}')
         #echo $new_version_info
 
-        # Update the quiz/__init__.py file with the new version info
-        echo -n "Before: " && grep "^__version_info__" quiz/__init__.py
-        sed -i -E "s/^__version_info__ = \(.*\)/__version_info__ = \($new_version_info\)/" quiz/__init__.py
-        echo -n "After:  " && grep "^__version_info__" quiz/__init__.py
+        # Update the __init__.py file with the new version info
+        echo -n "Before: " && grep "^__version_info__" __init__.py
+        sed -i -E "s/^__version_info__ = \(.*\)/__version_info__ = \($new_version_info\)/" __init__.py
+        echo -n "After:  " && grep "^__version_info__" __init__.py
 
-        # Update Build-Date in quiz/__init__.py with current date
-        echo -n "Before: " && grep "^__build_date__" quiz/__init__.py
+        # Update Build-Date in __init__.py with current date
+        echo -n "Before: " && grep "^__build_date__" __init__.py
         current_date=$(date +'%Y-%m-%d-%H-%M-%S')
-        sed -i "s/__build_date__ = .*/__build_date__ = '$current_date'/g" quiz/__init__.py
-        echo -n "After:  " && grep "^__build_date__" quiz/__init__.py
+        sed -i "s/__build_date__ = .*/__build_date__ = '$current_date'/g" __init__.py
+        echo -n "After:  " && grep "^__build_date__" __init__.py
 
     - name: Commit and push version increment
       env:
@@ -75,7 +75,7 @@ jobs:
         fi
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add quiz/__init__.py
+        git add __init__.py
         git commit -m "Increment version patch number"
         git pull
         git push https://x-access-token:${ACTIONS_PAT}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}

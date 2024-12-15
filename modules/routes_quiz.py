@@ -5,7 +5,7 @@ import json
 import random
 from markupsafe import escape
 from flask import render_template, request, jsonify
-from quiz.modules.models import Question, Setting
+from modules.models import Question, Setting
 
 def quiz(category_id):
     """
