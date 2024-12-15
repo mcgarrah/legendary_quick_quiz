@@ -48,21 +48,3 @@ jobs:
         git commit -m "Update build date to $current_date"
         git push https://x-access-token:${ACTIONS_PAT}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
 
-
-
-
-
-name: Debug Actions PAT
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  debug_secret:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
