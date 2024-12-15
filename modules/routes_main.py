@@ -73,10 +73,12 @@ def export_questions():
             'questions': questions_list
         })
 
+    # TODO: Fix - File location for temporary file is screwy in webroot.
+    # TODO: Figure out a better solution without a concurrency bug.
     with open('exported_questions.json', 'w') as f:
         json.dump(export_data, f, indent=4)
 
-    return send_file('exported_questions.json', as_attachment=True)
+    return send_file('../exported_questions.json', as_attachment=True)
 
 def clear_questions():
     """

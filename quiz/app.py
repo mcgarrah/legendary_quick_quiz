@@ -5,7 +5,7 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 
 from flask import Flask
 from flask_migrate import Migrate
-from . import __version__, __build_date__
+from quiz import __version__, __build_date__
 
 # Import models and routes using absolute imports
 from modules.models import db, Category, Question
@@ -17,7 +17,7 @@ from modules.routes_quiz import quiz, check_answers
 from modules.routes_settings import settings, update_settings
 
 # Initialize the Flask application
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates')
 
 @app.context_processor
 def inject_version():
