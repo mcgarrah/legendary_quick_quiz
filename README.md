@@ -167,32 +167,40 @@ You can see the [Legendary Quick Quiz](https://shiny-haze-6453.ploomberapp.io/) 
 ## Files and their Roles
 
 ``` text
-legendary-quick-quiz/
-│
-├── app.py
+Current as of 2024-12-15
+
+legendary_quick_quiz/
+├── FAQ.md
+├── LICENSE
+├── README.md
+├── TODO.md
+├── favicon.ico
+├── initial_questions.json
 ├── manage.py
 ├── modules/
 │   ├── __init__.py
 │   ├── models.py
 │   ├── routes_main.py
 │   ├── routes_quiz.py
-│   ├── routes_settings.py
-├── migrations/
-│   ├── versions/
+│   └── routes_settings.py
+├── quiz/
 │   ├── __init__.py
-│   ├── alembic.ini
-├── templates/
-│   ├── default.html
-│   ├── edit_questions.html
-│   ├── edit_categories.html
-│   ├── settings.html
-│   ├── quiz.html
+│   └── app.py
+├── requirements.txt
 ├── static/
 │   ├── css/
-│   ├── js/
 │   ├── images/
-├── initial_questions.json
-├── quiz.db
+│   │   └── tardis.png
+│   └── js/
+└── templates/
+    ├── default.html
+    ├── edit_categories.html
+    ├── edit_questions.html
+    ├── footer.html
+    ├── navbar.html
+    ├── quiz.html
+    ├── select_category.html
+    └── settings.html
 ```
 
 This is very out of date now with the break up in to modules and separated files for sections of code.
