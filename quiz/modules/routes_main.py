@@ -11,7 +11,7 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 
 import json
 from flask import render_template, request, redirect, url_for, send_file
-from modules.models import db, Category, Question
+from quiz.modules.models import db, Category, Question
 
 def import_questions(file_path=None):
     """
