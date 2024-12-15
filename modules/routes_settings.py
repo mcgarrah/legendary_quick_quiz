@@ -2,7 +2,7 @@
 Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 """
 from flask import render_template, request, redirect, url_for
-from quiz.modules.models import db, Setting
+from modules.models import db, Setting
 
 def settings():
     """

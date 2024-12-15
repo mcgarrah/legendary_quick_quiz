@@ -11,7 +11,7 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 
 import json
 from flask import render_template, request, redirect, url_for, send_file
-from quiz.modules.models import db, Category, Question
+from modules.models import db, Category, Question
 
 def import_questions(file_path=None):
     """
@@ -78,7 +78,7 @@ def export_questions():
     with open('exported_questions.json', 'w') as f:
         json.dump(export_data, f, indent=4)
 
-    return send_file('../exported_questions.json', as_attachment=True)
+    return send_file('exported_questions.json', as_attachment=True)
 
 def clear_questions():
     """
