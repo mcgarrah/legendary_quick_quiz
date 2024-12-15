@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+permissions: write-all
+
 jobs:
   increment_version:
     runs-on: ubuntu-latest

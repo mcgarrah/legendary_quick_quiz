@@ -6,6 +6,8 @@ on:
       - dev
       - main
 
+permissions: write-all
+
 jobs:
   update_build_date:
     runs-on: ubuntu-latest
