@@ -1,4 +1,4 @@
-name: Increment Version Patch
+name: Main - Increment Version Patch & Update Build Date
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
           exit 1
         fi
 
-    - name: Increment version patch number
+    - name: Increment version patch number & Update Build Date
       id: increment_version
       run: |
         # Extract the current version
@@ -59,6 +59,12 @@ jobs:
         sed -i -E "s/^__version_info__ = \(.*\)/__version_info__ = \($new_version_info\)/" quiz/__init__.py
         echo -n "After:  " && grep "^__version_info__" quiz/__init__.py
 
+        # Update Build-Date in quiz/__init__.py with current date
+        echo -n "Before: " && grep "^__build_date__" quiz/__init__.py
+        current_date=$(date +'%Y-%m-%d-%H-%M-%S')
+        sed -i "s/__build_date__ = .*/__build_date__ = '$current_date'/g" quiz/__init__.py
+        echo -n "After:  " && grep "^__build_date__" quiz/__init__.py
+
     - name: Commit and push version increment
       env:
         ACTIONS_PAT: ${{ secrets.ACTIONS_PAT }}
@@ -71,4 +77,5 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git add quiz/__init__.py
         git commit -m "Increment version patch number"
+        git pull
         git push https://x-access-token:${ACTIONS_PAT}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
