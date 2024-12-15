@@ -1,34 +1,59 @@
-# name: Increment Version Patch
+name: Increment Version Patch
 
-# on:
-#   push:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - main
 
-# jobs:
-#   increment_version:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Checkout code
-#       uses: actions/checkout@v2
+jobs:
+  increment_version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
       
-#     - name: Set up Python
-#       uses: actions/setup-python@v2
-#       with:
-#         python-version: '3.x'
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
       
-#     - name: Increment version patch number
-#       id: increment_version
-#       run: |
-#         # something is wrong with this line...
-#         sed -i 's/\(__version_info__ = \)\(\(\([0-9]\+\), \([0-9]\+\), \)\([0-9]\+\)\)/echo "\1\2$(($(echo \6) + 1))"/ge' __init__.py
+    - name: Increment version patch number
+      id: increment_version
+      run: |
+        # Extract the current version
+        current_version=$(awk -F'[(), ]+' '/^__version_info__/ {print $3 "." $4 "." $5}' __init__.py)
+        #grep "^__version_info__" __init__.py
+        #echo $current_version
 
-#     - name: Commit and push version increment
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#       run: |
-#         git config --local user.email "github-actions[bot]@users.noreply.github.com"
-#         git config --local user.name "github-actions[bot]"
-#         git add __init__.py
-#         git commit -m "Increment version patch number"
-#         git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+        # Ensure current_version is correctly extracted
+        echo "Extracted current_version: $current_version"
+        current_version=${current_version//\'/}
+        #echo $current_version
+
+        if [ -z "$current_version" ]; then
+          echo "Error: Unable to extract the current version."
+          exit 1
+        fi
+
+        # Increment the patch version
+        new_version=$(echo $current_version | awk -F. '{printf("%d.%d.%d", $1, $2, $3+1)}')
+        #echo $new_version
+
+        # Create new version info with single quotes around each numeric value
+        new_version_info=$(echo $new_version | awk -F. '{printf("\x27%d\x27, \x27%d\x27, \x27%d\x27", $1, $2, $3)}')
+        #echo $new_version_info
+
+        # Update the __init__.py file with the new version info
+        echo -n "Before: " && grep "^__version_info__" __init__.py
+        sed -i -E "s/^__version_info__ = \(.*\)/__version_info__ = \($new_version_info\)/" __init__.py
+        echo -n "After:  " && grep "^__version_info__" __init__.py
+
+    - name: Commit and push version increment
+      env:
+        TOKEN: ${{ secrets.ACTIONS_PAT }}
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add __init__.py
+        git commit -m "Increment version patch number"
+        git push https://x-access-token:${{ secrets.ACTIONS_PAT }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
