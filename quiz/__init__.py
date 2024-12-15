@@ -7,10 +7,10 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 __author__ = "Michael McGarrah <mcgarrah@gmail.com>"
 __email__ = "mcgarrah@gmail.com"
 
-__version_info__ = ('0', '1', '9')
+__version_info__ = ('0', '1', '10')
 __version__ = '.'.join(__version_info__)
 
-__build_date__ = '2024-12-15-23-28-27'
+__build_date__ = '2024-12-15-23-35-59'
 
 __all__ = [
     "__author__",
