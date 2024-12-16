@@ -54,11 +54,11 @@
     - [ ] Check out PythonAnywhere, they have a free tier allowing you to host a website with Flask/MySQL. (2 years ago)
     - [ ] Definitely has a free MySQL database for persistence
     - [ ] Definitely has a free webapp deployment for Python
-    - [ ] Github Action for PAW via API and Token - https://github.com/umuttopalak/pythonanywhere-deploy-action
+    - [ ] [Github Action for PAW via API and Token](https://github.com/umuttopalak/pythonanywhere-deploy-action)
     - [ ] [Reload pythonanywhere webapp](https://github.com/marketplace/actions/reload-pythonanywhere-webapp)
-    - [ ] https://medium.com/@aadibajpai/deploying-to-pythonanywhere-via-github-6f967956e664 Webhook based deployment
+    - [ ] [Webhook based deployment](https://medium.com/@aadibajpai/deploying-to-pythonanywhere-via-github-6f967956e664)
     - [ ] Beware, the free storage limit is 500MB
-  - [ ] Render https://render.com/ (free tier applications go to sleep after 15 minutes of inactivity)
+  - [ ] [Render](https://render.com/) (free tier applications go to sleep after 15 minutes of inactivity)
     - [ ] PostgreSQL included in free tier
     - [ ] 100GB bandwidth
     - [ ] Managed Redis included
@@ -81,7 +81,6 @@
     - [ ] Credit per month with cut off...
     - [ ] Free tier has custom domains
     - [ ] No native SQL database but does have third party options
-    - [ ] 
   - [ ] MORE TO COME
 
 High level features to add
