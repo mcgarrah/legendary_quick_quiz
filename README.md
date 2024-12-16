@@ -4,16 +4,68 @@ Certification Timed Multiple Choice Quiz WebApp
 
 This application is a fully-fledged, dynamic quiz platform built using Flask, a lightweight web framework for Python. Here's a breakdown of its key features and functionalities.
 
+## Features
+
+1. Multiple Quiz Categories:
+
+   * The application supports multiple quiz categories, allowing users to select from different topics such as General, Science, and History.
+
+   * Users can navigate to a specific category and take quizzes within that category.
+
+2. Configurable Settings:
+
+   * Admins can configure the number of questions per quiz session and the quiz timer duration.
+
+   * Settings are stored in an SQLite database and can be updated through a settings page.
+
+3. Dynamic Content Rendering:
+
+   * The application uses HTML templates to render dynamic content. It leverages Jinja2 templating to insert data from the backend into the HTML pages.
+
+   * Templates include placeholders for questions, options, and other content that changes based on the user interaction.
+
+4. Quiz Timer:
+
+   * Each quiz session includes a timer, which counts down from a configurable duration (e.g., 5 minutes).
+
+   * The timer ensures that quizzes are completed within a set time limit.
+
+5. Score Calculation:
+
+   * The application calculates the user's score based on their answers and displays the result at the end of the quiz.
+
+6. Question Management:
+
+   * Admins can add new questions to the quiz through a form on the edit page.
+
+   * Each question includes the question text, multiple options, the correct answer, and additional details about the answer.
+
+7. Data Storage:
+
+   * Questions, categories, and settings are stored in an SQLite database, making it easy to manage and retrieve data.
+
+8. Import Initial Questions:
+
+   * The application can import initial questions from a JSON file, making it easy to bulk upload questions for different categories.
+
+   * The questions import can also come from an external file from your browser that you upload.
+
 ## Known Broken Things
 
 1. Hosted version available to checkout but sometimes need starting up
-2. Bootstrap navbars in template are missing
+2. ~~Bootstrap navbars in template are missing~~ fixed in [v0.1.12](https://github.com/mcgarrah/legendary_quick_quiz/releases/tag/v0.1.12)
 3. JSON Schema checking is not implemented for import/export
 4. Pylint is not passing everywhere but lots better than earlier
 5. Pytest is completely missing
-6. Initial questions are not loaded on deployment and first startup
-7. HTML markup in some questions show up badly... working on options
-8. 
+6. ~~Initial questions are not loaded on deployment and first startup~~ fixed in [v0.1.12](https://github.com/mcgarrah/legendary_quick_quiz/releases/tag/v0.1.12)
+7. HTML markup in some questions show up badly... looking on options
+8. Concurrency bug/issue in questions_export() function
+
+I also have a [TODO.md](https://github.com/mcgarrah/legendary_quick_quiz/blob/main/TODO.md) that I actively use for working on the project.
+
+Someday, I'll likely add a ROADMAP.md file for bigger features or document things I definitely won't be doing for whatever reasons.
+
+I probably need a CONTRIB.md file but with this small and unnoticed, I'm probably okay for now.
 
 ## Setup
 
@@ -92,55 +144,11 @@ Download the ZIP file from Github repository.  Rename the top level directory fr
 
 ### Github Actions Integration
 
-There is a complete section in the docs on how to do the [Github repository automatic deployment](https://docs.cloud.ploomber.io/en/latest/user-guide/github.html#github-deployment) that I read and done. The three dots next to the Application has a "Github Deploy"option on it that includes your exact commands with secrets already in the right place.
+There is a complete section in the docs on how to do the [Github repository automatic deployment](https://docs.cloud.ploomber.io/en/latest/user-guide/github.html#github-deployment) that I read and done. The three dots next to the Application has a "Github Deploy" option on it that includes your exact commands with secrets already in the right place.
 
 This is working in the current deployed enviornment without the manual changes necessary for it to deploy.
 
 You can see the [Legendary Quick Quiz](https://shiny-haze-6453.ploomberapp.io/) at this link. Press start if nobody used it in the last eight (8) hours.
-
-## Features
-
-1. Multiple Quiz Categories:
-
-   * The application supports multiple quiz categories, allowing users to select from different topics such as General, Science, and History.
-
-   * Users can navigate to a specific category and take quizzes within that category.
-
-2. Configurable Settings:
-
-   * Admins can configure the number of questions per quiz session and the quiz timer duration.
-
-   * Settings are stored in an SQLite database and can be updated through a settings page.
-
-3. Dynamic Content Rendering:
-
-   * The application uses HTML templates to render dynamic content. It leverages Jinja2 templating to insert data from the backend into the HTML pages.
-
-   * Templates include placeholders for questions, options, and other content that changes based on the user interaction.
-
-4. Quiz Timer:
-
-   * Each quiz session includes a timer, which counts down from a configurable duration (e.g., 5 minutes).
-
-   * The timer ensures that quizzes are completed within a set time limit.
-
-5. Score Calculation:
-
-   * The application calculates the user's score based on their answers and displays the result at the end of the quiz.
-
-6. Question Management:
-
-   * Admins can add new questions to the quiz through a form on the edit page.
-
-   * Each question includes the question text, multiple options, the correct answer, and additional details about the answer.
-
-7. Data Storage:
-
-   * Questions, categories, and settings are stored in an SQLite database, making it easy to manage and retrieve data.
-
-8. Import Initial Questions:
-
-   * The application can import initial questions from a JSON file, making it easy to bulk upload questions for different categories.
 
 ## Technical Components
 
