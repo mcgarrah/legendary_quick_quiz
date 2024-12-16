@@ -5,7 +5,7 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 
 from flask import Flask
 from flask_migrate import Migrate
-from __init__ import __version__, __build_date__
+from __init__ import __version__, __build_date__, __github_user__, __author__
 
 # Import models and routes using absolute imports
 from modules.models import db, Category, Question
@@ -24,7 +24,10 @@ def inject_version():
     """
     Make __version__ available in all templates
     """
-    return dict(version=__version__, build_date=__build_date__)
+    return dict(version=__version__,
+                build_date=__build_date__,
+                github_user=__github_user__,
+                author=__author__)
 
 # Configure the database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz.db'
@@ -37,7 +40,7 @@ app.app_context().push()
 # Create the database tables if they do not exist
 db.create_all()
 
-# Check if both the Question and Category tables are empty and load initial questions if so 
+# Check if both the Question and Category tables are empty and load initial questions if so
 if not Question.query.first() and not Category.query.first():
     import_questions('initial_questions.json')
 
