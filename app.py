@@ -5,7 +5,7 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 
 from flask import Flask
 from flask_migrate import Migrate
-from . import __version__, __build_date__
+from __init__ import __version__, __build_date__
 
 # Import models and routes using absolute imports
 from modules.models import db, Category, Question
