@@ -1,31 +1,43 @@
 
 # Things to do
 
+Here is my list of todoes for the project.
+
+## High level features to add
+
+- User authentication
+- Persistent score tracking
+- More detailed quiz results
+- Admin interface for quiz creation
+
+## Todo tasks
+
 - [ ] Look into Github Copilot for $10 a month or $100 a year
-- [x] Remove redundant "Manage Categories" button from edit_questions.html
-- [x] Change Home page (select_category.html) to have buttons next to each Category to start quiz (remove listbox)
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
-- [x] Add an app or git-tag version and/or app-date to the footer.html
-- [x] Make the build-date and version automatically update from github actions workflows
-- [x] Make the git-tag version a link to the code in Github
-- [x] Add author and github-user from __init__.py metadata to footer replacing hardcoded author information
-- [ ] Add a dependency checker to the Github repository
-  - [x] Add Dependabot for the Python (PIP) based review of libraries
-  - [ ] Add something for the Bootstrap5 and other CDN components
-  - [ ] [Renovate Bot GitHub Action](https://github.com/marketplace/actions/renovate-bot-github-action) [Github Code](https://github.com/renovatebot/github-action)
+- [ ] Break the edit_question.html page into two parts so we can paginate the Existing Questions section
+- [ ] Think about moving the Settings Duration and Number of Questions to each Category
+- [ ] Add library dependency checkers to the Github repository
+  - [x] Dependabot - Python pip requirements.txt
+  - [x] Dependabot - Github Actions workflows
+  - [ ] Javascript CDN (JS libraries)
+    - [ ] [Cloudflare CDN JS](https://cdnjs.com/libraries/bootstrap)
+    - [ ] [Automatically Update cdnjs Dependencies](https://www.mend.io/blog/automatically-update-cdnjs-dependencies/)
+    - [ ] [Renovate Bot GitHub Action](https://github.com/marketplace/actions/renovate-bot-github-action) [Github Code](https://github.com/renovatebot/github-action)
+      - [ ] [CDNjs Datasource](https://docs.renovatebot.com/modules/datasource/cdnjs/)
+      - [ ] [Automated Dependency Updates for CDN URL](https://docs.renovatebot.com/modules/manager/cdnurl/)
 - [ ] Add Markdown support for the Questions fields
   - [ ] [How To Use Python-Markdown with Flask and SQLite](https://www.digitalocean.com/community/tutorials/how-to-use-python-markdown-with-flask-and-sqlite)
   - [ ] [Flask-Markdown](https://pythonhosted.org/Flask-Markdown/) adds support for Markdown to your Flask application.
-- [ ] Images or diagrams for questions missing
+  - [ ] MathJAX extension would do the scientific things like "`H<sub>2</sub>O`" for water
+- [ ] Images or diagrams for questions missing (probably not going to do this)
   - [ ] Markdown would improve this. A separate field that is optional.
   - [ ] I have not thought this thru... how to save the image binary?!?
 - [ ] PyTest for unittests and webapp automated testing
   - [ ] Simple test of each route with even `curl` would be useful
   - [ ] Simple tests of routes with parameters
-- [ ] Clean up Python Code
-  - [x] Add Pylint Plugin to VSCode
-  - [ ] Add Pylint to Github Actions in repository
-  - [ ] Clean up code to meet pylint basic standards
+  - [ ] Steal from [Django CI](https://github.com/actions/starter-workflows/blob/main/ci/django.yml) for Flask CI Tests
+  - [ ] [Python App CI](https://github.com/actions/starter-workflows/blob/main/ci/python-app.yml) for Flake8 and Pytest
+  - [ ] [Super-Linter CI](https://github.com/actions/starter-workflows/blob/main/ci/super-linter.yml) using [Super-Linter](https://github.com/super-linter/super-linter)
 - [ ] Login Options
   - [ ] Add login system using the database backed with registration
   - [ ] Add login sessions to limit write operations to only logged in users
@@ -81,14 +93,44 @@
     - [ ] Credit per month with cut off...
     - [ ] Free tier has custom domains
     - [ ] No native SQL database but does have third party options
-  - [ ] MORE TO COME
+- [ ] Add Github Actions for Pylint report in repository
 
-High level features to add
+---
 
-- User authentication
-- Persistent score tracking
-- More detailed quiz results
-- Admin interface for quiz creation
+File `.github/workflow/pylint_report.yaml`
+
+``` YAML
+name: All - PyLint Report
+
+on: [push]
+
+jobs:
+  pylint_report:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          python-version: ["3.9", "3.10", "3.11"]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pylint
+    
+    - name: Analyse the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')
+```
+
+---
 
 [McGarrah Copilot Session](https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg)
 
