@@ -16,6 +16,7 @@ __build_date__ = '2024-12-16-05-36-54'
 __all__ = [
     "__author__",
     "__email__",
+    "__github_user__",
     "__version__",
     "__version_info__",
     "__build_date__"

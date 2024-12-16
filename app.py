@@ -24,7 +24,7 @@ def inject_version():
     """
     Make __version__ available in all templates
     """
-    return dict(version=__version__, 
+    return dict(version=__version__,
                 build_date=__build_date__,
                 github_user=__github_user__,
                 author=__author__)
@@ -40,7 +40,7 @@ app.app_context().push()
 # Create the database tables if they do not exist
 db.create_all()
 
-# Check if both the Question and Category tables are empty and load initial questions if so 
+# Check if both the Question and Category tables are empty and load initial questions if so
 if not Question.query.first() and not Category.query.first():
     import_questions('initial_questions.json')
 
