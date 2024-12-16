@@ -10,7 +10,7 @@ __email__ = "mcgarrah@gmail.com"
 __version_info__ = ('0', '1', '14')
 __version__ = '.'.join(__version_info__)
 
-__build_date__ = '2024-12-16-05-16-03'
+__build_date__ = '2024-12-16-05-27-59'
 
 __all__ = [
     "__author__",
