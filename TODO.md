@@ -7,7 +7,7 @@
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [x] Add an app or git-tag version and/or app-date to the footer.html
 - [x] Make the build-date and version automatically update from github actions workflows
-- [ ] Make the git-tag version a link to the code in Github
+- [x] Make the git-tag version a link to the code in Github
 - [ ] Add author from __init__.py metadata to footer replacing hardcoded author information
 - [ ] Add a dependency checker to the Github repository
   - [x] Add Dependabot for the Python (PIP) based review of libraries
