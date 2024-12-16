@@ -2,30 +2,32 @@
 # Things to do
 
 - [ ] Look into Github Copilot for $10 a month or $100 a year
-- [x] Remove redundant "Manage Categories" button from edit_questions.html
-- [x] Change Home page (select_category.html) to have buttons next to each Category to start quiz (remove listbox)
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
-- [x] Add an app or git-tag version and/or app-date to the footer.html
-- [x] Make the build-date and version automatically update from github actions workflows
-- [x] Make the git-tag version a link to the code in Github
-- [x] Add author and github-user from __init__.py metadata to footer replacing hardcoded author information
-- [ ] Add a dependency checker to the Github repository
-  - [x] Add Dependabot for the Python (PIP) based review of libraries
-  - [ ] Add something for the Bootstrap5 and other CDN components
-  - [ ] [Renovate Bot GitHub Action](https://github.com/marketplace/actions/renovate-bot-github-action) [Github Code](https://github.com/renovatebot/github-action)
+- [ ] Break the edit_question.html page into two parts so we can paginate the Existing Questions section
+- [ ] Think about moving the Settings Duration and Number of Questions to each Category
+- [ ] Add library dependency checkers to the Github repository
+  - [x] Dependabot - Python pip requirements.txt
+  - [x] Dependabot - Github Actions workflows
+  - [ ] Javascript CDN (JS libraries)
+    - [ ] [Cloudflare CDN JS](https://cdnjs.com/libraries/bootstrap)
+    - [ ] [Automatically Update cdnjs Dependencies](https://www.mend.io/blog/automatically-update-cdnjs-dependencies/)
+    - [ ] [Renovate Bot GitHub Action](https://github.com/marketplace/actions/renovate-bot-github-action) [Github Code](https://github.com/renovatebot/github-action)
+      - [ ] [CDNjs Datasource](https://docs.renovatebot.com/modules/datasource/cdnjs/)
+      - [ ] [Automated Dependency Updates for CDN URL](https://docs.renovatebot.com/modules/manager/cdnurl/)
 - [ ] Add Markdown support for the Questions fields
   - [ ] [How To Use Python-Markdown with Flask and SQLite](https://www.digitalocean.com/community/tutorials/how-to-use-python-markdown-with-flask-and-sqlite)
   - [ ] [Flask-Markdown](https://pythonhosted.org/Flask-Markdown/) adds support for Markdown to your Flask application.
-- [ ] Images or diagrams for questions missing
+  - [ ] MathJAX extension would do the scientific things like "`H<sub>2</sub>O`" for water
+- [ ] Images or diagrams for questions missing (probably not going to do this)
   - [ ] Markdown would improve this. A separate field that is optional.
   - [ ] I have not thought this thru... how to save the image binary?!?
 - [ ] PyTest for unittests and webapp automated testing
   - [ ] Simple test of each route with even `curl` would be useful
   - [ ] Simple tests of routes with parameters
-- [ ] Clean up Python Code
+- [x] Clean up Python Code
   - [x] Add Pylint Plugin to VSCode
-  - [ ] Add Pylint to Github Actions in repository
-  - [ ] Clean up code to meet pylint basic standards
+  - [x] Clean up code to meet pylint basic standards
+- [ ] Add Github Actions for Pylint report in repository
 - [ ] Login Options
   - [ ] Add login system using the database backed with registration
   - [ ] Add login sessions to limit write operations to only logged in users

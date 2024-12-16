@@ -19,12 +19,12 @@ def import_questions(file_path=None):
     and add them to the database.
     """
     if file_path:
-        with open(file_path) as f:
+        with open(file_path, encoding="utf-8") as f:
             data = json.load(f)
     else:
         file = request.files.get('file')
         if not file:
-            with open('initial_questions.json') as f:
+            with open('initial_questions.json', encoding="utf-8") as f:
                 data = json.load(f)
         else:
             data = json.load(file)
@@ -75,7 +75,7 @@ def export_questions():
 
     # TODO: Fix - File location for temporary file is screwy in webroot.
     # TODO: Figure out a better solution without a concurrency bug.
-    with open('exported_questions.json', 'w') as f:
+    with open('exported_questions.json', 'w', encoding="utf-8") as f:
         json.dump(export_data, f, indent=4)
 
     return send_file('exported_questions.json', as_attachment=True)
@@ -91,7 +91,7 @@ def clear_questions():
     db.session.commit()
 
     # Find and delete categories with no questions
-    unused_categories = Category.query.outerjoin(Question).filter(Question.id == None).all()
+    unused_categories = Category.query.outerjoin(Question).filter(Question.id is None).all()
     for category in unused_categories:
         db.session.delete(category)
 
@@ -113,7 +113,7 @@ def edit_questions():
     """
     categories = Category.query.all()
     questions = Question.query.all()
-    return render_template('edit_questions.html', categories=categories, 
+    return render_template('edit_questions.html', categories=categories,
                            questions=questions, json=json)
 
 def add_question():

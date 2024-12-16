@@ -167,10 +167,10 @@ You can see the [Legendary Quick Quiz](https://shiny-haze-6453.ploomberapp.io/) 
    * Used to render dynamic HTML content.
    * Supports control structures like loops and conditionals for flexible content rendering.
 
-4. Bootstrap4
+4. Bootstrap5
 
    * CSS to make presentation better and consistent
-   * Took a look into [bootstrap-flask](https://bootstrap-flask.readthedocs.io/en/stable/) library and found **Bootstrap-Flask** is actively maintained and uses BS4 while **Flask-Bootstrap** is older and not BS4. The Flask Bootstrap libraries are not significantly better than doing BS4 directly as I have done from a quick read.
+   * Took a look into [bootstrap-flask](https://bootstrap-flask.readthedocs.io/en/stable/) library and found **Bootstrap-Flask** is actively maintained and uses BS4 while **Flask-Bootstrap** is older and not BS4. The Flask Bootstrap libraries are not significantly better than doing BS5 directly as I have done from a quick read.
 
 ## Files and their Roles
 

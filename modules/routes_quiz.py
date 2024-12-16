@@ -36,13 +36,14 @@ def quiz(category_id):
 
         serialized_questions.append({
             'id': question.id,
-            'question': escape(question.question),  # Escape the question text
+            'question': escape(question.question),
             'options': options,
-            'answer': escape(question.answer),  # Escape the correct answer
-            'answer_details': escape(question.answer_details) if question.answer_details else None  # Escape the answer details
+            'answer': escape(question.answer),
+            'answer_details': escape(question.answer_details) if question.answer_details else None
         })
 
-    return render_template('quiz.html', questions=serialized_questions, timer_duration=timer_duration)
+    return render_template('quiz.html', questions=serialized_questions,
+                           timer_duration=timer_duration)
 
 def check_answers():
     """
@@ -51,10 +52,11 @@ def check_answers():
     Calculates the score and returns the results in JSON format.
     """
     data = request.json
-    user_answers = [escape(answer) for answer in data['answers']]  # Escape user answers
+    user_answers = [escape(answer) for answer in data['answers']]
     question_ids = data['question_ids']
     question_ids = [int(qid) for qid in question_ids]
-    questions = {question.id: question for question in Question.query.filter(Question.id.in_(question_ids)).all()}
+    questions = {question.id: question for question in
+                 Question.query.filter(Question.id.in_(question_ids)).all()}
     sorted_questions = [questions[qid] for qid in question_ids]
 
     results = []
@@ -64,11 +66,11 @@ def check_answers():
         if correct:
             score += 1
         results.append({
-            'question': escape(question.question),  # Escape the question text
+            'question': escape(question.question),
             'correct': correct,
-            'answer': escape(question.answer),  # Escape the correct answer
-            'answer_details': escape(question.answer_details) if question.answer_details else None,  # Escape the answer details
-            'user_answer': user_answers[i]  # User answers are already escaped
+            'answer': escape(question.answer),
+            'answer_details': escape(question.answer_details) if question.answer_details else None,
+            'user_answer': user_answers[i]
         })
 
     return jsonify({'score': score, 'total': len(sorted_questions), 'results': results})
