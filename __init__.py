@@ -11,7 +11,7 @@ __github_user__ = "mcgarrah"
 __version_info__ = ('0', '1', '19')
 __version__ = '.'.join(__version_info__)
 
-__build_date__ = '2024-12-16-21-55-32'
+__build_date__ = '2024-12-16-20-45-01'
 
 __all__ = [
     "__author__",
