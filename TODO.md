@@ -68,6 +68,7 @@
     - [ ] Runs for 8 hours before stopping for inactivity - maybe ping self app to keep alive?
     - [ ] Two web apps limit on the free tier
     - [ ] No MySQL that I've found
+    - [ ] app.py must be in the webroot or deployment fails... wow was that painful to learn
   - [ ] ~~Fly.io used to have a free tier (now $5 a month + expense over $5)~~
   - [ ] [SeeNode](https://www.seenode.com/) is new
     - [ ] Has MySQL as an option
