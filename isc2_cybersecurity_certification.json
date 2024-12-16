@@ -1,0 +1,116 @@
+[
+    {
+        "category": "ISC2 Cybersecurity Certification",
+        "questions": [
+            {
+                "question": "Which one of the following is not one of the canons of the (ISC)2 code of ethics?",
+                "options": ["Protect society, the common good, necessary public trust and confidence, and the infrastructure.",
+                            "Avoid any activity that may be perceived as malicious.",
+                            "Act honorably, honestly, justly, responsibly, and legally.", 
+                            "Advance and protect the profession."],
+                "answer": "Avoid any activity that may be perceived as malicious."
+            },
+            {
+                "question": "What security control provides non-repudiation for messages?",
+                "options": ["digital certificates", 
+                            "hash values",
+                            "symmetric encryption", 
+                            "digital signatures"],
+                "answer": "digital signatures"
+            },
+            {
+                "question": "Which one of the following is an example of multifactor authentication?",
+                "options": ["password and security questions",
+                            "retinal scan and fingerprint",
+                            "ID card and PIN",
+                            "ID card and key"],
+                "answer": "ID card and PIN"
+            },
+            {
+                "question": "What law regulates the protection of health information?",
+                "options": ["FERPA",
+                            "PCI DSS",
+                            "GLBA",
+                            "HIPAA"],
+                "answer": "HIPAA"
+            },
+            {
+                "question": "What security tool can be configured to prevent DDoS attacks?",
+                "options": ["switch", "firewall", "endpoint detection and response platform", "intrusion detection system"],
+                "answer": "intrusion detection system"
+            },
+            {
+                "question": "Your organization requires that passwords contain a mixture of uppercase characters, lowercase characters, digits, and symbols. What type of password policy is this?",
+                "options": ["complexity",
+                            "length",
+                            "history",
+                            "reuse"],
+                "answer": "complexity"
+            },
+            {
+                "question": "During what phase of the access control process does a user prove his or her identity?",
+                "options": ["authentication",
+                            "authorization",
+                            "identification",
+                            "remediation"],
+                "answer": "authentication"
+            },
+            {
+                "question": "In what type of attack does the attacker capture and then reuse login information?",
+                "options": ["man-in-the-middle attack",
+                            "Smurf attack",
+                            "DDoS attack",
+                            "replay attack"],
+                "answer": "replay attack"
+            },
+            {
+                "question": "What is the best defense against dumpster diving attacks?",
+                "options": ["anti-malware software",
+                            "clean desk policy",
+                            "data loss prevention tools",
+                            "shredding"],
+                "answer": "shredding"
+            },
+            {
+                "question": "Purchasing an insurance policy is an example of which risk management strategy?",
+                "options": ["risk acceptance",
+                            "risk deterrence",
+                            "risk transference",
+                            "risk mitigation"],
+                "answer": "risk transference"
+            },
+            {
+                "question": "What two factors are used to evaluate a risk?",
+                "options": ["likelihood and impact",
+                            "criticality and likelihood",
+                            "impact and criticality",
+                            "frequency and likelihood"],
+                "answer": "likelihood and impact"
+            },
+            {
+                "question": "What term best describes making a snapshot of a system or application at a point in time for later comparison?",
+                "options": ["baselining",
+                            "documenting",
+                            "diagramming",
+                            "versioning"],
+                "answer": "baselining"
+            },
+            {
+                "question": "What type of security control is designed to stop a security issue from occurring in the first place?",
+                "options": ["recovery",
+                            "administrative",
+                            "preventive",
+                            "detective"],
+                "answer": "preventive"
+            },
+            {
+                "question": "What term describes risks that originate inside the organization?",
+                "options": ["external",
+                            "intranet",
+                            "internal",
+                            "extranet"],
+                "answer": "internal"
+            }
+        ]
+    }
+]
