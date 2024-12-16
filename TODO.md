@@ -24,6 +24,9 @@
 - [ ] PyTest for unittests and webapp automated testing
   - [ ] Simple test of each route with even `curl` would be useful
   - [ ] Simple tests of routes with parameters
+  - [ ] Steal from [Django CI](https://github.com/actions/starter-workflows/blob/main/ci/django.yml) for Flask CI Tests
+  - [ ] [Python App CI](https://github.com/actions/starter-workflows/blob/main/ci/python-app.yml) for Flake8 and Pytest
+  - [ ] [Super-Linter CI](https://github.com/actions/starter-workflows/blob/main/ci/super-linter.yml) using [Super-Linter](https://github.com/super-linter/super-linter)
 - [x] Clean up Python Code
   - [x] Add Pylint Plugin to VSCode
   - [x] Clean up code to meet pylint basic standards
