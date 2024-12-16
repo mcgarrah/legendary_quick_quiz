@@ -2,12 +2,11 @@
 # Things to do
 
 - [ ] Look into Github Copilot for $10 a month or $100 a year
-- [x] Fix bug in delete_question route missing question_id parameter
-- [x] Prevent HTML injection for question and answers, options and details content
 - [ ] Remove redundant "Manage Categories" button from edit_questions.html
 - [ ] Change Home page (select_category.html) to have buttons next to each Category to start quiz (remove listbox)
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [x] Add an app or git-tag version and/or app-date to the footer.html
+- [x] Make the build-date and version automatically update from github actions workflows
 - [ ] Add author from __init__.py metadata to footer replacing hardcoded author information
 - [ ] Add a dependency checker to the Github repository
   - [x] Add Dependabot for the Python (PIP) based review of libraries
