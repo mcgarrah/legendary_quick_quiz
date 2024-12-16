@@ -2,12 +2,12 @@
 # Things to do
 
 - [ ] Look into Github Copilot for $10 a month or $100 a year
-- [x] Fix bug in delete_question route missing question_id parameter
-- [x] Prevent HTML injection for question and answers, options and details content
 - [ ] Remove redundant "Manage Categories" button from edit_questions.html
 - [ ] Change Home page (select_category.html) to have buttons next to each Category to start quiz (remove listbox)
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [x] Add an app or git-tag version and/or app-date to the footer.html
+- [x] Make the build-date and version automatically update from github actions workflows
+- [x] Make the git-tag version a link to the code in Github
 - [ ] Add author from __init__.py metadata to footer replacing hardcoded author information
 - [ ] Add a dependency checker to the Github repository
   - [x] Add Dependabot for the Python (PIP) based review of libraries
@@ -69,6 +69,7 @@
     - [ ] Runs for 8 hours before stopping for inactivity - maybe ping self app to keep alive?
     - [ ] Two web apps limit on the free tier
     - [ ] No MySQL that I've found
+    - [ ] app.py must be in the webroot or deployment fails... wow was that painful to learn
   - [ ] ~~Fly.io used to have a free tier (now $5 a month + expense over $5)~~
   - [ ] [SeeNode](https://www.seenode.com/) is new
     - [ ] Has MySQL as an option

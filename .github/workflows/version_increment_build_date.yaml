@@ -79,3 +79,22 @@ jobs:
         git commit -m "Increment version patch number"
         git pull
         git push https://x-access-token:${ACTIONS_PAT}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+
+    - name: Create and push git tag
+      env:
+        ACTIONS_PAT: ${{ secrets.ACTIONS_PAT }}
+      run: |
+        if [ -z "${ACTIONS_PAT}" ]; then
+          echo "Error: Aborting with missing PAT secret."
+          exit 1
+        fi
+        # Extract the current version
+        new_version=$(awk -F'[(), ]+' '/^__version_info__/ {print $3 "." $4 "." $5}' __init__.py)
+        
+        # Ensure current_version is correctly extracted
+        new_version=${new_version//\'/}
+
+        tag_name="v$new_version"
+        echo "Creating tag: $tag_name"
+        git tag $tag_name
+        git push https://x-access-token:${ACTIONS_PAT}@github.com/${{ github.repository }}.git $tag_name
