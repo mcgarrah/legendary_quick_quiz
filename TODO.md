@@ -3,7 +3,7 @@
 
 - [ ] Look into Github Copilot for $10 a month or $100 a year
 - [x] Remove redundant "Manage Categories" button from edit_questions.html
-- [ ] Change Home page (select_category.html) to have buttons next to each Category to start quiz (remove listbox)
+- [x] Change Home page (select_category.html) to have buttons next to each Category to start quiz (remove listbox)
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [x] Add an app or git-tag version and/or app-date to the footer.html
 - [x] Make the build-date and version automatically update from github actions workflows
