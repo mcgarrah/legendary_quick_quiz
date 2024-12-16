@@ -1,6 +1,17 @@
 
 # Things to do
 
+Here is my list of todoes for the project.
+
+## High level features to add
+
+- User authentication
+- Persistent score tracking
+- More detailed quiz results
+- Admin interface for quiz creation
+
+## Todo tasks
+
 - [ ] Look into Github Copilot for $10 a month or $100 a year
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [ ] Break the edit_question.html page into two parts so we can paginate the Existing Questions section
@@ -27,10 +38,6 @@
   - [ ] Steal from [Django CI](https://github.com/actions/starter-workflows/blob/main/ci/django.yml) for Flask CI Tests
   - [ ] [Python App CI](https://github.com/actions/starter-workflows/blob/main/ci/python-app.yml) for Flake8 and Pytest
   - [ ] [Super-Linter CI](https://github.com/actions/starter-workflows/blob/main/ci/super-linter.yml) using [Super-Linter](https://github.com/super-linter/super-linter)
-- [x] Clean up Python Code
-  - [x] Add Pylint Plugin to VSCode
-  - [x] Clean up code to meet pylint basic standards
-- [ ] Add Github Actions for Pylint report in repository
 - [ ] Login Options
   - [ ] Add login system using the database backed with registration
   - [ ] Add login sessions to limit write operations to only logged in users
@@ -86,14 +93,44 @@
     - [ ] Credit per month with cut off...
     - [ ] Free tier has custom domains
     - [ ] No native SQL database but does have third party options
-  - [ ] MORE TO COME
+- [ ] Add Github Actions for Pylint report in repository
 
-High level features to add
+---
 
-- User authentication
-- Persistent score tracking
-- More detailed quiz results
-- Admin interface for quiz creation
+File `.github/workflow/pylint_report.yaml`
+
+``` YAML
+name: All - PyLint Report
+
+on: [push]
+
+jobs:
+  pylint_report:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          python-version: ["3.9", "3.10", "3.11"]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pylint
+    
+    - name: Analyse the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')
+```
+
+---
 
 [McGarrah Copilot Session](https://copilot.microsoft.com/chats/hVD49LnGBp1iNpjCoorZg)
 
