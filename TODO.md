@@ -8,7 +8,7 @@
 - [x] Add an app or git-tag version and/or app-date to the footer.html
 - [x] Make the build-date and version automatically update from github actions workflows
 - [x] Make the git-tag version a link to the code in Github
-- [ ] Add author from __init__.py metadata to footer replacing hardcoded author information
+- [x] Add author and github-user from __init__.py metadata to footer replacing hardcoded author information
 - [ ] Add a dependency checker to the Github repository
   - [x] Add Dependabot for the Python (PIP) based review of libraries
   - [ ] Add something for the Bootstrap5 and other CDN components
