@@ -32,6 +32,7 @@ Here is my list of todoes for the project.
     - [ ] [Renovate Bot GitHub Action](https://github.com/marketplace/actions/renovate-bot-github-action) [Github Code](https://github.com/renovatebot/github-action)
       - [ ] [CDNjs Datasource](https://docs.renovatebot.com/modules/datasource/cdnjs/)
       - [ ] [Automated Dependency Updates for CDN URL](https://docs.renovatebot.com/modules/manager/cdnurl/)
+      - [ ] [Example Renovate.JSON](https://github.com/Animeboynz/Mihon-Backup-Viewer/blob/main/.github/renovate.json5) from [JsDelivr #26937](https://github.com/renovatebot/renovate/issues/26937)
 - [ ] Add Markdown support for the Questions fields
   - [ ] [How To Use Python-Markdown with Flask and SQLite](https://www.digitalocean.com/community/tutorials/how-to-use-python-markdown-with-flask-and-sqlite)
   - [ ] [Flask-Markdown](https://pythonhosted.org/Flask-Markdown/) adds support for Markdown to your Flask application.
@@ -96,6 +97,7 @@ Here is my list of todoes for the project.
     - [ ] Credit per month with cut off...
     - [ ] Free tier has custom domains
     - [ ] No native SQL database but does have third party options
+- [ ] Add static file management for future CDN [Flask-Static-Digest](https://github.com/nickjj/flask-static-digest)
 - [ ] Add Github Actions for Pylint report in repository
 
 ---
