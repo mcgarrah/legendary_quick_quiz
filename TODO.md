@@ -5,17 +5,24 @@ Here is my list of todoes for the project.
 
 ## High level features to add
 
-- User authentication
-- Persistent score tracking
+- User authentication and authorization
+  - Persistent score tracking
+  - Admin interface for quiz creation
 - More detailed quiz results
-- Admin interface for quiz creation
 
 ## Todo tasks
 
 - [ ] Look into Github Copilot for $10 a month or $100 a year
+- [ ] Documentation
+  - [ ] Add an overview of the Quick Quiz app for end-users in a webpage
+  - [ ] Add inline the FAQ.md to the overview page
+  - [ ] Turn README.md, TODO.md and FAQ.md into Flask routed webpages for application documentation
+  - [ ] [Rendering markdown from Flask](https://dev.to/mrprofessor/rendering-markdown-from-flask-1l41)
+  - [ ] Add a link that renders the FAQ.md as a HTML webpage or add inline to the Doc page
+  - [ ] Add CHANGES.md and maybe ROADMAP.md file
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [ ] Break the edit_question.html page into two parts so we can paginate the Existing Questions section
-- [ ] Think about moving the Settings Duration and Number of Questions to each Category
+- [ ] Consider associating the Settings Duration and Number of Questions to each Quiz Category
 - [ ] Add library dependency checkers to the Github repository
   - [x] Dependabot - Python pip requirements.txt
   - [x] Dependabot - Github Actions workflows
@@ -25,6 +32,7 @@ Here is my list of todoes for the project.
     - [ ] [Renovate Bot GitHub Action](https://github.com/marketplace/actions/renovate-bot-github-action) [Github Code](https://github.com/renovatebot/github-action)
       - [ ] [CDNjs Datasource](https://docs.renovatebot.com/modules/datasource/cdnjs/)
       - [ ] [Automated Dependency Updates for CDN URL](https://docs.renovatebot.com/modules/manager/cdnurl/)
+      - [ ] [Example Renovate.JSON](https://github.com/Animeboynz/Mihon-Backup-Viewer/blob/main/.github/renovate.json5) from [JsDelivr #26937](https://github.com/renovatebot/renovate/issues/26937)
 - [ ] Add Markdown support for the Questions fields
   - [ ] [How To Use Python-Markdown with Flask and SQLite](https://www.digitalocean.com/community/tutorials/how-to-use-python-markdown-with-flask-and-sqlite)
   - [ ] [Flask-Markdown](https://pythonhosted.org/Flask-Markdown/) adds support for Markdown to your Flask application.
@@ -56,10 +64,6 @@ Here is my list of todoes for the project.
 - [ ] JSON Schema for quiz files
   - [ ] Read [Understanding JSON Schema](https://json-schema.org/understanding-json-schema)
   - [ ] Read [python-jsonschema](https://python-jsonschema.readthedocs.io/en/latest/) library
-- [ ] Documentation
-  - [ ] Add CHANGES.md and maybe ROADMAP.md file
-  - [ ] Turn README.md, TODO.md and FAQ.md into Flask route webpages for application documentation
-  - [ ] [Rendering markdown from Flask](https://dev.to/mrprofessor/rendering-markdown-from-flask-1l41)
 - [ ] Alternate Hosting
   - [ ] Pythonanywhere.com (reload every 3 months?!?)
     - [ ] Includes MySQL on free tier? Does it include options for CICD from Github repository?
@@ -93,6 +97,7 @@ Here is my list of todoes for the project.
     - [ ] Credit per month with cut off...
     - [ ] Free tier has custom domains
     - [ ] No native SQL database but does have third party options
+- [ ] Add static file management for future CDN [Flask-Static-Digest](https://github.com/nickjj/flask-static-digest)
 - [ ] Add Github Actions for Pylint report in repository
 
 ---
