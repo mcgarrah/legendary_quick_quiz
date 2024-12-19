@@ -14,21 +14,6 @@ Here is my list of todoes for the project.
 
 ## Todo tasks
 
-- [x] Associate the Settings Duration and Number of Questions to each Quiz Category
-  - [x] update models to move the duration and count
-  - [x] migrate the category functions from routes_main.py to routes_category.py
-  - [x] update import/export/delete Questions for new category settings
-  - [x] enhance Edit Category to include the timer_duration and questions_per_quiz
-  - [x] Make timer and count editable on existing category
-  - [x] Add a save button that only activates if a field changes for Edit Category
-  - [x] Add a header for the Existing Categories grid
-
-Migrating from top level to Quiz Category is mid-cycle. So this is not ready for a commit yet.
-
-@mcgarrah is being messy on this update as he learns a bit about **flask_migrate**.
-
----
-
 - [ ] Update Question data struct to use "list of index values" to correct answer in options list
   - This enables multi-choice questions
   - It reduces size of JSON file
@@ -40,7 +25,7 @@ Migrating from top level to Quiz Category is mid-cycle. So this is not ready for
   - Allows for categories of questions like certification exam groupings
   - [CCSP Outline](https://www.isc2.org/certifications/ccsp/ccsp-certification-exam-outline)
     - CCSP Examination Information - Quiz needs total duration, number of total questions, passing score
-    - CCSP Examination Weights - list of domains/categories, and percentages or counts of questions for each domain 
+    - CCSP Examination Weights - list of domains/categories, and percentages or counts of questions for each domain
 
 ---
 
