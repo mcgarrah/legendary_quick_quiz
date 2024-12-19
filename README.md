@@ -148,10 +148,6 @@ Download the ZIP file from Github repository.  Rename the top level directory fr
 
 *Note*: The directory rename might not be necessary now as I fixed the repository name to use underscores and not dashes.
 
-*Note*: The `.flaskenv` might not be necessary to remove either.
-
-*Note*: Almost positive that removing the `.vscode` directory is unnecessary.
-
 ### Github Actions Integration
 
 There is a complete section in the docs on how to do the [Github repository automatic deployment](https://docs.cloud.ploomber.io/en/latest/user-guide/github.html#github-deployment) that I read and done. The three dots next to the Application has a "Github Deploy" option on it that includes your exact commands with secrets already in the right place.
