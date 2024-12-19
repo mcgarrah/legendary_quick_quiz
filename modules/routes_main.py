@@ -5,12 +5,10 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 """
 
 # TODO: Break up the functions in this file into separate files
-#   Questions import/export/clear
 #   Question CRUD Add/Del/Modify (edit should become edit_question)
-#   Category edit/add/delete and display in home() that should be renamed
 
 import json
-from flask import render_template, request, redirect, url_for, send_file
+from flask import render_template, request, redirect, url_for
 from modules.models import db, Category, Question
 
 def home():
@@ -54,32 +52,3 @@ def delete_question(question_id):
     db.session.delete(question)
     db.session.commit()
     return redirect(url_for('edit_questions'))
-
-def edit_categories():
-    """
-    Renders the page for editing categories.
-    """
-    categories = Category.query.all()
-    return render_template('edit_categories.html', categories=categories)
-
-def add_category():
-    """
-    Adds a new category to the database.
-    """
-    new_category_name = request.form['category_name']
-    new_category = Category(name=new_category_name)
-    db.session.add(new_category)
-    db.session.commit()
-    return redirect(url_for('edit_categories'))
-
-def delete_category(category_id):
-    """
-    Deletes a category and its associated questions by ID.
-    """
-    category = Category.query.get_or_404(category_id)
-    # Delete all questions associated with the category
-    Question.query.filter_by(category_id=category_id).delete()
-    # Delete the category
-    db.session.delete(category)
-    db.session.commit()
-    return redirect(url_for('edit_categories'))

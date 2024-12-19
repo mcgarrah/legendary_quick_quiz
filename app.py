@@ -9,8 +9,8 @@ from flask_migrate import Migrate
 # Import models and routes using absolute imports
 from modules.models import db, Category, Question
 from modules.routes_main import ( add_question, delete_question,
-                                  home, edit_questions,
-                                  edit_categories, add_category, delete_category )
+                                  home, edit_questions )
+from modules.routes_categories import edit_categories, add_category, update_category, delete_category
 from modules.routes_quiz import quiz, check_answers
 from modules.routes_settings import settings, import_questions, export_questions, clear_questions
 
@@ -68,6 +68,7 @@ app.add_url_rule('/settings', view_func=settings)
 # Category routes
 app.add_url_rule('/add_category', methods=['POST'], view_func=add_category)
 app.add_url_rule('/edit_categories', view_func=edit_categories)
+app.add_url_rule('/update_category/<int:category_id>', methods=['POST'], view_func=update_category)
 app.add_url_rule('/delete_category/<int:category_id>', methods=['POST'], view_func=delete_category)
 
 if __name__ == "__main__":
