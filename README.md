@@ -113,6 +113,16 @@ If using VSCode, then add this `launch.json` file to a sub-directory called `.vs
 }
 ```
 
+## Debugging
+
+``` console
+sudo apt install sqlite3
+sqlite3 ./instance/quiz.db
+> .help
+> .schema category
+> .quit
+```
+
 ### Python Libraries
 
 Later when checking if libraries need updating...

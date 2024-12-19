@@ -6,13 +6,44 @@ Here is my list of todoes for the project.
 ## High level features to add
 
 - User authentication and authorization
-  - Persistent score tracking
-  - Admin interface for quiz creation
-- More detailed quiz results
+  - Persistent progress tracking for users
+  - Admin role and interface for quiz creation
+- More detailed quiz results and reporting
+- Better data structures for JSON
+- Consider a Quiz object as a collection of Categories
 
 ## Todo tasks
 
-- [ ] Look into Github Copilot for $10 a month or $100 a year
+- [ ] Associate the Settings Duration and Number of Questions to each Quiz Category
+  - [ ] migrate the category functions from routes_main.py to routes_category.py
+  - [ ] enhance Edit Category to include the timer_duration and questions_per_quiz
+  - [ ] Make timer and count editable on existing category
+  - [ ] Add a save button that only activates if a field changes
+
+Migrating from top level to Quiz Category is mid-cycle. So this is not ready for a commit yet.
+
+@mcgarrah is being messy on this update as he learns a bit about **flask_migrate**.
+
+---
+
+- [ ] Update Question data struct to use "list of index values" to correct answer in options list
+  - This enables multi-choice questions
+  - It reduces size of JSON file
+  - check_answers() will need revising
+
+---
+
+- [ ] Look into Github Projects to manage this TODO list and requirements
+- [ ] [Github Projects Quickstart](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/quickstart-for-projects)
+- [ ] Roadmap for longer term features
+
+---
+
+- [ ] Look into Github Copilot for \$10 a month or \$100 a year
+  - [ ] Free Github Copilot with limitation make this easier to try out
+
+---
+
 - [ ] Documentation
   - [ ] Add an overview of the Quick Quiz app for end-users in a webpage
   - [ ] Add inline the FAQ.md to the overview page
@@ -20,9 +51,11 @@ Here is my list of todoes for the project.
   - [ ] [Rendering markdown from Flask](https://dev.to/mrprofessor/rendering-markdown-from-flask-1l41)
   - [ ] Add a link that renders the FAQ.md as a HTML webpage or add inline to the Doc page
   - [ ] Add CHANGES.md and maybe ROADMAP.md file
+
+---
+
 - [ ] Make the "Correct: Yes/No" either red or green and bold in the submitQuiz() function in quiz.html
 - [ ] Break the edit_question.html page into two parts so we can paginate the Existing Questions section
-- [ ] Consider associating the Settings Duration and Number of Questions to each Quiz Category
 - [ ] Add library dependency checkers to the Github repository
   - [x] Dependabot - Python pip requirements.txt
   - [x] Dependabot - Github Actions workflows

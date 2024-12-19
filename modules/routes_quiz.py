@@ -5,22 +5,21 @@ import json
 import random
 from markupsafe import escape
 from flask import render_template, request, jsonify
-from modules.models import Question, Setting
+from modules.models import Category, Question
 
 def quiz(category_id):
     """
     Retrieves questions based on the category ID.
-    Reads timer and number of questions settings.
+    Reads timer and number of questions settings from the Category model.
     Randomly shuffles the questions.
     Conditionally shuffles the question options based on the no_shuffle attribute.
     Serializes the questions and renders the quiz template.
     """
-    questions = Question.query.filter_by(category_id=category_id).all()
-    timer_setting = Setting.query.filter_by(name='timer_duration').first()
-    num_questions_setting = Setting.query.filter_by(name='num_questions').first()
-    timer_duration = int(timer_setting.value) if timer_setting else 300
-    num_questions = int(num_questions_setting.value) if num_questions_setting else 5
+    category = Category.query.get_or_404(category_id)
+    timer_duration = category.timer_duration
+    num_questions = category.questions_per_quiz
 
+    questions = Question.query.filter_by(category_id=category_id).all()
     random.shuffle(questions)
     selected_questions = questions[:num_questions]
 

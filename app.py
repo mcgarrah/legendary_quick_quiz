@@ -5,16 +5,16 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 
 from flask import Flask
 from flask_migrate import Migrate
-from __init__ import __version__, __build_date__, __github_user__, __author__
 
 # Import models and routes using absolute imports
 from modules.models import db, Category, Question
-from modules.routes_main import ( import_questions, export_questions, clear_questions,
-                                        add_question, delete_question,
-                                        home, edit_questions,
-                                        edit_categories, add_category, delete_category )
+from modules.routes_main import ( add_question, delete_question,
+                                  home, edit_questions,
+                                  edit_categories, add_category, delete_category )
 from modules.routes_quiz import quiz, check_answers
-from modules.routes_settings import settings, update_settings
+from modules.routes_settings import settings, import_questions, export_questions, clear_questions
+
+from __init__ import __version__, __build_date__, __github_user__, __author__
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -64,7 +64,6 @@ app.add_url_rule('/delete_question/<int:question_id>', methods=['POST'], view_fu
 
 # Settings routes
 app.add_url_rule('/settings', view_func=settings)
-app.add_url_rule('/update_settings', methods=['POST'], view_func=update_settings)
 
 # Category routes
 app.add_url_rule('/add_category', methods=['POST'], view_func=add_category)
