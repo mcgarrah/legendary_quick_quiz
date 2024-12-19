@@ -1,4 +1,4 @@
-name: Main - Ploomber Cloud
+name: Ploomber Cloud
 
 on:
   push:
