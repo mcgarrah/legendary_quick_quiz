@@ -8,17 +8,20 @@ Here is my list of todoes for the project.
 - User authentication and authorization
   - Persistent progress tracking for users
   - Admin role and interface for quiz creation
-- More detailed quiz results and reporting
-- Better data structures for JSON
-- Consider a Quiz object as a collection of Categories
+- Detailed quiz results and reporting
+- Review data structures for JSON
+- Consider a Quiz model as a collection of Category models
 
 ## Todo tasks
 
 - [ ] Associate the Settings Duration and Number of Questions to each Quiz Category
-  - [ ] migrate the category functions from routes_main.py to routes_category.py
+  - [x] update models to move the duration and count
+  - [x] migrate the category functions from routes_main.py to routes_category.py
+  - [x] update import/export/delete Questions for new category settings
   - [ ] enhance Edit Category to include the timer_duration and questions_per_quiz
   - [ ] Make timer and count editable on existing category
   - [ ] Add a save button that only activates if a field changes
+  - [ ] 
 
 Migrating from top level to Quiz Category is mid-cycle. So this is not ready for a commit yet.
 
@@ -30,6 +33,14 @@ Migrating from top level to Quiz Category is mid-cycle. So this is not ready for
   - This enables multi-choice questions
   - It reduces size of JSON file
   - check_answers() will need revising
+
+---
+
+- [ ] Design a Quiz model as a collection of Category models
+  - Allows for categories of questions like certification exam groupings
+  - [CCSP Outline](https://www.isc2.org/certifications/ccsp/ccsp-certification-exam-outline)
+    - CCSP Examination Information - Quiz needs total duration, number of total questions, passing score
+    - CCSP Examination Weights - list of domains/categories, and percentages or counts of questions for each domain 
 
 ---
 

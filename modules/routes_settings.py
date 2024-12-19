@@ -3,7 +3,7 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 """
 import json
 from flask import render_template, request, redirect, url_for, make_response
-from modules.models import db, Question
+from modules.models import db, Question, Category
 
 def settings():
     """
@@ -68,15 +68,12 @@ def export_questions():
 
         export_data.append({
             'category': category.name,
+            'timer_duration': category.timer_duration,
+            'questions_per_quiz': category.questions_per_quiz,
             'questions': questions_list
         })
 
-    # TOOD: Verify below code matches this section of code commented out
-    # with open('exported_questions.json', 'w', encoding="utf-8") as f:
-    #     json.dump(export_data, f, indent=4)
-    # return send_file('exported_questions.json', as_attachment=True)
-
-    response = make_response(json.dump(export_data, f, indent=4))
+    response = make_response(json.dumps(export_data, indent=4))
     response.headers['Content-Disposition'] = 'attachment; filename=exported_questions.json'
     response.mimetype = 'application/json'
     return response
