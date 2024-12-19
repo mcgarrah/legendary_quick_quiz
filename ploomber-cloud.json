@@ -1,5 +1,5 @@
 {
-    "id": "shiny-haze-6453",
+    "id": "falling-mud-9979",
     "type": "flask",
     "labels": [
         "Flask",
@@ -8,8 +8,9 @@
         "Python"
     ],
     "resources": {
-        "cpu": 0.5,
-        "ram": 1,
+        "cpu": 1.0,
+
+        "ram": 2,
         "gpu": 0
     }
 }
