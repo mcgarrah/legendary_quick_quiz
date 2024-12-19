@@ -14,10 +14,14 @@ class Category(db.Model):
         id (int): Primary key for the category.
         name (str): Name of the category.
         questions (list): List of questions associated with the category.
+        timer_duration (int): Duration of the quiz timer in seconds.
+        questions_per_quiz (int): Number of questions per quiz.
     """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     questions = db.relationship('Question', backref='category', lazy=True)
+    timer_duration = db.Column(db.Integer, nullable=False, default=300)  # Default to 5 minutes
+    questions_per_quiz = db.Column(db.Integer, nullable=False, default=10)  # Default to 10 questions
 
 class Question(db.Model):
     """
@@ -40,17 +44,3 @@ class Question(db.Model):
     answer_details = db.Column(db.String(1000), nullable=True)
     no_shuffle = db.Column(db.Boolean, default=False)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
-
-class Setting(db.Model):
-    """
-    Setting Model
-
-    Represents a configuration setting for the application.
-    Attributes:
-        id (int): Primary key for the setting.
-        name (str): Name of the setting.
-        value (str): Value of the setting.
-    """
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    value = db.Column(db.String(50), nullable=False)
