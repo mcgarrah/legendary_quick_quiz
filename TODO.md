@@ -14,15 +14,14 @@ Here is my list of todoes for the project.
 
 ## Todo tasks
 
-- [ ] Associate the Settings Duration and Number of Questions to each Quiz Category
+- [x] Associate the Settings Duration and Number of Questions to each Quiz Category
   - [x] update models to move the duration and count
   - [x] migrate the category functions from routes_main.py to routes_category.py
   - [x] update import/export/delete Questions for new category settings
   - [x] enhance Edit Category to include the timer_duration and questions_per_quiz
   - [x] Make timer and count editable on existing category
-  - [ ] Add a save button that only activates if a field changes for Edit Category
-  - [ ] Add a header for the Existing Categories grid
-  - [ ] TBD
+  - [x] Add a save button that only activates if a field changes for Edit Category
+  - [x] Add a header for the Existing Categories grid
 
 Migrating from top level to Quiz Category is mid-cycle. So this is not ready for a commit yet.
 
