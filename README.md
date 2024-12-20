@@ -154,7 +154,7 @@ There is a complete section in the docs on how to do the [Github repository auto
 
 This is working in the current deployed enviornment without the manual changes necessary for it to deploy.
 
-You can see the [Legendary Quick Quiz](https://shiny-haze-6453.ploomberapp.io/) at this link. Press start if nobody used it in the last eight (8) hours.
+You can see the [Legendary Quick Quiz](https://falling-mud-9979.ploomberapp.io/) at this link. Press start if nobody used it in the last eight (8) hours.
 
 ## Technical Components
 
