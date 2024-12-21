@@ -156,6 +156,10 @@ This is working in the current deployed enviornment without the manual changes n
 
 You can see the [Legendary Quick Quiz](https://falling-mud-9979.ploomberapp.io/) at this link. Press start if nobody used it in the last eight (8) hours.
 
+## Hosting on Koyeb
+
+[Legendary Quick Quiz](https://plain-gaby-mcgarrah-a35e7264.koyeb.app/) is also hosted on Koyeb as a secondary test site. Using it exposed some issues in my setup and forced `gunicorn` which is a good thing. I'm using there integration to Github but they also have a Github Actions method as well.
+
 ## Technical Components
 
 1. Flask:
