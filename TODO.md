@@ -14,6 +14,10 @@ Here is my list of todoes for the project.
 
 ## Todo tasks
 
+- [ ] Update vscode launch to use gunicorn if it makes sense
+
+- Koyeb hosted deployment
+
 - [ ] Update Question data struct to use "list of index values" to correct answer in options list
   - This enables multi-choice questions
   - It reduces size of JSON file
@@ -109,12 +113,25 @@ Here is my list of todoes for the project.
     - [ ] Managed Redis included
     - [ ] Git CICD deployments
     - [ ] Cronjobs as a feature
+  - [ ] [Koyeb](https://www.koyeb.com/pricing#plans)
+    - [ ] Free tier
+    - [ ] 1 x web service
+    - [ ] 1 x postgresql
+    - [ ] 5 x custom domains
+    - [ ] Auto-magic for build seemed to work, but Deployment failed...
+    - [ ] [Deploy a Flask application on Koyeb](https://github.com/koyeb/example-flask)
+    - [ ] [Deploy a Python Flask App](https://www.koyeb.com/docs/deploy/flask)
+    - [ ] My bad on deployment likely due to missing `gunicorn` not needed by Ploomber
   - [ ] Ploomber is what I'm using right now
     - [ ] Has a Github Actions CICD option
     - [ ] Runs for 8 hours before stopping for inactivity - maybe ping self app to keep alive?
     - [ ] Two web apps limit on the free tier
     - [ ] No MySQL that I've found
     - [ ] app.py must be in the webroot or deployment fails... wow was that painful to learn
+    - [ ] Keeping this because of the AI/ML parts look interesting
+    - [ ] Maximum number of apps: 2
+    - [ ] Idle apps are stopped:	After 4 hours of inactivity
+    - [ ] Idle apps are removed:	After 1 week of inactivity
   - [ ] ~~Fly.io used to have a free tier (now $5 a month + expense over $5)~~
   - [ ] [SeeNode](https://www.seenode.com/) is new
     - [ ] Has MySQL as an option
