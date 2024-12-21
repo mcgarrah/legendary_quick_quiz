@@ -8,8 +8,7 @@ from flask_migrate import Migrate
 
 # Import models and routes using absolute imports
 from modules.models import db, Category, Question
-from modules.routes_main import ( add_question, delete_question,
-                                  home, edit_questions )
+from modules.routes_main import add_question, delete_question, home, edit_questions
 from modules.routes_categories import edit_categories, add_category, update_category, delete_category
 from modules.routes_quiz import quiz, check_answers
 from modules.routes_settings import settings, import_questions, export_questions, clear_questions
@@ -31,18 +30,21 @@ def inject_version():
 
 # Configure the database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz.db'
-migrate = Migrate(app, db)
 
 # Initialize the database with the app context
 db.init_app(app)
-app.app_context().push()
 
-# Create the database tables if they do not exist
-db.create_all()
+# Setup Migrations
+migrate = Migrate(app, db)
 
-# Check if both the Question and Category tables are empty and load initial questions if so
-if not Question.query.first() and not Category.query.first():
-    import_questions('initial_questions.json')
+# Push the app context before creating the tables
+with app.app_context():
+    # Create the database tables if they do not exist
+    db.create_all()
+
+    # Check if both the Question and Category tables are empty and load initial questions if so
+    if not Question.query.first() and not Category.query.first():
+        import_questions('initial_questions.json')
 
 # Define the application routes
 # Home page route

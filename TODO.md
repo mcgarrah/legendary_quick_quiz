@@ -14,6 +14,10 @@ Here is my list of todoes for the project.
 
 ## Todo tasks
 
+- [ ] Update vscode launch to use gunicorn if it makes sense
+
+- Koyeb hosted deployment
+
 - [ ] Update Question data struct to use "list of index values" to correct answer in options list
   - This enables multi-choice questions
   - It reduces size of JSON file
