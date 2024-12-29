@@ -1,7 +1,7 @@
 
 # Things to do
 
-Here is my list of todoes for the project.
+Here is my list of to does for the project.
 
 ## High level features to add
 
@@ -10,13 +10,157 @@ Here is my list of todoes for the project.
   - Admin role and interface for quiz creation
 - Detailed quiz results and reporting
 - Review data structures for JSON
+- Migrate this TODO.md to Github Projects, Issues and Features
 - Consider a Quiz model as a collection of Category models
 
 ## Todo tasks
 
-- [x] Update vscode launch to use `gunicorn` if it makes sense
+- [x] Koyeb Free Tier Hosting
+  - [x] Create a Free Tier Web Service for Python Flask
+  - [x] Deployment working with `gunicorn` and `Profile`
+  - [ ] Create a Free Tier PG Database
+  - [ ] Connect PG and Web together
 
-- [x] Koyeb hosted deployment working with `gunicorn`
+- Use Alchemy ORM to abstract the SQLite and PG database for different deployments
+
+---
+
+- [ ] Consider the JSON structs for Questions, Category and Quiz
+  - [ ] Questions (types: multiple choice, 
+    - [ ] **Multiple choice** questions are composed of one question (stem) with multiple possible answers (choices), including the correct answer and several incorrect answers (distractors).
+      - [ ] Single correct.  In this scenario, there is one correct answer and several distractors.
+      - [ ] Multiple correct, single selection.  In this scenario, there are multiple correct options but students may only select one. 
+      - [ ] Multiple correct, multiple selection.  In this scenario, there are multiple correct options and students must select all of the correct options to earn full points.
+    - [ ] **True/false** questions are only composed of a statement. Students respond to the questions by indicating whether the statement is true or false.
+    - [ ] **Fill in the Blank** assessment type will present a statement with words or phrases omitted.  The student is expected to enter the appropriate words, terms, or phrases into each "blank" text box. Can also include using a selection lists of choices.
+
+---
+
+- [ ] JSON format proposals for review
+
+``` json
+[
+    {
+        "category": "General",
+        "questions": [
+            {
+                "question": "What is the capital of France?",
+                "options": ["Berlin", "Paris", "Rome", "Madrid"],
+                "answer": [1],
+                "answer_details": "Paris is the capital and most populous city of France."
+            },
+            {
+                "question": "Which planet is known as the Red Planet?",
+                "options": ["Earth", "Venus", "Mars", "Jupiter"],
+                "answer": [2],
+                "answer_details": "Mars is known as the Red Planet because of its reddish appearance."
+            },
+            {
+                "question": "Which of these are primary colors?",
+                "options": ["Red", "Green", "Blue", "Purple"],
+                "answer": [0, 1, 2]
+            },
+            {
+                "question": "South Africa has one capital.",
+                "options": ["True", "False"],
+                "answer": [1],
+                "no_shuffle": true,
+                "answer_details": "South Africa has three: Pretoria, Cape Town, and Bloemfontein."
+            },
+            {
+                "question": "Greenland is the largest island in the world.",
+                "options": ["True", "False"],
+                "answer": [0],
+                "no_shuffle": true,
+                "answer_details": "The island of Greenland is approximately 836,330 square miles - three times the size of Texas."
+            }
+        ]
+    }
+]
+```
+
+A zero based index lookup of correct values against the options list. Having a list of numeric values allows for multiple correct answers.
+
+In the webui for the questions and options, a checkbox next to options for a correctness booleans for each option, would be easy way to show correct answers and allow for lists with index values.
+
+If I shuffle the options, then I have to correctly shuffle the answer list of index values as well. That is an upside to the next struct below.
+
+``` json
+[
+    {
+        "category": "General",
+        "questions": [
+            {
+                "question": "What is the capital of France?",
+                "options": [
+                    {"text": "Berlin", "correct": false},
+                    {"text": "Paris", "correct": true},
+                    {"text": "Rome", "correct": false},
+                    {"text": "London", "correct": false}
+                ],
+                "answer_details": "Paris is the capital and most populous city of France."
+            },
+            {
+                "question": "Which planet is known as the Red Planet?",
+                "options": [
+                    {"text": "Earth"}
+                    {"text": "Venus"},
+                    {"text": "Mars", "correct": true},
+                    {"text": "Jupiter"}
+                ],
+                "answer_details": "Mars is known as the Red Planet because of its reddish appearance."
+            },
+            {
+                "question": "Which of these are primary colors?",
+                "options": [
+                    {"text": "Red", "correct": true},
+                    {"text": "Green", "correct": true},
+                    {"text": "Blue", "correct": true},
+                    {"text": "Purple", "correct": false}
+                ]
+            },
+            {
+                "question": "What is the speed of light in a vacuum?",
+                "options": [
+                  {"text": "299,792,458 m/s"},
+                  {"text": "300,000 km/s"},
+                  {"text": "186,282 miles/s"},
+                  {"text": "All of the above", "correct": true}
+                ],
+                "no_shuffle": true
+            },
+            {
+                "question": "South Africa has one capital.",
+                "options": [
+                    {"text": "True", "correct": false},
+                    {"text": "False", "correct": true}
+                ]
+                "no_shuffle": true,
+                "answer_details": "South Africa has three: Pretoria, Cape Town, and Bloemfontein."
+            },
+            {
+                "question": "Greenland is the largest island in the world.",
+                "options": [
+                    {"text": "True", "correct": true},
+                    {"text": "False"}
+                ]
+                "no_shuffle": true,
+                "answer_details": "The island of Greenland is approximately 836,330 square miles - three times the size of Texas."
+            }
+        ]
+    }
+]
+```
+
+If no entry exists for `"correct"` attribute of an `options` entry then defaults to `false`.
+
+The default for `"no_shuffle"` attribute is `false` and you have to force shuffling of the options presented.
+
+More logic in the Question presentation code is required to trace out the number of correct answers. Radio buttons vs Check boxes in the presentation. Also, the check_answers becomes more complex as well.
+
+The existing webui for question creation only allows for a minimum of four options and cannot produce True/False questions.
+
+Evaluation of the truth after a shuffle of the options is easier if the correctness value is kept with the option.
 
 ---
 
@@ -115,25 +259,26 @@ Here is my list of todoes for the project.
     - [ ] Managed Redis included
     - [ ] Git CICD deployments
     - [ ] Cronjobs as a feature
-  - [ ] [Koyeb](https://www.koyeb.com/pricing#plans)
-    - [ ] Free tier
-    - [ ] 1 x web service
-    - [ ] 1 x postgresql
-    - [ ] 5 x custom domains
-    - [ ] Auto-magic for build seemed to work, but Deployment failed...
-    - [ ] [Deploy a Flask application on Koyeb](https://github.com/koyeb/example-flask)
-    - [ ] [Deploy a Python Flask App](https://www.koyeb.com/docs/deploy/flask)
-    - [ ] My bad on deployment likely due to missing `gunicorn` not needed by Ploomber
-  - [ ] Ploomber is what I'm using right now
-    - [ ] Has a Github Actions CICD option
-    - [ ] Runs for 8 hours before stopping for inactivity - maybe ping self app to keep alive?
-    - [ ] Two web apps limit on the free tier
-    - [ ] No MySQL that I've found
-    - [ ] app.py must be in the webroot or deployment fails... wow was that painful to learn
+  - [x] [Koyeb](https://www.koyeb.com/pricing#plans)
+    - [x] Free tier (called Hobby Plan)
+    - [ ] 1 x web service (512mb ram EU/US)
+    - [ ] 1 x postgresql (50 hrs per month EU/US/AS)
+    - [x] Auto-magic for build seemed to work, but Deployment failed...
+      - [ ] [Deploy a Flask application on Koyeb](https://github.com/koyeb/example-flask)
+      - [ ] [Deploy a Python Flask App](https://www.koyeb.com/docs/deploy/flask)
+    - [x] My bad on deployment likely due to missing `gunicorn` not needed by Ploomber hostings
+    - [x] Also added the `Procfile` for run options
+  - [x] Ploomber is what I'm using right now
+    - [x] Has a Github Actions CICD option
+    - [x] Runs for 8 hours before stopping for inactivity - maybe ping self app to keep alive?
+    - [x] Two web apps limit on the free tier
+    - [x] No MySQL that I've found
+    - [x] app.py must be in the webroot or deployment fails... wow was that painful to learn
     - [ ] Keeping this because of the AI/ML parts look interesting
     - [ ] Maximum number of apps: 2
-    - [ ] Idle apps are stopped:	After 4 hours of inactivity
-    - [ ] Idle apps are removed:	After 1 week of inactivity
+    - [x] Idle apps are stopped:	After 4 hours of inactivity
+    - [x] Idle apps are removed:	After 1 week of inactivity
+    - [x] Leaving this one for Koyeb for increased availability
   - [ ] ~~Fly.io used to have a free tier (now $5 a month + expense over $5)~~
   - [ ] [SeeNode](https://www.seenode.com/) is new
     - [ ] Has MySQL as an option

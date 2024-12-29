@@ -52,14 +52,14 @@ This application is a fully-fledged, dynamic quiz platform built using Flask, a 
 
 ## Known Broken Things
 
-1. Hosted version available to checkout but sometimes need starting up
+1. ~~Hosted version available to checkout but sometimes need starting up~~
 2. ~~Bootstrap navbars in template are missing~~ fixed in [v0.1.12](https://github.com/mcgarrah/legendary_quick_quiz/releases/tag/v0.1.12)
 3. JSON Schema checking is not implemented for import/export
 4. Pylint is not passing everywhere but lots better than earlier
 5. Pytest is completely missing
 6. ~~Initial questions are not loaded on deployment and first startup~~ fixed in [v0.1.12](https://github.com/mcgarrah/legendary_quick_quiz/releases/tag/v0.1.12)
 7. HTML markup in some questions show up badly... looking on options
-8. Concurrency bug/issue in questions_export() function
+8. ~~Concurrency bug/issue in questions_export() function~~
 
 I also have a [TODO.md](https://github.com/mcgarrah/legendary_quick_quiz/blob/main/TODO.md) that I actively use for working on the project.
 
@@ -138,9 +138,13 @@ To specify that the packages in your `requirements.txt` file should be installed
 
 Added Dependabot to Github Project... to solve this to some extent. So the `requirements.txt` file tracks on newer versions of libraries and reports them back.
 
+## Hosting on Koyeb
+
+[Legendary Quick Quiz](https://plain-gaby-mcgarrah-a35e7264.koyeb.app/) is hosted on Koyeb as the primary demo site. Migrating from Ploomber exposed some issues in my setup and forced `gunicorn` which is a good thing. I'm using there integration to Github but they also have a Github Actions method as well. This has improved uptime and reliability so far. Still evaluating it.
+
 ## Hosting at Ploomber
 
-[Ploomber](https://ploomber.io/) was the first place I found that had free hosting of a Flask App in a Google Search. I last remembered [Heroku](https://www.heroku.com/pricing) as the place to go but SalesForce looks like they gutted the free tier.
+[Ploomber](https://ploomber.io/) was the first place I found that had free hosting of a Flask App in a Google Search. I last remembered [Heroku](https://www.heroku.com/pricing) as the place to go but SalesForce looks like they gutted the free tier. I've left this as a secondary test site but the primary is on Koyeb now.
 
 ### Quick manual process
 
@@ -155,10 +159,6 @@ There is a complete section in the docs on how to do the [Github repository auto
 This is working in the current deployed enviornment without the manual changes necessary for it to deploy.
 
 You can see the [Legendary Quick Quiz](https://falling-mud-9979.ploomberapp.io/) at this link. Press start if nobody used it in the last eight (8) hours.
-
-## Hosting on Koyeb
-
-[Legendary Quick Quiz](https://plain-gaby-mcgarrah-a35e7264.koyeb.app/) is also hosted on Koyeb as a secondary test site. Using it exposed some issues in my setup and forced `gunicorn` which is a good thing. I'm using there integration to Github but they also have a Github Actions method as well.
 
 ## Technical Components
 
