@@ -140,25 +140,7 @@ Added Dependabot to Github Project... to solve this to some extent. So the `requ
 
 ## Hosting on Koyeb
 
-[Legendary Quick Quiz](https://plain-gaby-mcgarrah-a35e7264.koyeb.app/) is hosted on Koyeb as the primary demo site. Migrating from Ploomber exposed some issues in my setup and forced `gunicorn` which is a good thing. I'm using there integration to Github but they also have a Github Actions method as well. This has improved uptime and reliability so far. Still evaluating it.
-
-## Hosting at Ploomber
-
-[Ploomber](https://ploomber.io/) was the first place I found that had free hosting of a Flask App in a Google Search. I last remembered [Heroku](https://www.heroku.com/pricing) as the place to go but SalesForce looks like they gutted the free tier. I've left this as a secondary test site but the primary is on Koyeb now.
-
-### Quick manual process
-
-Download the ZIP file from Github repository.  Rename the top level directory from `legendary-quick-quiz-main` to `legendary_quick_quiz`, delete the `.flaskenv` file from root, and the `.vscode` directory. I'm not sure if all that is required, but those are the steps that worked after updating the modules paths in v0.1.1.
-
-*Note*: The directory rename might not be necessary now as I fixed the repository name to use underscores and not dashes.
-
-### Github Actions Integration
-
-There is a complete section in the docs on how to do the [Github repository automatic deployment](https://docs.cloud.ploomber.io/en/latest/user-guide/github.html#github-deployment) that I read and done. The three dots next to the Application has a "Github Deploy" option on it that includes your exact commands with secrets already in the right place.
-
-This is working in the current deployed enviornment without the manual changes necessary for it to deploy.
-
-You can see the [Legendary Quick Quiz](https://falling-mud-9979.ploomberapp.io/) at this link. Press start if nobody used it in the last eight (8) hours.
+[Legendary Quick Quiz](https://plain-gaby-mcgarrah-a35e7264.koyeb.app/) is hosted on [Koyeb](https://www.koyeb.com/) as the primary demo site. Migrating from [Ploomber](https://ploomber.io/) exposed some issues in my setup and forced `gunicorn` which is a good thing. I'm using their integration to Github but they also have a Github Actions method as well. This has improved uptime and reliability so far. Still evaluating it but migration off [Ploomber](https://ploomber.io/) for stability is completed.
 
 ## Technical Components
 
