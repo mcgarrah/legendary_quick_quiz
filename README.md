@@ -115,6 +115,8 @@ If using VSCode, then add this `launch.json` file to a sub-directory called `.vs
 
 ## Debugging
 
+SQLite Client
+
 ``` console
 sudo apt install sqlite3
 sqlite3 ./instance/quiz.db
@@ -122,6 +124,24 @@ sqlite3 ./instance/quiz.db
 > .schema category
 > .quit
 ```
+
+PostgreSQL client
+
+``` console
+sudo apt install postgresql-client
+psql postgres://<username>:<password>@<servername>.us-east-1.pg.koyeb.app/<database>
+> \q
+source .venv/bin/active
+pip install pgcli
+pgcli postgres://<username>:<password>@<servername>.us-east-1.pg.koyeb.app/<database>
+> \?
+> \d
+> select * from category;
+> select count(*) from question;
+> \q
+```
+
+Think about [LazySQL](https://github.com/jorgerojas26/lazysql) as a future option. It looks interesting and featureful.
 
 ### Python Libraries
 
@@ -140,7 +160,9 @@ Added Dependabot to Github Project... to solve this to some extent. So the `requ
 
 ## Hosting on Koyeb
 
-[Legendary Quick Quiz](https://plain-gaby-mcgarrah-a35e7264.koyeb.app/) is hosted on [Koyeb](https://www.koyeb.com/) as the primary demo site. Migrating from [Ploomber](https://ploomber.io/) exposed some issues in my setup and forced `gunicorn` which is a good thing. I'm using their integration to Github but they also have a Github Actions method as well. This has improved uptime and reliability so far. Still evaluating it but migration off [Ploomber](https://ploomber.io/) for stability is completed.
+[Legendary Quick Quiz](https://plain-gaby-mcgarrah-a35e7264.koyeb.app/) is hosted on [Koyeb](https://www.koyeb.com/) as the primary demo site. Migrating from [Ploomber](https://ploomber.io/) exposed some issues in my setup and forced `gunicorn` which is a good thing. I'm using their integration to Github but they also have a Github Actions method as well. This has improved uptime and reliability so far.
+
+Added the PostgreSQL database service option as well that is in their Hobby Plan (free tier).
 
 ## Technical Components
 
