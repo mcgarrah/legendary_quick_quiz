@@ -3,6 +3,7 @@
 Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 """
 
+from os import environ
 from flask import Flask
 from flask_migrate import Migrate
 
@@ -28,8 +29,11 @@ def inject_version():
                 github_user=__github_user__,
                 author=__author__)
 
+# if exists DATABASE_URI then replace but set default to sqlite
+DATABASE_URI = environ.get('DATABASE_URI', 'sqlite:///quiz.db')
+
 # Configure the database URI
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 
 # Initialize the database with the app context
 db.init_app(app)
