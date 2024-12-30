@@ -19,11 +19,11 @@ Here is my list of to does for the project.
   - [x] Create a Hobby Tier Web Service for Python Flask
   - [x] Deployment working with `gunicorn` and `Profile`
 
-- [ ] Convert from SQLite to PG database
-  - [ ] Create a Hooby Tier PG Database
-  - [ ] Connect PG and Web together
+- [x] Convert from SQLite to PG database
+  - [x] Create a Hobby Tier PG Database
+  - [x] Connect PG and Web together
 
-- Use Alchemy ORM to abstract the SQLite and PG database for different deployments
+- [x] Use Alchemy ORM to abstract the SQLite and PG database for different deployments
 
 - [x] Remove Ploomber hosting - it is failing again for third time
 
