@@ -15,13 +15,17 @@ Here is my list of to does for the project.
 
 ## Todo tasks
 
-- [x] Koyeb Free Tier Hosting
-  - [x] Create a Free Tier Web Service for Python Flask
+- [x] Koyeb Hobby (Free) Tier Hosting
+  - [x] Create a Hobby Tier Web Service for Python Flask
   - [x] Deployment working with `gunicorn` and `Profile`
-  - [ ] Create a Free Tier PG Database
+
+- [ ] Convert from SQLite to PG database
+  - [ ] Create a Hooby Tier PG Database
   - [ ] Connect PG and Web together
 
 - Use Alchemy ORM to abstract the SQLite and PG database for different deployments
+
+- [x] Remove Ploomber hosting - it is failing again for third time
 
 ---
 
