@@ -32,14 +32,29 @@ def inject_version():
 # if exists DATABASE_URI then replace but set default to sqlite
 DATABASE_URI = environ.get('DATABASE_URI', 'sqlite:///quiz.db')
 
+# NEW ERROR
+#
+# switched position of Migrate() call
+#
+# DATABASE_URI_DEBUG = postgresql://koyeb-adm:{{ secret.database-password }}@ep-shrill-pond-a4vna0c3.us-east-1.pg.koyeb.app/koyebdb?sslmode=require
+#
+# sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "pg_class_relname_nsp_index"
+# DETAIL:  Key (relname, relnamespace)=(category_id_seq, 2200) already exists.
+# [SQL: 
+# CREATE TABLE category (
+# 	id SERIAL NOT NULL, 
+# 	name VARCHAR(100) NOT NULL, 
+# 	timer_duration INTEGER NOT NULL, 
+# 	questions_per_quiz INTEGER NOT NULL, 
+# 	PRIMARY KEY (id)
+# )
+# ]
+
 # Configure the database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 
 # Initialize the database with the app context
 db.init_app(app)
-
-# Setup Migrations
-migrate = Migrate(app, db)
 
 # Push the app context before creating the tables
 with app.app_context():
@@ -49,6 +64,9 @@ with app.app_context():
     # Check if both the Question and Category tables are empty and load initial questions if so
     if not Question.query.first() and not Category.query.first():
         import_questions('initial_questions.json')
+
+# Setup Migrations
+migrate = Migrate(app, db)
 
 # Define the application routes
 # Home page route
