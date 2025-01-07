@@ -6,6 +6,7 @@ Copyright © 2024 J. Michael McGarrah <mcgarrah@gmail.com>
 from os import environ
 from flask import Flask
 from flask_migrate import Migrate
+from healthcheck import HealthCheck, EnvironmentDump
 
 # Import models and routes using absolute imports
 from modules.models import db, Category, Question
@@ -28,6 +29,24 @@ def inject_version():
                 build_date=__build_date__,
                 github_user=__github_user__,
                 author=__author__)
+
+# HealthCheck Setup
+health = HealthCheck()
+envdump = EnvironmentDump()
+
+# Add some application data to envdump()
+# add your own data to the environment dump
+def application_data():
+    return {"author": __author__,
+            "git_repo": "https://github.com/mcgarrah/legendary_quick_quiz",
+            "version": __version__,
+            "build-date": __build_date__
+            }
+envdump.add_section("application", application_data)
+
+# HealthCheck routes exposed
+app.add_url_rule("/healthcheck", "healthcheck", view_func=lambda: health.run())
+app.add_url_rule("/environment", "environment", view_func=lambda: envdump.run())
 
 # use DATABASE_URI env variable if exists but set default to sqlite
 DATABASE_URI = environ.get('DATABASE_URI', 'sqlite:///quiz.db')
