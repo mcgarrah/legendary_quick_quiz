@@ -5,6 +5,26 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python Debugger: Flask",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "app.py",
+                "FLASK_DEBUG": "1",
+                "FLASK_ENV": "development",
+                //"DATABASE_URI": "postgresql+psycopg2://<USERNAME>:<PASSWORD>@<SERVER>/<DATABASE>?sslmode=require"
+                "DATABASE_URI": "sqlite:///quiz.db"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "autoStartBrowser": false
+        },
+        {
             "name": "Python Debugger: Gunicorn",
             "type": "python",
             "request": "launch",
@@ -19,7 +39,7 @@
                 "--bind",
                 "0.0.0.0:8000",  // Bind to port 8000 or another port of your choice
                 "--workers",
-                "2"  // Adjust the number of workers as needed
+                "1"  // Adjust the number of workers as needed
             ],
             "jinja": true,
             "autoStartBrowser": false

@@ -17,32 +17,20 @@ Here is my list of to does for the project.
 
 ---
 
-Fix deployment so database does not exceed 50hrs usage per month.
-Changing the health check page to not have a database access will fix it.
+Fixed deployment so database does not exceed 50hrs usage per month with
+by changing the `/healthcheck` page to not have a database access for each call.
 
-- [x] Fix **healthchecks** so they don't call the database on each check
-- [ ] [Koyeb Health Checks](https://www.koyeb.com/docs/run-and-scale/health-checks) can be customized
-- [x] You can return a JSON response with more information about the app's health, such as the version number or uptime.
-- [x] Libraries like `py-healthcheck` can provide more advanced features for health checks, such as monitoring multiple dependencies and reporting metrics.
-  - [x] [Py-HealthCheck](https://pypi.org/project/py-healthcheck/)
+- [x] Added `/healthcheck` and `/environment` for deployment
+- [ ] Fix the issue in SQL Initialization for SQLAlchemy for PostgreSQL
+  - [ ] Maybe something with `flask_migrate` mechanism
+  - [ ] No issues on SQLite locally but duplications of category groupings during import for PostgreSQL
+  - [ ] PostgreSQL fails on initialization with category sequence duplications (maybe Lazy at fault)
+- [ ] PostgreSQL with Psycopg2 in URI testing worth testing (postgresql+psycopg2:// vs postgresql://)
 
-~~Simple HTTP 200 /health check code with no database access~~
+- [x] `.vscode/launch.json` was not debugging so backed out `gunicorn` as a test
+- [x] Added both `gunicorn` and `flask` debug startup options for VSCode Debugging
 
-``` python
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route("/health")
-def health():
-    """
-    Simple health check endpoint that doesn't check the database.
-    """
-    return "OK", 200
-
-if __name__ == "__main__":
-    app.run()
-```
+- [x] **Edit Category** has a bug in `html` template for **Delete** button
 
 ---
 
