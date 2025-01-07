@@ -15,17 +15,56 @@ Here is my list of to does for the project.
 
 ## Todo tasks
 
-- [x] Koyeb Hobby (Free) Tier Hosting
-  - [x] Create a Hobby Tier Web Service for Python Flask
-  - [x] Deployment working with `gunicorn` and `Profile`
+---
 
-- [ ] Convert from SQLite to PG database
-  - [ ] Create a Hooby Tier PG Database
-  - [ ] Connect PG and Web together
+Fix deployment so database does not exceed 50hrs usage per month.
+Changing the health check page to not have a database access will fix it.
 
-- Use Alchemy ORM to abstract the SQLite and PG database for different deployments
+- [x] Fix **healthchecks** so they don't call the database on each check
+- [ ] [Koyeb Health Checks](https://www.koyeb.com/docs/run-and-scale/health-checks) can be customized
+- [x] You can return a JSON response with more information about the app's health, such as the version number or uptime.
+- [x] Libraries like `py-healthcheck` can provide more advanced features for health checks, such as monitoring multiple dependencies and reporting metrics.
+  - [x] [Py-HealthCheck](https://pypi.org/project/py-healthcheck/)
 
-- [x] Remove Ploomber hosting - it is failing again for third time
+~~Simple HTTP 200 /health check code with no database access~~
+
+``` python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/health")
+def health():
+    """
+    Simple health check endpoint that doesn't check the database.
+    """
+    return "OK", 200
+
+if __name__ == "__main__":
+    app.run()
+```
+
+---
+
+Hold my beer...
+
+[NickJJ Flask Best Practices](https://github.com/nickjj/docker-flask-example) that are pretty damn interesting.
+
+- [x] [SQLAlchemy](https://github.com/sqlalchemy/sqlalchemy)
+- [ ] [Front-end](https://github.com/nickjj/docker-flask-example?tab=readme-ov-file#front-end) is facinating
+- [ ] [Notable opinions and extensions](https://github.com/nickjj/docker-flask-example?tab=readme-ov-file#notable-opinions-and-extensions)
+- [ ] Entire JS build... for static assets
+- [ ] [Flask-Assets](https://github.com/miracle2k/flask-assets) is a Flask extension that helps you manage and optimize your static assets (CSS, JavaScript, etc.) in your web applications.
+  - [ ] Integrates the webassets library with Flask, adding support for merging, minifying and compiling CSS and Javascript files.
+  - [ ] [NickJJ Comment for Full Circle](https://www.reddit.com/r/flask/comments/1brbqqs/comment/kxdvog0/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
+
+---
+
+- [ ] Move the JSON import/export files to a sub-directory
+
+---
+
+Better bump version options - [BumpMyVersion](https://github.com/callowayproject/bump-my-version?tab=readme-ov-file#github-actions)
 
 ---
 
@@ -225,6 +264,7 @@ Evaluation of the truth after a shuffle of the options is easier if the correctn
   - [ ] I have not thought this thru... how to save the image binary?!?
 - [ ] PyTest for unittests and webapp automated testing
   - [ ] Simple test of each route with even `curl` would be useful
+  - [ ] [Simple UnitTest Example](https://www.honeybadger.io/blog/flask-github-actions-continuous-delivery/)
   - [ ] Simple tests of routes with parameters
   - [ ] Steal from [Django CI](https://github.com/actions/starter-workflows/blob/main/ci/django.yml) for Flask CI Tests
   - [ ] [Python App CI](https://github.com/actions/starter-workflows/blob/main/ci/python-app.yml) for Flake8 and Pytest
