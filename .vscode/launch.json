@@ -25,19 +25,23 @@
             "autoStartBrowser": false
         },
         {
-            "name": "Python Debugger: Gunicorn",
-            "type": "python",
+            "name": "Python Debugger: Gunicorn (challenges)",
+            "type": "debugpy",
             "request": "launch",
             "module": "gunicorn",
             "env": {
                 "FLASK_APP": "app.py",
                 "FLASK_DEBUG": "1",
-                "FLASK_ENV": "development"
+                "FLASK_ENV": "development",
+                //"DATABASE_URI": "postgresql+psycopg2://<USERNAME>:<PASSWORD>@<SERVER>/<DATABASE>?sslmode=require"
+                "DATABASE_URI": "sqlite:///quiz.db"
             },
             "args": [
                 "app:app",  // Ensure this points to your Flask app instance
                 "--bind",
                 "0.0.0.0:8000",  // Bind to port 8000 or another port of your choice
+                "--no-reload",
+                "--log-level debug",
                 "--workers",
                 "1"  // Adjust the number of workers as needed
             ],

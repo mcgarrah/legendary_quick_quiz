@@ -17,24 +17,33 @@ Here is my list of to does for the project.
 
 ---
 
-Fixed deployment so database does not exceed 50hrs usage per month with
-by changing the `/healthcheck` page to not have a database access for each call.
+Add the Quiz/Exam object to be a grouping of Category objects.
 
-- [x] Added `/healthcheck` and `/environment` for deployment
+---
+
 - [ ] Fix the issue in SQL Initialization for SQLAlchemy for PostgreSQL
   - [ ] Maybe something with `flask_migrate` mechanism
   - [ ] No issues on SQLite locally but duplications of category groupings during import for PostgreSQL
   - [ ] PostgreSQL fails on initialization with category sequence duplications (maybe Lazy at fault)
+  - [ ] Maybe `gunicorn` with multiple workers has the modules.py db.init() running overlapping
+
 - [ ] PostgreSQL with Psycopg2 in URI testing worth testing (postgresql+psycopg2:// vs postgresql://)
 
+---
+
+Fixed deployment so database does not exceed 50hrs usage per month with
+by changing the `/healthcheck` page to not have a database access for each call.
+
+- [x] Added `/healthcheck` and `/environment` for deployment
 - [x] `.vscode/launch.json` was not debugging so backed out `gunicorn` as a test
+  - [x] `gunicorn` and `flask` debug do not work together
 - [x] Added both `gunicorn` and `flask` debug startup options for VSCode Debugging
 
 - [x] **Edit Category** has a bug in `html` template for **Delete** button
 
 ---
 
-Hold my beer...
+**Hold my beer**...
 
 [NickJJ Flask Best Practices](https://github.com/nickjj/docker-flask-example) that are pretty damn interesting.
 

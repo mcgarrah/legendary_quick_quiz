@@ -35,7 +35,6 @@ health = HealthCheck()
 envdump = EnvironmentDump()
 
 # Add some application data to envdump()
-# add your own data to the environment dump
 def application_data():
     return {"author": __author__,
             "git_repo": "https://github.com/mcgarrah/legendary_quick_quiz",
@@ -48,7 +47,7 @@ envdump.add_section("application", application_data)
 app.add_url_rule("/healthcheck", "healthcheck", view_func=lambda: health.run())
 app.add_url_rule("/environment", "environment", view_func=lambda: envdump.run())
 
-# use DATABASE_URI env variable if exists but set default to sqlite
+# Use DATABASE_URI env variable if exists but set default to sqlite
 DATABASE_URI = environ.get('DATABASE_URI', 'sqlite:///quiz.db')
 
 # Configure the database URI
@@ -56,6 +55,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 
 # Initialize the database with the app context
 db.init_app(app)
+
+# Setup Migrations
+migrate = Migrate(app, db)
 
 # Push the app context before creating the tables
 with app.app_context():
@@ -65,9 +67,6 @@ with app.app_context():
     # Check if both the Question and Category tables are empty and load initial questions if so
     if not Question.query.first() and not Category.query.first():
         import_questions('initial_questions.json')
-
-# Setup Migrations
-migrate = Migrate(app, db)
 
 # Define the application routes
 # Home page route
