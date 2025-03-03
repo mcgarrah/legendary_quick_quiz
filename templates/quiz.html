@@ -127,7 +127,7 @@
                 resultHTML += `<div class="card mb-3">
                     <div class="card-body">
                         <p><strong>Question:</strong> ${result.question}</p>
-                        <p><strong>Your Answer:</strong> ${result.user_answer}</p>
+                        <p><strong>Your Answer:</strong> ${result.user_answer && result.user_answer.length > 0 ? `${result.user_answer[0].value} (${result.user_answer[0].index})` : 'No answer selected'}</p>
                         <p><strong>Correct:</strong> ${result.correct ? 'Yes' : 'No'}</p>`;
                 if (!result.correct) {
                     resultHTML += `<p><strong>Answer:</strong> `;

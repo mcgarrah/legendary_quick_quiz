@@ -64,9 +64,15 @@ def check_answers():
         correct_options = json.loads(question.correct_options)
         options = json.loads(question.options)
         # Get the user's answer
-        user_answer = user_answers[i]
+        user_answer_index = user_answers[i]
+        # Create user_answer with the same structure as correct_options_data
+        user_answer_data = []
+        user_answer_data.append({
+            'index': user_answer_index,
+            'value': options[int(user_answer_index)]
+        })
         # Check if the user's answer index is in the list of correct options
-        correct = int(user_answer) in correct_options
+        correct = int(user_answer_index) in correct_options
         if correct:
             score += 1
         correct_options_data = []
@@ -80,7 +86,7 @@ def check_answers():
             'correct': correct,
             'correct_options': correct_options_data,
             'answer_details': escape(question.answer_details) if question.answer_details else None,
-            'user_answer': user_answer
+            'user_answer': user_answer_data
         })
 
     return jsonify({'score': score, 'total': len(sorted_questions), 'results': results})
