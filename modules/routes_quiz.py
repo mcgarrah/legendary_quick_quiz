@@ -37,7 +37,7 @@ def quiz(category_id):
             'id': question.id,
             'question': escape(question.question),
             'options': options,
-            'answer': escape(question.answer),
+            'correct_options': json.loads(question.correct_options),
             'answer_details': escape(question.answer_details) if question.answer_details else None
         })
 
@@ -61,15 +61,26 @@ def check_answers():
     results = []
     score = 0
     for i, question in enumerate(sorted_questions):
-        correct = question.answer == user_answers[i]
+        correct_options = json.loads(question.correct_options)
+        options = json.loads(question.options)
+        # Get the user's answer
+        user_answer = user_answers[i]
+        # Check if the user's answer index is in the list of correct options
+        correct = int(user_answer) in correct_options
         if correct:
             score += 1
+        correct_options_data = []
+        for correct_index in correct_options:
+            correct_options_data.append({
+                'index': correct_index,
+                'value': options[correct_index]
+            })
         results.append({
             'question': escape(question.question),
             'correct': correct,
-            'answer': escape(question.answer),
+            'correct_options': correct_options_data,
             'answer_details': escape(question.answer_details) if question.answer_details else None,
-            'user_answer': user_answers[i]
+            'user_answer': user_answer
         })
 
     return jsonify({'score': score, 'total': len(sorted_questions), 'results': results})

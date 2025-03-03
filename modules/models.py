@@ -40,7 +40,7 @@ class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(200), nullable=False)
     options = db.Column(db.String(500), nullable=False)
-    answer = db.Column(db.String(100), nullable=False)
+    correct_options = db.Column(db.String(200), nullable=False)  # JSON-encoded list of correct option indices
     answer_details = db.Column(db.String(1000), nullable=True)
     no_shuffle = db.Column(db.Boolean, default=False)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)

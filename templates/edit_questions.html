@@ -67,12 +67,18 @@
                                 (no_shuffle: {{ question.no_shuffle }})
                             {% endif %}
                         </p>
-                        {{ question.question }} ({{ question.answer }})
+                        {{ question.question }}
                         <ul>
                             {% for option in json.loads(question.options) %}
                                 <li>{{ option }}</li>
                             {% endfor %}
                         </ul>
+                        <p>Correct Answer(s): 
+                            {% for index in json.loads(question.correct_options) %}
+                                {{ json.loads(question.options)[index|int] }}
+                                {% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
                         {% if question.answer_details %}
                             <p><em>{{ question.answer_details }}</em></p>
                         {% endif %}

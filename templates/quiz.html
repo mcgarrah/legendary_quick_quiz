@@ -51,9 +51,9 @@
         let questionHTML = `<div class="mb-3">
             <p>${question.question}</p>`;
         question.options.forEach((option, i) => {
-            const checked = userAnswers[index] === option ? 'checked' : '';
+            const checked = userAnswers[index] === i.toString() ? 'checked' : '';
             questionHTML += `<div class="form-check">
-                <input class="form-check-input" type="radio" name="question${index}" value="${option}" ${checked} id="option${index}_${i}">
+                <input class="form-check-input" type="radio" name="question${index}" value="${i}" ${checked} id="option${index}_${i}">
                 <label class="form-check-label option-label" for="option${index}_${i}">
                     ${option}
                 </label>
@@ -130,7 +130,11 @@
                         <p><strong>Your Answer:</strong> ${result.user_answer}</p>
                         <p><strong>Correct:</strong> ${result.correct ? 'Yes' : 'No'}</p>`;
                 if (!result.correct) {
-                    resultHTML += `<p><strong>Answer:</strong> ${result.answer}</p>`;
+                    resultHTML += `<p><strong>Answer:</strong> `;
+                    result.correct_options.forEach(option => {
+                        resultHTML += `${option.value} (${option.index}) `;
+                    });
+                    resultHTML += `</p>`;
                 }
                 if (result.answer_details) {
                     resultHTML += `<p><strong>Details:</strong> ${result.answer_details}</p>`;
