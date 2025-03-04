@@ -28,7 +28,8 @@
     let currentQuestionIndex = 0;
     const questions = {{ questions|tojson | safe }};
     const questionContainer = document.getElementById('question-container');
-    const userAnswers = {};  // Object to store user answers
+    const userAnswers = {}; // Object to store user answers
+    let originalOptionsMap = {};
     let timerInterval;
 
     function updateTimer() {
@@ -50,6 +51,9 @@
         const question = questions[index];
         let questionHTML = `<div class="mb-3">
             <p>${question.question}</p>`;
+        if (question.original_options) {
+            questionHTML += `<p>Original Options: ${question.original_options.map(option => `${option[1]} (${option[0]})`).join(', ')}</p>`;
+        }
         question.options.forEach((option, i) => {
             const checked = userAnswers[index] === i.toString() ? 'checked' : '';
             questionHTML += `<div class="form-check">
@@ -126,16 +130,23 @@
             data.results.forEach(result => {
                 resultHTML += `<div class="card mb-3">
                     <div class="card-body">
-                        <p><strong>Question:</strong> ${result.question}</p>
-                        <p><strong>Your Answer:</strong> ${result.user_answer && result.user_answer.length > 0 ? `${result.user_answer[0].value} (${result.user_answer[0].index})` : 'No answer selected'}</p>
+                        <p><strong>Question:</strong> ${result.question}</p> `;
+                    if (result.user_answer) {
+                        resultHTML += `<p><strong>Your Answer:</strong> `;
+                        result.user_answer.forEach(answer => {
+                            resultHTML += `${answer.value} (${answer.index}) `; 
+                        });
+                        resultHTML += `</p>`;
+                    }
+                    resultHTML += `
                         <p><strong>Correct:</strong> ${result.correct ? 'Yes' : 'No'}</p>`;
-                if (!result.correct) {
-                    resultHTML += `<p><strong>Answer:</strong> `;
-                    result.correct_options.forEach(option => {
-                        resultHTML += `${option.value} (${option.index}) `;
-                    });
-                    resultHTML += `</p>`;
-                }
+                    if (!result.correct) {
+                        resultHTML += `<p><strong>Answer:</strong> `;
+                        result.correct_options.forEach(option => {
+                            resultHTML += `${option.value} (${option.index}) `; 
+                        });
+                        resultHTML += `</p>`;
+                    }
                 if (result.answer_details) {
                     resultHTML += `<p><strong>Details:</strong> ${result.answer_details}</p>`;
                 }
