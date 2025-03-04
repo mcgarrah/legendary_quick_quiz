@@ -61,7 +61,7 @@ def export_questions():
             questions_list.append({
                 'question': question.question,
                 'options': json.loads(question.options),
-                'answer': question.answer,
+                'correct_options': json.loads(question.answer),
                 'answer_details': question.answer_details,
                 'no_shuffle': question.no_shuffle
             })

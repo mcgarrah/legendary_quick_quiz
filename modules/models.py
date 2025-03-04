@@ -32,15 +32,15 @@ class Question(db.Model):
         id (int): Primary key for the question.
         question (str): The text of the question.
         options (str): JSON-encoded string of answer options.
-        answer (str): The correct answer.
-        answer_details (str, optional): Additional details about the answer.
+        correct_options (str): JSON-encoded string of correct answer as list of numeric indices.
+        answer_details (str, optional): Additional details about the correct answer(s).
         no_shuffle (bool): Indicates if the answer options should not be shuffled.
         category_id (int): Foreign key linking to the category.
     """
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(200), nullable=False)
     options = db.Column(db.String(500), nullable=False)
-    correct_options = db.Column(db.String(200), nullable=False)  # JSON-encoded list of correct option indices
+    correct_options = db.Column(db.String(200), nullable=False)
     answer_details = db.Column(db.String(1000), nullable=True)
     no_shuffle = db.Column(db.Boolean, default=False)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
