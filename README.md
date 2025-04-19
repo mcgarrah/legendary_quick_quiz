@@ -158,9 +158,13 @@ To specify that the packages in your `requirements.txt` file should be installed
 
 Added Dependabot to Github Project... to solve this to some extent. So the `requirements.txt` file tracks on newer versions of libraries and reports them back.
 
-## Hosting on Koyeb
+## Hosting on Digital Ocean
 
-[Legendary Quick Quiz](https://plain-gaby-mcgarrah-a35e7264.koyeb.app/) is hosted on [Koyeb](https://www.koyeb.com/) as the primary demo site. Migrating from [Ploomber](https://ploomber.io/) exposed some issues in my setup and forced `gunicorn` which is a good thing. I'm using their integration to Github but they also have a Github Actions method as well. This has improved uptime and reliability so far.
+[Legendary Quick Quiz](https://quiz.mcgarrah.org) is hosted on [Digital Ocean App Platform](https://www.digitalocean.com/) as the primary demo site.
+
+This continues the migration from **Ploomber** to **Koyeb** and now **Digital Ocean**. Ploomber was all stability issues forcing the move. Koyeb is a suspension without any recourse and no response beyond automated ones. It was not handled professionally even with them having my credit card and personal information. After this exchange, I would not recommend doing business with them with this recent interaction. Edouard if you want to discuss let me know.
+
+~~[Legendary Quick Quiz](https://plain-gaby-mcgarrah-a35e7264.koyeb.app/) is hosted on [Koyeb](https://www.koyeb.com/) as the primary demo site.~~ Migrating from [Ploomber](https://ploomber.io/) exposed some issues in my setup and forced `gunicorn` which is a good thing. I'm using their integration to Github but they also have a Github Actions method as well. This has improved uptime and reliability so far.
 
 Added the PostgreSQL database service option as well that is in their Hobby Plan (free tier).
 
