@@ -8,10 +8,10 @@ __author__ = "Michael McGarrah"
 __email__ = "mcgarrah@gmail.com"
 __github_user__ = "mcgarrah"
 
-__version_info__ = ('0', '1', '36')
+__version_info__ = ('0', '1', '37')
 __version__ = '.'.join(__version_info__)
 
-__build_date__ = '2025-09-08-15-46-59'
+__build_date__ = '2025-09-08-16-07-32'
 
 __all__ = [
     "__author__",
