@@ -40,6 +40,7 @@ jobs:
       # This step only runs if pip-audit made changes
       if: steps.audit.outputs.exit-code == '1'
       uses: peter-evans/create-pull-request@v6
+      continue-on-error: true
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: 'fix: Apply security fixes via pip-audit'
