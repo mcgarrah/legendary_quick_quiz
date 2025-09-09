@@ -38,7 +38,7 @@ def import_questions(file_path=None):
             question_obj = Question(
                 question=question['question'],
                 options=json.dumps(question['options']),
-                answer=question['answer'],
+                correct_options=json.dumps(question['correct_options']),
                 answer_details=question.get('answer_details', ''),
                 no_shuffle=question.get('no_shuffle', False),
                 category_id=category_obj.id
@@ -61,7 +61,7 @@ def export_questions():
             questions_list.append({
                 'question': question.question,
                 'options': json.loads(question.options),
-                'answer': question.answer,
+                'correct_options': json.loads(question.answer),
                 'answer_details': question.answer_details,
                 'no_shuffle': question.no_shuffle
             })

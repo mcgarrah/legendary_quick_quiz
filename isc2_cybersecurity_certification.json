@@ -8,7 +8,7 @@
                             "Avoid any activity that may be perceived as malicious.",
                             "Act honorably, honestly, justly, responsibly, and legally.", 
                             "Advance and protect the profession."],
-                "answer": "Avoid any activity that may be perceived as malicious."
+                "correct_options": [1]
             },
             {
                 "question": "What security control provides non-repudiation for messages?",
@@ -16,7 +16,7 @@
                             "hash values",
                             "symmetric encryption", 
                             "digital signatures"],
-                "answer": "digital signatures"
+                "correct_options": [3]
             },
             {
                 "question": "Which one of the following is an example of multifactor authentication?",
@@ -24,7 +24,7 @@
                             "retinal scan and fingerprint",
                             "ID card and PIN",
                             "ID card and key"],
-                "answer": "ID card and PIN"
+                "correct_options": [2]
             },
             {
                 "question": "What law regulates the protection of health information?",
@@ -32,12 +32,12 @@
                             "PCI DSS",
                             "GLBA",
                             "HIPAA"],
-                "answer": "HIPAA"
+                "correct_options": [3]
             },
             {
                 "question": "What security tool can be configured to prevent DDoS attacks?",
                 "options": ["switch", "firewall", "endpoint detection and response platform", "intrusion detection system"],
-                "answer": "intrusion detection system"
+                "correct_options": [3]
             },
             {
                 "question": "Your organization requires that passwords contain a mixture of uppercase characters, lowercase characters, digits, and symbols. What type of password policy is this?",
@@ -45,7 +45,7 @@
                             "length",
                             "history",
                             "reuse"],
-                "answer": "complexity"
+                "correct_options": [0]
             },
             {
                 "question": "During what phase of the access control process does a user prove his or her identity?",
@@ -53,7 +53,7 @@
                             "authorization",
                             "identification",
                             "remediation"],
-                "answer": "authentication"
+                "correct_options": [0]
             },
             {
                 "question": "In what type of attack does the attacker capture and then reuse login information?",
@@ -61,7 +61,7 @@
                             "Smurf attack",
                             "DDoS attack",
                             "replay attack"],
-                "answer": "replay attack"
+                "correct_options": [3]
             },
             {
                 "question": "What is the best defense against dumpster diving attacks?",
@@ -69,7 +69,7 @@
                             "clean desk policy",
                             "data loss prevention tools",
                             "shredding"],
-                "answer": "shredding"
+                "correct_options": [3]
             },
             {
                 "question": "Purchasing an insurance policy is an example of which risk management strategy?",
@@ -77,7 +77,7 @@
                             "risk deterrence",
                             "risk transference",
                             "risk mitigation"],
-                "answer": "risk transference"
+                "correct_options": [2]
             },
             {
                 "question": "What two factors are used to evaluate a risk?",
@@ -85,7 +85,7 @@
                             "criticality and likelihood",
                             "impact and criticality",
                             "frequency and likelihood"],
-                "answer": "likelihood and impact"
+                "correct_options": [0]
             },
             {
                 "question": "What term best describes making a snapshot of a system or application at a point in time for later comparison?",
@@ -93,7 +93,7 @@
                             "documenting",
                             "diagramming",
                             "versioning"],
-                "answer": "baselining"
+                "correct_options": [0]
             },
             {
                 "question": "What type of security control is designed to stop a security issue from occurring in the first place?",
@@ -101,7 +101,7 @@
                             "administrative",
                             "preventive",
                             "detective"],
-                "answer": "preventive"
+                "correct_options": [2]
             },
             {
                 "question": "What term describes risks that originate inside the organization?",
@@ -109,7 +109,7 @@
                             "intranet",
                             "internal",
                             "extranet"],
-                "answer": "internal"
+                "correct_options": [2]
             }
         ]
     }

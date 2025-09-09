@@ -5,143 +5,87 @@
             {
                 "question": "What is the capital of France?",
                 "options": ["Berlin", "Paris", "Rome", "Madrid"],
-                "answer": "Paris",
-                "answer_details": "Paris is the capital and most populous city of France."
+                "correct_options": [1],
+                "answer_details": "Paris is the capital and most populous city of France.",
+                "no_shuffle": false
             },
             {
                 "question": "Which planet is known as the Red Planet?",
                 "options": ["Earth", "Venus", "Mars", "Jupiter"],
-                "answer": "Mars",
-                "answer_details": "Mars is known as the Red Planet because of its reddish appearance."
+                "correct_options": [2],
+                "answer_details": "Mars is known as the Red Planet because of its reddish appearance.",
+                "no_shuffle": false
             },
             {
                 "question": "Which programming language is known as the 'language of the web'?",
                 "options": ["Python", "Java", "C++", "JavaScript"],
-                "answer": "JavaScript",
-                "answer_details": "JavaScript is called the 'language of the web' because it is the primary programming language used to add interactivity and dynamic behavior to web pages, meaning almost every website utilizes JavaScript to create features like animations, user input responses, and updates without needing to reload the entire page, making it the dominant scripting language on the web across all major browsers."
+                "correct_options": [3],
+                "answer_details": "JavaScript is called the 'language of the web' because it is the primary programming language used to add interactivity and dynamic behavior to web pages, meaning almost every website utilizes JavaScript to create features like animations, user input responses, and updates without needing to reload the entire page, making it the dominant scripting language on the web across all major browsers.",
+                "no_shuffle": false
             },
             {
                 "question": "What is the largest country in the world by land area?",
                 "options": ["Russia", "Canada", "China", "United States"],
-                "answer": "Russia",
-                "answer_details": "Russia covers a vast area of approximately 17 million square kilometers, making it significantly larger than any other country."
+                "correct_options": [0],
+                "answer_details": "Russia covers a vast area of approximately 17 million square kilometers, making it significantly larger than any other country.",
+                "no_shuffle": false
             },
             {
                 "question": "Who painted the Mona Lisa?",
                 "options": ["Michelangelo", "Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh"],
-                "answer": "Leonardo da Vinci",
-                "answer_details": "The Italian painter, scientist, and draftsman (1452-1519) began working on the portrait in 1503 and continued to add layers of oil glazes over several years. The painting is considered one of the most famous portraits in the world and is on display at the Louvre in Paris."
+                "correct_options": [1],
+                "answer_details": "The Italian painter, scientist, and draftsman (1452-1519) began working on the portrait in 1503 and continued to add layers of oil glazes over several years. The painting is considered one of the most famous portraits in the world and is on display at the Louvre in Paris.",
+                "no_shuffle": false
             },
             {
                 "question": "What is the highest mountain in the world?",
                 "options": ["Mount Everest", "K2", "Kangchenjunga", "Lhotse"],
-                "answer": "Mount Everest",
-                "answer_details": "Mount Everest's peak is the highest altitude above mean sea level at 29,029 feet [8,848 meters]."
+                "correct_options": [0],
+                "answer_details": "Mount Everest's peak is the highest altitude above mean sea level at 29,029 feet [8,848 meters].",
+                "no_shuffle": false
             },
             {
                 "question": "Which country hosted the 2022 FIFA World Cup?",
                 "options": ["Qatar", "Brazil", "Russia", "Germany"],
-                "answer": "Qatar"
+                "correct_options": [0],
+                "no_shuffle": false
             },
             {
                 "question": "Who wrote the Harry Potter series?",
                 "options": ["J.R.R. Tolkien", "Stephen King", "J.K. Rowling", "Dan Brown"],
-                "answer": "J.K. Rowling"
+                "correct_options": [2],
+                "no_shuffle": false
             },
             {
                 "question": "What is the capital of Australia?",
                 "options": ["Sydney", "Melbourne", "Canberra", "Perth"],
-                "answer": "Canberra"
+                "correct_options": [2],
+                "no_shuffle": false
             },
             {
                 "question": "Which country is known as the Land of the Rising Sun?",
                 "options": ["China", "India", "Japan", "South Korea"],
-                "answer": "Japan"
+                "correct_options": [2],
+                "no_shuffle": false
             },
             {
                 "question": "What is the largest ocean in the world?",
                 "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
-                "answer": "Pacific Ocean"
+                "correct_options": [3],
+                "no_shuffle": false
             },
             {
                 "question": "Who was the first president of the United States?",
                 "options": ["Thomas Jefferson", "George Washington", "Abraham Lincoln", "John Adams"],
-                "answer": "George Washington"
+                "correct_options": [1],
+                "no_shuffle": false
             },
             {
                 "question": "What is the largest desert in the world?",
                 "options": ["Sahara Desert", "Gobi Desert", "Arabian Desert", "Antarctic Desert"],
-                "answer": "Antarctic Desert"
+                "correct_options": [3],
+                "no_shuffle": false
             }
-        ]
-    },
-    {
-        "category": "Science",
-        "questions": [
-            {
-                "question": "What is the chemical symbol for water?",
-                "options": ["O<sub>2</sub>", "H<sub>2</sub>O", "CO<sub>2</sub>", "NaCl"],
-                "answer": "H<sub>2</sub>O",
-                "answer_details": "H<sub>2</sub>O is the chemical formula for water, consisting of two hydrogen atoms and one oxygen atom."
-            },
-            {
-                "question": "What is the largest organ in the human body?",
-                "options": ["Heart", "Liver", "Skin", "Lungs"],
-                "answer": "Skin",
-                "answer_details": "The skin covers the entire external surface of the body, making it the largest organ by area."
-            },
-            {
-                "question": "What is the chemical symbol for gold?",
-                "options": ["Ag", "Au", "Fe", "Hg"],
-                "answer": "Au",
-                "answer_details": "Gold's chemical symbol AU is derived from the Latin word aurum, meaning gold."
-            },
-            {
-                "question": "What is the fundamental unit of matter?",
-                "options": ["Atom", "Molecule", "Proton", "Neutron"],
-                "answer": "Atom"
-            },
-            {
-                "question": "What is the theory that explains the origin and evolution of the universe?",
-                "options": ["Theory of Relativity", "Quantum Mechanics", "Big Bang Theory", "String Theory"],
-                "answer": "Big Bang Theory"
-            },
-            {
-                "question": "What is the process by which plants convert sunlight into energy?",
-                "options": ["Respiration", "Photosynthesis", "Chemosynthesis", "Fermentation"],
-                "answer": "Photosynthesis"
-            },
-            {
-                "question": "What is the most abundant element in the universe?",
-                "options": ["Oxygen", "Carbon", "Hydrogen", "Nitrogen"],
-                "answer": "Hydrogen"
-            },
-            {
-                "question": "What is the name of the force that holds atoms together?",
-                "options": ["Gravitational Force", "Electromagnetic Force", "Strong Nuclear Force", "Weak Nuclear Force"],
-                "answer": "Strong Nuclear Force"
-            },
-            {
-                "question": "What is the speed of light in a vacuum?",
-                "options": ["299,792,458 m/s", "300,000 km/s", "186,282 miles/s", "All of the above"],
-                "answer": "All of the above",
-                "no_shuffle": true
-            },
-            {
-                "question": "What is the process of DNA replication called?",
-                "options": ["Transcription", "Translation", "Mitosis", "DNA Replication"],
-                "answer": "DNA Replication"
-            },
-            {
-                "question": "What is the smallest unit of a chemical element?",
-                "options": ["Atom", "Molecule", "Ion", "Isotope"],
-                "answer": "Atom"
-            },
-            {
-                "question": "What is the study of the Earth's physical features?",
-                "options": ["Geology", "Geography", "Meteorology", "Oceanography"],
-                "answer": "Geology"
-            }           
         ]
     },
     {
@@ -150,61 +94,61 @@
             {
                 "question": "What is 1 + 1?",
                 "options": ["1", "2", "3", "4"],
-                "answer": "2",
+                "correct_options": [1],
                 "no_shuffle": true
             },
             {
                 "question": "What is 2 + 2?",
                 "options": ["1", "2", "3", "4"],
-                "answer": "4",
+                "correct_options": [3],
                 "no_shuffle": true
             },
             {
                 "question": "What is 2 + 2 + 2?",
                 "options": ["1", "2", "4", "6", "8", "10"],
-                "answer": "6",
+                "correct_options": [3],
                 "no_shuffle": true
             },
             {
                 "question": "What is 10 - 2?",
                 "options": ["1", "2", "4", "6", "8", "10"],
-                "answer": "8",
+                "correct_options": [4],
                 "no_shuffle": true
             },
             {
                 "question": "What is 1 - 1?",
                 "options": ["0", "1", "2", "3", "4"],
-                "answer": "0",
+                "correct_options": [0],
                 "no_shuffle": true
             },
             {
                 "question": "What is 4 - 1?",
                 "options": ["0", "1", "2", "3", "4"],
-                "answer": "3",
+                "correct_options": [3],
                 "no_shuffle": true
             },
             {
                 "question": "What is 1 * 1?",
                 "options": ["1", "2", "3", "4"],
-                "answer": "1",
+                "correct_options": [0],
                 "no_shuffle": true
             },
             {
                 "question": "What is 10 / 2?",
                 "options": ["2", "4", "5", "6", "10"],
-                "answer": "5",
+                "correct_options": [2],
                 "no_shuffle": true
             },
             {
                 "question": "What is 8 / 4?",
                 "options": ["1", "2", "3", "4", "5"],
-                "answer": "2",
+                "correct_options": [1],
                 "no_shuffle": true
             },
             {
                 "question": "What is 10 % 4?",
                 "options": ["1", "2", "3", "4", "5", "6"],
-                "answer": "2",
+                "correct_options": [1],
                 "no_shuffle": true,
                 "answer_details": "The Modulus is the remainder of the division of one number by another. The answer is 2 because when you divide 10 by 4, you get 2 with a remainder of 2."
             }

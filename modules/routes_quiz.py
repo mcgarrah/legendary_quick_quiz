@@ -20,6 +20,7 @@ def quiz(category_id):
     num_questions = category.questions_per_quiz
 
     questions = Question.query.filter_by(category_id=category_id).all()
+    # Randomize the order of selected questions
     random.shuffle(questions)
     selected_questions = questions[:num_questions]
 
@@ -29,7 +30,9 @@ def quiz(category_id):
             options = [escape(option) for option in json.loads(question.options)]
             # Only shuffle the options if "no_shuffle" is False
             if not question.no_shuffle:
-                random.shuffle(options)
+                # TODO: Fix the options shuffle
+                #random.shuffle(options)
+                pass
         except json.JSONDecodeError:
             options = []  # Provide a default empty list if JSON decoding fails
 
@@ -37,7 +40,7 @@ def quiz(category_id):
             'id': question.id,
             'question': escape(question.question),
             'options': options,
-            'answer': escape(question.answer),
+            'correct_options': json.loads(question.correct_options),
             'answer_details': escape(question.answer_details) if question.answer_details else None
         })
 
@@ -61,15 +64,37 @@ def check_answers():
     results = []
     score = 0
     for i, question in enumerate(sorted_questions):
-        correct = question.answer == user_answers[i]
+        correct_options = json.loads(question.correct_options)
+        options = json.loads(question.options)
+        # Get the user's answer
+        user_answer_index = user_answers[i]
+        # Create user_answer with the same structure as correct_options_data
+        user_answer_data = []
+        if user_answer_index:
+            user_answer_data.append({
+                'index': user_answer_index,
+                'value': options[int(user_answer_index)]
+            })
+            # Check if the user's answer index is in the list of correct options
+            correct = int(user_answer_index) in correct_options
+        else:
+            user_answer_data.append({'index': -1, 'value': 'No answer selected'})
+            correct = False
         if correct:
             score += 1
-        results.append({
-            'question': escape(question.question),
-            'correct': correct,
-            'answer': escape(question.answer),
-            'answer_details': escape(question.answer_details) if question.answer_details else None,
-            'user_answer': user_answers[i]
-        })
+        correct_options_data = []
+        for correct_index in correct_options:
+            correct_options_data.append({
+                'index': correct_index,
+                'value': options[correct_index]
+                })
+            results.append({
+                'question': escape(question.question),
+                'correct': correct,
+                'correct_options': correct_options_data,
+                'answer_details': escape(question.answer_details) if question.answer_details else None,
+                'user_answer': user_answer_data,
+                'original_options': options
+            })
 
     return jsonify({'score': score, 'total': len(sorted_questions), 'results': results})
